@@ -2,8 +2,15 @@ html,body {
   font-family: 'Raleway', sans-serif;
   padding: 3em 2em;
   font-size: 18px;
-  background: #222;
+  /*background: #222;*/
   color: #aaa
+}
+
+body{
+  background-image: url("b.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: 90%;
 }
 
 h1,h2 {
@@ -21,6 +28,19 @@ a{
   color: #aaa;
 }
 
+.btn{
+  background: linear-gradient(40deg, #f975c6, #40baf7);
+  padding: 20px 30px;
+  border-radius: 40px;
+  color: white;
+}
+
+.btn:hover{
+  cursor:pointer;
+  background: linear-gradient(45deg, #ef9826, #ff478a);
+}
+
+/*
 .btn {
   box-sizing: border-box;
   box-shadow: none;
@@ -42,3 +62,4 @@ a{
   cursor:pointer;
   border-image: linear-gradient(45deg, #ff7f7f, #fcb776, #59ffbf);
 }
+*/
