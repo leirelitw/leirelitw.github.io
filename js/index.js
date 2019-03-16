@@ -1,3 +1,32 @@
+var scrollToElement = function(el, ms){
+    var speed = (ms) ? ms : 600;
+    $('html,body').animate({
+        scrollTop: $(el).offset().top
+    }, speed);
+}
+
+$(document).ready(function() {
+  $('.nav-link').on('click', function(e) {
+    e.preventDefault();
+    var el = document.getElementsByClassName("about-me");
+    scrollToElement(el);
+  });
+
+  $(window).scroll(function() {
+    var x = $(window).scrollTop();
+
+    if (x >= 42) {
+      $("#navbar").fadeIn(300);
+    } else {
+      $("#navbar").fadeOut(300);
+    }
+
+  });
+});
+
+
+
+
 var TxtRotate = function(el, toRotate, period) {
   this.toRotate = toRotate;
   this.el = el;
@@ -21,7 +50,7 @@ TxtRotate.prototype.tick = function() {
   this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
 
   var that = this;
-  var delta = 300 - Math.random() * 100;
+  var delta = 300 - Math.random() * 200;
 
   if (this.isDeleting) { delta /= 2; }
 
@@ -51,6 +80,26 @@ window.onload = function() {
   // INJECT CSS
   var css = document.createElement("style");
   css.type = "text/css";
-  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid white }";
   document.body.appendChild(css);
 };
+
+var modal = document.getElementById('myModal');
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+function openModal(imageToOpen){
+  // Get the modal
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById(imageToOpen);
+  var modalImg = document.getElementById('image_inside_modal');
+  var captionText = document.getElementById("caption");
+  modal.style.display = "block";
+  modalImg.src = img.src;
+  captionText.innerHTML = img.alt;
+}
