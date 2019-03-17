@@ -117,7 +117,7 @@ background: purple;
 }
 
 .about-me{
-  height:100vh;
+  height:auto;
   width: 100%;
   /*background: linear-gradient(to right, #43e0a3, #318ed6); */
   background-image: url("back3.png");
@@ -125,6 +125,10 @@ background: purple;
   background-size: 100%;
   position: relative;
   text-align: center;
+}
+
+a{
+  cursor: pointer;
 }
 
 .about-me h1{
@@ -306,7 +310,7 @@ background: purple;
 
 .close:hover,
 .close:focus {
-  color: #bbb;
+  color: #f9f9f9;
   text-decoration: none;
   cursor: pointer;
 }
