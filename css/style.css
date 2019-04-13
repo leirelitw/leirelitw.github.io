@@ -119,12 +119,32 @@ background: purple;
 .about-me{
   height:auto;
   width: 100%;
-  /*background: linear-gradient(to right, #43e0a3, #318ed6); */
-  background-image: url("back3.png");
   background: white;
   background-size: 100%;
-  position: relative;
   text-align: center;
+}
+
+.first-row{
+  margin-bottom: 60px;
+  padding:0
+}
+
+.second-row{
+  margin-bottom: 100px;
+  padding:0
+}
+
+.hobbies{
+  width: 100%;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.hobbies h1{
+  width: 100%;
+  color: #232323;
+  left: 50%;
+  font-size: 3em;
 }
 
 a{
@@ -215,6 +235,32 @@ a{
   text-align: center;
 }
 
+.card-white{
+  background-color: white;
+  margin: 20px 10%;
+  width: 80%;
+  margin-bottom: 120px;
+  height: auto;
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-left, .card-right{
+  margin:0;
+  padding:0;
+  display: inline-block;
+  position: relative;
+}
+
+.card-left{
+  float: left;
+  width: 50%;
+}
+
+.card-right{
+  float: right;
+  width: 50%;
+}
+
 @media screen and (min-width: 768px) {
 
 .col-sm-3{
@@ -238,6 +284,16 @@ a{
 
 .modal-content {
   width: 100%;
+}
+
+.first-row{
+  margin-bottom: 0;
+  padding:0
+}
+
+.second-row{
+  margin-bottom: 50px;
+  padding:0
 }
 
 }

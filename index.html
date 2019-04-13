@@ -19,6 +19,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css'>
+  <link rel="stylesheet" href="css/style-hobbie.css">
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
 
@@ -61,7 +64,7 @@
 <div class="about-me" id="projects">
   <div class="vert-text">
     <h1>Projects</h1>
-      <div class="row col-sm-12 center-block" style="margin-bottom: 60px; padding:0">
+      <div class="row col-sm-12 center-block first-row">
         <div class="col-sm-3">
           <img src="images/mobile2.png" id="image_mobile" alt="News mobile app made with Android Studio. Worked in collaboration with Lukas Brückner and Vincent Giardina. Github repository: <br/><a target='_blank' href='https://github.com/luksurious/pui-newsmanager-android'> https://github.com/luksurious/pui-newsmanager-android </a><br/> Image copyright © Leire Litwin" width="100%" height="100%">
             <a href="projects/news-mobile-app.html"><div class="overlay">
@@ -85,7 +88,7 @@
       </div>
     </div>
 
-    <div class="row col-sm-12 center-block" style="margin-bottom: 60px; padding:0">
+    <div class="row col-sm-12 center-block second-row">
       <div class="col-sm-3">
         <img src="images/unity2.png" id="image_unity" alt="'Roll-a-ball' multiplayer videogame developed with Unity and Java. Worked in collaboration with other SFSU students: Ekta Tandel, James Quintero, Matthew Berkman, Cheng-Feng Huang and Pohung Wang <br/> Github repository: <a target='_blank' href='https://github.com/leirelitw/unity631'> https://github.com/leirelitw/unity631</a><br/> Image copyright © Leire Litwin" width="100%" height="100%">
         <a href="projects/unity-game.html"><div class="overlay">
@@ -108,13 +111,87 @@
         </div></a>
     </div>
   </div>
-
   </div>
 </div>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<div class="hobbies" id="hobbies">
+  <h1>Hobbies</h1>
+</div>
+
+  <div class="container-hobbies">
+    <div class="blog-slider">
+    <div class="blog-slider__wrp swiper-wrapper">
+      <div class="blog-slider__item swiper-slide">
+        <div class="blog-slider__img">
+
+          <img src="images/hobbie-virtual.png" alt="">
+        </div>
+        <div class="blog-slider__content">
+          <div class="blog-slider__title">Virtual and Augmented Reality</div>
+          <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi? </div>
+        </div>
+      </div>
+      <div class="blog-slider__item swiper-slide">
+        <div class="blog-slider__img">
+          <img src="images/hobbie-travel.png" alt="">
+        </div>
+        <div class="blog-slider__content">
+          <div class="blog-slider__title">Travelling</div>
+          <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?</div>
+        </div>
+      </div>
+
+      <div class="blog-slider__item swiper-slide">
+        <div class="blog-slider__img">
+          <img src="images/hobbie-chef.png" alt="">
+        </div>
+        <div class="blog-slider__content">
+          <div class="blog-slider__title">Cooking</div>
+          <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?</div>
+        </div>
+      </div>
+
+      <div class="blog-slider__item swiper-slide">
+        <div class="blog-slider__img">
+          <img src="images/hobbie-photographer.png" alt="">
+        </div>
+        <div class="blog-slider__content">
+          <div class="blog-slider__title">Photography</div>
+          <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?</div>
+        </div>
+      </div>
+
+      <div class="blog-slider__item swiper-slide">
+        <div class="blog-slider__img">
+          <img src="images/hobbie-languages.png" alt="">
+        </div>
+        <div class="blog-slider__content">
+          <div class="blog-slider__title">Languages and diversity</div>
+          <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?</div>
+        </div>
+      </div>
+
+      <div class="blog-slider__item swiper-slide">
+        <div class="blog-slider__img">
+          <img src="images/hobbie-designer.png" alt="">
+        </div>
+        <div class="blog-slider__content">
+          <div class="blog-slider__title">Arts and design</div>
+          <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?</div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="blog-slider__pagination"></div>
+  </div>
+  </div>
+
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js'></script>
 <script  src="js/index.js"></script>
+<script  src="js/hobbie.js"></script>
 
 </body>
 
