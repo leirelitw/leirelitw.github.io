@@ -173,9 +173,10 @@
 }
 .blog-slider__text {
   margin-bottom: 30px;
+  margin-right: 10%;
   line-height: 1.6em;
-  font-family: 'Open Sans';
-  font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
   font-size: 16px;
 }
 
@@ -233,5 +234,9 @@
   .blog-slider__pagination .swiper-pagination-bullet-active {
     height: 11px;
     width: 30px;
+  }
+  .blog-slider__text {
+    margin: 0 10%;
+    margin-bottom: 30px;
   }
 }
