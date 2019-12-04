@@ -25,8 +25,6 @@ $(document).ready(function() {
 });
 
 
-
-
 var TxtRotate = function(el, toRotate, period) {
   this.toRotate = toRotate;
   this.el = el;
@@ -99,6 +97,13 @@ span.onclick = function() {
 //closemodal.onclick = function() {
 //  modal.style.display = "none";
 //}
+
+
+// function showUXUI(){
+//   document.getElementsByClassName("programming")[0].style.display = "none";
+//   document.getElementsByClassName("UXUI")[0].style.display = "none";
+//   console.log("gets here!");
+// }
 
 function openModal(imageToOpen){
   // Get the modal
