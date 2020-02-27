@@ -1,11 +1,6 @@
 $(function() {
   "use strict";
 
-  //------- Parallax -------//
-  skrollr.init({
-    forceHeight: false
-  });
-
   //------- Active Nice Select --------//
   $('select').niceSelect();
 
@@ -114,32 +109,4 @@ $(function() {
 
   }
 
-});
-
-
-
-var scrollToElement = function(el, ms){
-    var speed = (ms) ? ms : 600;
-    $('html,body').animate({
-        scrollTop: $(el).offset().top
-    }, speed);
-}
-
-$(document).ready(function() {
-  $('.nav-link').on('click', function(e) {
-    e.preventDefault();
-    var el = document.getElementsByClassName("selling-styles");
-    scrollToElement(el);
-  });
-
-  $(window).scroll(function() {
-    var x = $(window).scrollTop();
-
-    if (x >= 42) {
-      $("#navbar").fadeIn(300);
-    } else {
-      $("#navbar").fadeOut(300);
-    }
-
-  });
 });
