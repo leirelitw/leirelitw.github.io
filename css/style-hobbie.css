@@ -174,10 +174,11 @@
 .blog-slider__text {
   margin-bottom: 30px;
   margin-right: 10%;
-  line-height: 1.6em;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 200;
+  line-height: 2;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
   font-size: 16px;
+  color: #32343B;
 }
 
 .blog-slider .swiper-container-horizontal > .swiper-pagination-bullets, .blog-slider .swiper-pagination-custom, .blog-slider .swiper-pagination-fraction {
