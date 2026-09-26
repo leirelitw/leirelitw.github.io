@@ -31,19 +31,19 @@ body.mycarddeck-page main > section:nth-child(10) { order: 10; }
 
 .mcd-hero { position: relative; min-height: 78svh; display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr); align-items: center; gap: 48px; width: var(--content); margin: 0 auto; padding-top: 80px; }
 .mcd-hero::before { content: ''; position: absolute; z-index: -1; top: 13%; right: -10vw; width: 46vw; height: 46vw; border-radius: 50%; background: radial-gradient(circle, rgba(65, 85, 170, .26), transparent 67%); filter: blur(10px); }
-.mcd-kicker, .mcd-label { color: var(--blue); font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.mcd-kicker, .mcd-label { color: var(--blue); font-size: 14px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
 .mcd-hero h1 { max-width: 680px; margin: 18px 0 24px; color: var(--paper); font-family: 'Space Grotesk', sans-serif; font-size: var(--hero-size); font-weight: 500; letter-spacing: var(--hero-tracking); line-height: var(--hero-leading-tight); }
 .mcd-hero h1 span { color: var(--blue-bright); }
 .mcd-hero__intro { max-width: 490px; color: #d7d8de; font-size: 18px; line-height: 1.55; }
-.mcd-hero__meta { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 42px; color: var(--muted); font-size: 13px; }
+.mcd-hero__meta { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 42px; color: var(--muted); font-size: 14px; }
 .mcd-hero__meta strong { display: block; color: var(--paper); font-weight: 500; }
 .mcd-hero__meta a { display: block; }
 .mcd-hero__meta a:hover strong { color: var(--blue-bright); }
-.mcd-hero__meta span { display: block; margin-bottom: 3px; color: var(--muted); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.mcd-hero__meta span { display: block; margin-bottom: 3px; color: var(--muted); font-size: 14px; letter-spacing: .12em; text-transform: uppercase; }
 .mcd-hero__visual { position: relative; min-height: 620px; display: grid; place-items: center; }
 .mcd-hero__visual img { width: 70%; filter: drop-shadow(0 40px 45px rgba(0,0,0,.48)); transform: rotate(4deg); transition: transform .7s cubic-bezier(.2,.8,.2,1); }
 .mcd-hero__visual:hover img { transform: rotate(1deg) translateY(-10px); }
-.mcd-scroll-cue { position: absolute; bottom: 31px; left: 0; display: flex; gap: 12px; align-items: center; color: var(--muted); font-size: 12px; letter-spacing: .15em; text-transform: uppercase; }
+.mcd-scroll-cue { position: absolute; bottom: 31px; left: 0; display: flex; gap: 12px; align-items: center; color: var(--muted); font-size: 14px; letter-spacing: .15em; text-transform: uppercase; }
 .mcd-scroll-cue::before { content: ''; width: 38px; height: 1px; background: var(--blue); }
 
 .mcd-section { padding: 92px 0; }
@@ -77,12 +77,12 @@ body.mycarddeck-page main > section:nth-child(10) { order: 10; }
 .mcd-before-after figure { margin: 0; padding: 28px; background: #fff; }
 .mcd-before-after figure:last-child { background: #dfe5f4; }
 .mcd-before-after img { width: 100%; height: 440px; margin: 0 auto; object-fit: contain; }
-.mcd-before-after figcaption { margin-top: 20px; color: #353740; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+.mcd-before-after figcaption { margin-top: 20px; color: #353740; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; }
 .mcd-before-after figcaption strong { display: block; margin-bottom: 5px; color: var(--ink); font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: -.04em; text-transform: none; }
 .mcd-before-after__output { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
 .mcd-before-after__output figure, .mcd-before-after__output figure:last-child { margin: 0; padding: 0; background: transparent; }
 .mcd-before-after__output img { width: 100%; height: auto; aspect-ratio: 825 / 1125; padding: 6px; background: #fff; object-fit: contain; }
-.mcd-before-after__output figcaption { margin-top: 7px; font-size: 12px; text-align: center; }
+.mcd-before-after__output figcaption { margin-top: 7px; font-size: 14px; text-align: center; }
 
 .mcd-styles { margin-top: 64px; }
 .mcd-styles__intro { display: block; }
@@ -95,11 +95,11 @@ body.mycarddeck-page main > section:nth-child(10) { order: 10; }
 .mcd-brand-panel img { width: 100%; max-width: 390px; }
 .mcd-type-specimen { width: 100%; }
 .mcd-type-specimen__word { margin: 0 0 28px; font-family: 'Leilei', serif; font-size: clamp(3.6rem, 8vw, 7.8rem); letter-spacing: .02em; line-height: .85; }
-.mcd-type-specimen__row { display: flex; justify-content: space-between; padding-top: 16px; border-top: 1px solid rgba(11,12,16,.24); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.mcd-type-specimen__row { display: flex; justify-content: space-between; padding-top: 16px; border-top: 1px solid rgba(11,12,16,.24); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
 .mcd-type-specimen__row span:last-child { color: #59627c; }
 .mcd-type-specimen p { margin-top: 28px; color: #30333c; font-size: 15px; line-height: 1.55; }
 .mcd-type-alphabet { margin-top: 34px; padding-top: 18px; border-top: 1px solid rgba(11,12,16,.24); color: #18213e; font-family: 'Leilei', serif; font-size: clamp(1.6rem, 3.1vw, 3.5rem); letter-spacing: .04em; line-height: 1.18; overflow-wrap: anywhere; }
-.mcd-type-alphabet span { display: block; margin-top: 8px; color: #59627c; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: .13em; text-transform: uppercase; }
+.mcd-type-alphabet span { display: block; margin-top: 8px; color: #59627c; font-family: 'DM Sans', sans-serif; font-size: 14px; letter-spacing: .13em; text-transform: uppercase; }
 
 .mcd-cover-section { background: #111218; }
 .mcd-cover-intro { display: block; }
@@ -109,7 +109,7 @@ body.mycarddeck-page main > section:nth-child(10) { order: 10; }
 .mcd-cover { margin: 0; text-align: center; }
 .mcd-cover img { width: 100%; height: auto; aspect-ratio: 825 / 1125; object-fit: contain; transition: transform .55s cubic-bezier(.23,1,.32,1); }
 .mcd-cover:hover img { transform: translateY(-10px) rotate(-2deg); }
-.mcd-cover figcaption { margin-top: 14px; color: var(--muted); font-size: 12px; letter-spacing: .11em; text-transform: uppercase; }
+.mcd-cover figcaption { margin-top: 14px; color: var(--muted); font-size: 14px; letter-spacing: .11em; text-transform: uppercase; }
 
 .mcd-card-grid-wrap { --gutter: max(32px, calc((100vw - 1180px) / 2)); --gap: 24px; width: 100vw; margin: 48px 0 0 calc(50% - 50vw); }
 .mcd-card-grid { display: flex; gap: var(--gap); align-items: start; padding: 0 var(--gutter) 24px; overflow-x: auto; overscroll-behavior-inline: contain; scroll-padding-left: var(--gutter); scroll-snap-type: x proximity; scrollbar-width: none; }
@@ -117,17 +117,17 @@ body.mycarddeck-page main > section:nth-child(10) { order: 10; }
 .mcd-card { flex: 0 0 calc((100vw - var(--gutter) - var(--gap) * 4) / 4.5); margin: 0; padding: 14px; background: #fff; box-shadow: 0 16px 30px rgba(11,12,16,.12); scroll-snap-align: start; }
 .mcd-card img { width: 100%; height: auto; aspect-ratio: 825 / 1125; object-fit: contain; filter: drop-shadow(0 12px 10px rgba(0,0,0,.16)); transition: transform .55s cubic-bezier(.23,1,.32,1); }
 .mcd-card:hover img { transform: translateY(-9px); }
-.mcd-card figcaption { margin-top: 14px; color: #a9acb6; font-size: 12px; letter-spacing: .11em; text-align: center; text-transform: uppercase; }
+.mcd-card figcaption { margin-top: 14px; color: #a9acb6; font-size: 14px; letter-spacing: .11em; text-align: center; text-transform: uppercase; }
 .mcd-video-hero { max-width: 980px; margin: 48px auto 0; }
 .mcd-video-frame { position: relative; overflow: hidden; background: #101116; box-shadow: 0 24px 50px rgba(11,12,16,.2); }
 .mcd-video-hero video { display: block; width: 100%; height: auto; background: #101116; }
-.mcd-video-hero figcaption { margin-top: 12px; color: #a9acb6; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.mcd-video-hero figcaption { margin-top: 12px; color: #a9acb6; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; }
 .mcd-video-placeholder { position: absolute; top: 50%; left: 50%; width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.92) center / 26px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230b0c10' d='M8 5v14l11-7z'/%3E%3C/svg%3E"); box-shadow: 0 8px 24px rgba(0,0,0,.3); pointer-events: none; transform: translate(-50%, -50%); transition: opacity .2s ease; }
 .mcd-video-frame.is-playing .mcd-video-placeholder { opacity: 0; }
 
 .mcd-video-frame { margin: 0; overflow: hidden; background: #101116; }
 .mcd-video-frame video { display: block; width: 100%; height: auto; }
-.mcd-video-frame figcaption { padding: 12px; color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.mcd-video-frame figcaption { padding: 12px; color: var(--muted); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
 
 .mcd-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 76px; border-top: 1px solid rgba(0,0,0,.25); border-bottom: 1px solid rgba(0,0,0,.25); }
 .mcd-flow__item { min-height: 230px; padding: 24px 20px 25px 0; border-right: 1px solid rgba(0,0,0,.25); }
@@ -137,7 +137,7 @@ body.mycarddeck-page main > section:nth-child(10) { order: 10; }
 .mcd-flow__item p { color: #585960; font-size: 14px; line-height: 1.55; }
 .mcd-email { margin-top: 65px; display: grid; grid-template-columns: 1fr .8fr; gap: 24px; align-items: stretch; }
 .mcd-email__window { padding: 26px; background: #fff; color: var(--ink); box-shadow: 0 22px 50px rgba(0,0,0,.12); }
-.mcd-email__chrome { display: flex; justify-content: space-between; padding-bottom: 17px; border-bottom: 1px solid #e5e5e5; color: #5c5f68; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+.mcd-email__chrome { display: flex; justify-content: space-between; padding-bottom: 17px; border-bottom: 1px solid #e5e5e5; color: #5c5f68; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; }
 .mcd-email__window h3 { margin: 38px 0 12px; font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 500; letter-spacing: -.05em; }
 .mcd-email__window p { color: #63646b; font-size: 14px; }
 
@@ -154,7 +154,7 @@ body.mycarddeck-page main > section:nth-child(10) { order: 10; }
 .mcd-section--paper .mcd-video-frame figcaption,
 .mcd-section--paper .mcd-hero__meta span { color: #55565c; }
 
-.mcd-build__fact span { display: block; margin-bottom: 9px; color: #55565c; font-size: 12px; letter-spacing: .13em; text-transform: uppercase; }
+.mcd-build__fact span { display: block; margin-bottom: 9px; color: #55565c; font-size: 14px; letter-spacing: .13em; text-transform: uppercase; }
 .mcd-build__fact strong { color: var(--ink); font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: -.03em; }
 
 .mcd-related { background: var(--ink); color: var(--paper); }
@@ -165,8 +165,8 @@ body.mycarddeck-page main > section:nth-child(10) { order: 10; }
 .mcd-related__item img { width: 100%; aspect-ratio: 1.35; object-fit: cover; opacity: .82; transition: opacity .25s ease, transform .5s cubic-bezier(.23,1,.32,1); }
 .mcd-related__item:hover img { opacity: 1; transform: scale(1.03); }
 .mcd-related__item strong { display: block; margin-top: 15px; color: var(--paper); font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 500; letter-spacing: -.04em; }
-.mcd-related__item span { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; }
-.mcd-footer { display: flex; justify-content: space-between; gap: 20px; width: var(--content); margin: 0 auto; padding: 26px 0 34px; color: var(--muted); font-size: 12px; }
+.mcd-related__item span { display: block; margin-top: 4px; color: var(--muted); font-size: 14px; }
+.mcd-footer { display: flex; justify-content: space-between; gap: 20px; width: var(--content); margin: 0 auto; padding: 26px 0 34px; color: var(--muted); font-size: 14px; }
 .mcd-footer a { color: var(--paper); }
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }

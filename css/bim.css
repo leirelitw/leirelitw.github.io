@@ -18,7 +18,7 @@
 .bim-swatches li { border: 1px solid var(--rule-soft); background: var(--surface-2); }
 .bim-swatch__chip { display: block; height: 104px; box-shadow: inset 0 0 0 1px var(--rule-soft); }
 .bim-swatches strong { display: block; padding: 16px 18px 0; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -.025em; }
-.bim-swatches span { display: block; padding: 5px 18px 18px; color: var(--text-4); font-family: 'Space Grotesk', sans-serif; font-size: 13px; letter-spacing: .04em; }
+.bim-swatches span { display: block; padding: 5px 18px 18px; color: var(--text-4); font-family: 'Space Grotesk', sans-serif; font-size: 14px; letter-spacing: .04em; }
 /* Gradient swatches carry two values, so the second line needs room. */
 .bim-swatches span b { display: block; font-weight: inherit; }
 
@@ -32,7 +32,7 @@
 
 .bim-logos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 38px; }
 .bim-logos figure { margin: 0; }
-.bim-logos figcaption { margin-top: 10px; color: var(--text-4); font-size: 13px; }
+.bim-logos figcaption { margin-top: 10px; color: var(--text-4); font-size: 14px; }
 
 @media (max-width: 640px) {
   .bim-swatches { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; }

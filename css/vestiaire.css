@@ -157,7 +157,7 @@ body.vc-page {
 .reveal.is-visible { opacity: 1; transform: none; }
 
 /* Shared type ------------------------------------------------------------ */
-.vc-eyebrow { margin: 0 0 14px; color: var(--accent); font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.vc-eyebrow { margin: 0 0 14px; color: var(--accent); font-size: 14px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
 .vc-h2 { max-width: 24ch; margin: 0 0 20px; font-family: 'Space Grotesk', sans-serif; font-size: var(--h2-size); font-weight: 500; letter-spacing: var(--h2-tracking); line-height: var(--h2-leading); }
 .vc-h3 { margin: 0 0 10px; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -.03em; line-height: 1.25; }
 .vc-lead { max-width: 62ch; margin: 0; color: var(--text-2); font-size: 18px; line-height: 1.65; }
@@ -190,8 +190,14 @@ body[data-brand="bim"] .vc-pull {
 /* Saint-Gobain's hero art is the product itself, two phones showing glass
    placed in a room, so it earns the room MyCardDeck's hero gives its pack
    shot rather than the narrow column a wordmark needs. */
-body[data-brand="saint-gobain"] .vc-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(320px, .95fr); }
-body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
+/* Only above the width where the hero stops being two columns. These carry an
+   attribute and a class, so they outrank the plain .vc-hero__inner in the
+   responsive block below, and without the query they held the hero in two
+   columns on a phone with the art crushed in beside the text. */
+@media (min-width: 1025px) {
+  body[data-brand="saint-gobain"] .vc-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(320px, .95fr); }
+  body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
+}
 
 /* ===== Tabs ============================================================= */
 .vc-tabbar { position: sticky; z-index: 60; top: 72px; background: rgba(11, 12, 16, .88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid rgba(255,255,255,.07); border-bottom: 1px solid rgba(255,255,255,.07); }
@@ -201,7 +207,7 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
 .vc-tab { display: inline-flex; gap: 10px; align-items: baseline; flex: 0 0 auto; padding: 10px 20px; border: 1px solid transparent; border-radius: 999px; background: transparent; color: #a9acb6; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: -.01em; white-space: nowrap; cursor: pointer; transition: color .25s var(--ease), background-color .25s var(--ease), border-color .25s var(--ease), transform .12s var(--ease); }
 .vc-tab:hover { color: var(--text); background: rgba(255, 255, 255, .05); }
 .vc-tab:active { transform: scale(.98); }
-.vc-tab__i { color: #7e828e; font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: .04em; }
+.vc-tab__i { color: #7e828e; font-family: 'Space Grotesk', sans-serif; font-size: 14px; letter-spacing: .04em; }
 .vc-tab[aria-selected="true"] { border-color: var(--accent-line); background: var(--accent-dim); color: var(--accent-strong); }
 .vc-tab[aria-selected="true"] .vc-tab__i { color: var(--accent); }
 
@@ -217,14 +223,14 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
 .vc-facts > div:last-child { border-right: 0; }
 .vc-facts__wide { grid-column: 1 / -1; border-right: 0 !important; border-top: 1px solid var(--rule-soft); }
 .vc-facts__wide dd { max-width: 70ch; }
-.vc-facts dt { margin-bottom: 8px; color: var(--text-4); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.vc-facts dt { margin-bottom: 8px; color: var(--text-4); font-size: 14px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
 .vc-facts dd { margin: 0; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 500; letter-spacing: -.02em; line-height: 1.35; }
 
 /* ===== Split (context) ================================================== */
 .vc-split { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr); gap: 72px; align-items: start; }
 .vc-pull { padding: 34px 0 0; border-top: 2px solid var(--accent); }
 .vc-pull p { margin: 0; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.4rem, 2.1vw, 1.95rem); font-weight: 500; letter-spacing: -.035em; line-height: 1.3; }
-.vc-pull span { display: block; margin-top: 18px; color: var(--accent); font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.vc-pull span { display: block; margin-top: 18px; color: var(--accent); font-size: 14px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
 
 /* ===== Findings (numbered, grouped, no boxes) =========================== */
 .vc-findings { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px 64px; margin: 54px 0 0; padding: 0; list-style: none; }
@@ -264,7 +270,7 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
 /* ===== Compare (before / after) ========================================= */
 .vc-compare__head { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; }
 .vc-switch { display: inline-flex; flex: 0 0 auto; gap: 4px; padding: 4px; border: 1px solid var(--rule); border-radius: 999px; background: var(--surface-2); }
-.vc-switch button { padding: 9px 20px; border: 0; border-radius: 999px; background: transparent; color: var(--text-3); font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 500; cursor: pointer; transition: color .25s var(--ease), background-color .25s var(--ease); }
+.vc-switch button { padding: 9px 20px; border: 0; border-radius: 999px; background: transparent; color: var(--text-3); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: color .25s var(--ease), background-color .25s var(--ease); }
 .vc-switch button:hover { color: var(--text); }
 .vc-switch button[aria-pressed="true"] { background: var(--btn-bg); color: var(--btn-text); }
 
@@ -274,7 +280,7 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
 
 .vc-figure { margin: 0; }
 .vc-figure figcaption { display: grid; gap: 6px; margin-top: 18px; }
-.vc-figure figcaption b { color: var(--accent); font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.vc-figure figcaption b { color: var(--accent); font-size: 14px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
 .vc-figure figcaption strong { color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: -.03em; }
 .vc-figure figcaption span { color: var(--text-3); font-size: 14.5px; line-height: 1.55; }
 
@@ -283,7 +289,7 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
 .vc-browser__chrome { display: flex; gap: 14px; align-items: center; padding: 11px 14px; border-bottom: 1px solid rgba(255,255,255,.07); background: var(--ink-3); }
 .vc-browser__dots { display: flex; flex: 0 0 auto; gap: 6px; }
 .vc-browser__dots i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, .16); }
-.vc-browser__url { flex: 1 1 auto; overflow: hidden; padding: 4px 12px; border-radius: 999px; background: rgba(255,255,255,.05); color: #a9acb6; font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: .01em; text-overflow: ellipsis; white-space: nowrap; }
+.vc-browser__url { flex: 1 1 auto; overflow: hidden; padding: 4px 12px; border-radius: 999px; background: rgba(255,255,255,.05); color: #a9acb6; font-family: 'Space Grotesk', sans-serif; font-size: 14px; letter-spacing: .01em; text-overflow: ellipsis; white-space: nowrap; }
 .vc-browser__screen { position: relative; height: clamp(360px, 46vh, 480px); overflow-x: hidden; overflow-y: auto; background: #fff; scrollbar-width: thin; scrollbar-color: rgba(11, 12, 16, .3) transparent; -webkit-mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 52px), transparent 100%); mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 52px), transparent 100%); }
 .vc-browser__screen::-webkit-scrollbar { width: 8px; }
 .vc-browser__screen::-webkit-scrollbar-thumb { border: 2px solid transparent; border-radius: 999px; background: rgba(11, 12, 16, .28); background-clip: content-box; }
@@ -325,9 +331,15 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
    and the screen keeps roughly the 0.46 width-to-height of a real handset. */
 .vc-phones--four { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 44px; }
 .vc-phones--four figure { margin: 0; }
-.vc-phones--four .vc-phone { width: 100%; padding: 8px; border-radius: 34px; }
-.vc-phones--four .vc-phone__screen { height: 540px; border-radius: 27px; }
-.vc-phones--four figcaption { margin-top: 13px; color: var(--text-3); font-size: 13.5px; line-height: 1.55; }
+/* The screen is shaped, not fixed. It used to be a flat 540px tall whatever
+   the frame was wide, so as the row went four up, two up, then one up the
+   frame grew and the screen did not, and the phone ended up wide and squat.
+   258 by 586 is the screen the tall frames on the Vestiaire homepage use, so
+   these now match those at any width, and the frame is capped so a single
+   column does not produce an enormous phone. */
+.vc-phones--four .vc-phone { width: min(100%, 300px); margin-inline: auto; padding: 8px; border-radius: 34px; }
+.vc-phones--four .vc-phone__screen { aspect-ratio: 258 / 586; height: auto; border-radius: 27px; }
+.vc-phones--four figcaption { margin-top: 13px; color: var(--text-3); font-size: 14px; line-height: 1.55; }
 .vc-phones--four figcaption strong { display: block; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -.025em; }
 @media (max-width: 900px) { .vc-phones--four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .vc-phones--four { grid-template-columns: minmax(0, 1fr); justify-items: center; } }
@@ -338,7 +350,7 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
 .vc-gallery img { display: block; width: 100%; height: auto; border: 1px solid var(--rule-soft); background: var(--surface-2); }
 .vc-gallery figcaption { margin-top: 13px; }
 .vc-gallery figcaption strong { display: block; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 500; letter-spacing: -.025em; }
-.vc-gallery figcaption span { display: block; margin-top: 5px; color: var(--text-3); font-size: 13.5px; line-height: 1.55; }
+.vc-gallery figcaption span { display: block; margin-top: 5px; color: var(--text-3); font-size: 14px; line-height: 1.55; }
 
 /* ===== Principles (scroll-snap track) =================================== */
 .vc-track { display: grid; grid-auto-columns: minmax(258px, 1fr); grid-auto-flow: column; gap: 18px; margin: 50px 0 0; padding: 0 0 20px; overflow-x: auto; list-style: none; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: var(--rule) transparent; }
@@ -357,7 +369,7 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
 }
 
 /* ===== Change pairs (prototype learnings) =============================== */
-.vc-sub { margin: 0 0 6px; color: var(--accent); font-size: 12px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
+.vc-sub { margin: 0 0 6px; color: var(--accent); font-size: 14px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
 .vc-sub + .vc-changes { margin-top: 18px; }
 .vc-changes { margin: 50px 0 0; padding: 0; list-style: none; }
 .vc-changes li { display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 12px 40px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--rule-soft); }
@@ -371,25 +383,25 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
 .vc-learnings { display: grid; gap: 34px; margin-top: 40px; }
 .vc-learnings figure { margin: 0; }
 .vc-learnings img { display: block; width: 100%; height: auto; border: 1px solid var(--rule-soft); background: var(--surface-2); }
-.vc-learnings figcaption { margin-top: 12px; color: var(--text-4); font-size: 13px; line-height: 1.55; }
+.vc-learnings figcaption { margin-top: 12px; color: var(--text-4); font-size: 14px; line-height: 1.55; }
 
 /* ===== Timeline ========================================================= */
 .vc-timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 50px 0 0; padding: 0; list-style: none; }
 .vc-timeline li { position: relative; padding: 32px 24px 32px 0; }
 .vc-timeline li::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: var(--rule); }
 .vc-timeline li::after { content: ''; position: absolute; top: -3px; left: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
-.vc-timeline b { display: block; margin-bottom: 9px; color: var(--accent); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: .04em; }
+.vc-timeline b { display: block; margin-bottom: 9px; color: var(--accent); font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: .04em; }
 .vc-timeline strong { display: block; margin-bottom: 8px; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: -.03em; }
 .vc-timeline p { margin: 0; color: var(--text-3); font-size: 14.5px; line-height: 1.6; }
 
 /* ===== Impact =========================================================== */
 .vc-impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 50px 0 0; padding: 0; list-style: none; }
 .vc-impact li { padding: 32px 28px 34px; border: 1px solid var(--rule-soft); background: linear-gradient(175deg, var(--tint), transparent 62%); }
-.vc-impact__dir { display: inline-flex; gap: 8px; align-items: center; margin-bottom: 22px; padding: 6px 13px; border: 1px solid var(--accent-line); border-radius: 999px; color: var(--accent-strong); font-size: 12px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
-.vc-impact__dir i { flex: 0 0 auto; font-size: 12px; }
+.vc-impact__dir { display: inline-flex; gap: 8px; align-items: center; margin-bottom: 22px; padding: 6px 13px; border: 1px solid var(--accent-line); border-radius: 999px; color: var(--accent-strong); font-size: 14px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
+.vc-impact__dir i { flex: 0 0 auto; font-size: 14px; }
 .vc-impact strong { display: block; margin-bottom: 10px; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.3rem, 1.9vw, 1.6rem); font-weight: 500; letter-spacing: -.035em; line-height: 1.15; }
 .vc-impact p { margin: 0; color: var(--text-3); font-size: 14.5px; line-height: 1.6; }
-.vc-note { margin: 26px 0 0; color: var(--text-4); font-size: 13.5px; }
+.vc-note { margin: 26px 0 0; color: var(--text-4); font-size: 14px; }
 
 /* ===== Unlock + locked slots ============================================ */
 .vc-unlock { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, auto); gap: 28px 44px; align-items: center; margin: 0 0; padding: 30px 32px; border: 1px solid var(--accent-line); background: linear-gradient(120deg, var(--tint), transparent 88%); }
@@ -397,7 +409,7 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
 .vc-unlock__copy p { max-width: 58ch; margin: 0; color: var(--text-3); font-size: 14.5px; line-height: 1.6; }
 .vc-unlock__form { display: grid; gap: 8px; }
 .vc-unlock__row { display: flex; gap: 8px; }
-.vc-unlock label { color: var(--text-4); font-size: 12px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
+.vc-unlock label { color: var(--text-4); font-size: 14px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
 .vc-unlock input { width: 190px; padding: 12px 16px; border: 1px solid var(--field-border); border-radius: 999px; background: var(--field-bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; transition: border-color .2s var(--ease); }
 .vc-unlock input::placeholder { color: var(--text-4); }
 .vc-unlock input:hover { border-color: var(--accent-line); }
@@ -412,7 +424,7 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
    rule outranks it back. A variant that needs a different label colour sets
    --btn-fg on itself rather than trying to outrank this selector too. */
 .vc-page a.vc-btn { color: var(--btn-fg, var(--btn-text)); }
-.vc-unlock__msg { min-height: 18px; color: var(--danger); font-size: 13px; }
+.vc-unlock__msg { min-height: 18px; color: var(--danger); font-size: 14px; }
 .vc-unlock__msg:empty { min-height: 0; }
 .vc-unlock__blocked { max-width: 34ch; margin: 0; color: var(--text-3); font-size: 14px; line-height: 1.6; }
 
@@ -429,7 +441,7 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
 .vc-locked__stub:hover { border-color: var(--accent); background: var(--tint); }
 .vc-locked__stub i { flex: 0 0 auto; color: var(--accent); font-size: 15px; }
 .vc-locked__stub b { color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -.02em; }
-.vc-locked__stub span { color: var(--accent); font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.vc-locked__stub span { color: var(--accent); font-size: 14px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
 .vc-locked[data-state="open"] .vc-locked__stub { display: none; }
 
 /* ===== Private content blocks =========================================== */
@@ -439,7 +451,7 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
 .vc-table { width: 100%; margin: 0; border-collapse: collapse; font-size: 14.5px; }
 .vc-table caption { caption-side: top; margin-bottom: 18px; color: var(--text-3); font-size: 14.5px; line-height: 1.6; text-align: left; }
 .vc-table th, .vc-table td { padding: 15px 20px 15px 0; text-align: left; vertical-align: top; }
-.vc-table thead th { white-space: nowrap; border-bottom: 1px solid var(--rule); color: var(--text-4); font-size: 12px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
+.vc-table thead th { white-space: nowrap; border-bottom: 1px solid var(--rule); color: var(--text-4); font-size: 14px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
 .vc-table tbody tr + tr td { border-top: 1px solid var(--rule-soft); }
 .vc-table tbody th { min-width: 170px; border-top: 1px solid var(--rule-soft); color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -.02em; }
 .vc-table tbody tr:first-child th { border-top: 0; }
@@ -470,16 +482,16 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
 .vc-empty__visual i:nth-child(4) { grid-column: span 2; }
 .vc-empty__visual i:nth-child(8) { grid-column: span 2; }
 .vc-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 30px 0 0; padding: 0; list-style: none; }
-.vc-chips li { padding: 8px 16px; border: 1px solid var(--rule); border-radius: 999px; color: var(--text-3); font-size: 13.5px; }
+.vc-chips li { padding: 8px 16px; border: 1px solid var(--rule); border-radius: 999px; color: var(--text-3); font-size: 14px; }
 
 /* ===== Project dossiers (other work tab) ================================ */
 .vc-dossier { padding: 78px 0; border-top: 1px solid var(--rule-soft); }
 .vc-dossier:first-of-type { border-top: 0; padding-top: 56px; }
 .vc-dossier__head { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: baseline; margin-bottom: 26px; }
 .vc-dossier__head h3 { margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight: 500; letter-spacing: -.045em; line-height: 1.05; }
-.vc-dossier__head span { color: var(--text-4); font-size: 13px; }
+.vc-dossier__head span { color: var(--text-4); font-size: 14px; }
 .vc-dossier__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px 48px; }
-.vc-dossier__grid > div > h4 { margin: 0 0 10px; color: var(--accent); font-size: 12px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
+.vc-dossier__grid > div > h4 { margin: 0 0 10px; color: var(--accent); font-size: 14px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
 .vc-dossier__grid > div > p { max-width: 46ch; margin: 0; color: var(--text-3); font-size: 15px; line-height: 1.65; }
 .vc-dossier__grid ul { max-width: 46ch; margin: 0; padding: 0; list-style: none; }
 .vc-dossier__grid li { position: relative; padding-left: 18px; color: var(--text-3); font-size: 15px; line-height: 1.6; }
@@ -489,7 +501,7 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
 .vc-media { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 38px; }
 .vc-media figure { margin: 0; }
 .vc-media img, .vc-media video { width: 100%; border: 1px solid var(--rule-soft); }
-.vc-media figcaption { margin-top: 10px; color: var(--text-4); font-size: 13px; }
+.vc-media figcaption { margin-top: 10px; color: var(--text-4); font-size: 14px; }
 /* One per row, for wide screen recordings that are unreadable at half width. */
 .vc-media__label { margin: 38px 0 14px; }
 .vc-dossier .vc-compare__grid--mobile { margin-left: 0; }
@@ -513,11 +525,11 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
 .vc-media--stack .vc-eyebrow { margin-bottom: 10px; }
 .vc-media--stack video { display: block; height: auto; background: var(--surface-2); }
 .vc-todo { display: inline-block; padding: 10px 14px; border: 1px dashed var(--rule); background: var(--tint-2); color: var(--text-4); font-size: 14px; }
-.vc-slot { display: grid; place-items: center; aspect-ratio: 16 / 10; padding: 20px; border: 1px dashed var(--rule); background: var(--tint-2); color: var(--text-4); font-size: 13px; text-align: center; }
+.vc-slot { display: grid; place-items: center; aspect-ratio: 16 / 10; padding: 20px; border: 1px dashed var(--rule); background: var(--tint-2); color: var(--text-4); font-size: 14px; text-align: center; }
 
 /* ===== Footer =========================================================== */
 .vc-footer { background: var(--ink); color: #7e828e; }
-.vc-footer__inner { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; justify-content: space-between; width: var(--content); margin: 0 auto; padding: 44px 0 56px; font-size: 13.5px; }
+.vc-footer__inner { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; justify-content: space-between; width: var(--content); margin: 0 auto; padding: 44px 0 56px; font-size: 14px; }
 .vc-footer a { color: var(--paper); font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 500; letter-spacing: -.02em; }
 .vc-footer a:hover { color: var(--accent-strong); }
 
@@ -543,7 +555,7 @@ body[data-brand="saint-gobain"] .vc-hero__mark { width: min(100%, 540px); }
   .vc-hero { padding: 116px 0 44px; }
   .vc-tabbar { top: 64px; }
   .vc-tabbar__inner { padding: 10px 0; }
-  .vc-tab { padding: 9px 16px; font-size: 13.5px; }
+  .vc-tab { padding: 9px 16px; font-size: 14px; }
   .vc-facts { grid-template-columns: 1fr; }
   .vc-facts > div { padding: 20px 0; border-right: 0; border-top: 1px solid var(--rule-soft); }
   .vc-facts > div + div { padding-left: 0; }

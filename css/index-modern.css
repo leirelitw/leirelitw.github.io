@@ -76,3 +76,30 @@ body { background: #0b0c10; }
   .freelancre > .container > .row { min-height: 0; }
   .portfolio-frl .gallery .item-img .cont h6 { font-size: 18px; }
 }
+
+/* The template ships a custom cursor: two dots that chase the pointer, drawn
+   by mousecursor() in js/scripts.js. That function makes them visible on every
+   device, but a touch screen has no pointer, so onmousemove never fires and
+   the pair simply sits in the top-left corner of the page for ever.
+   Hidden wherever there is nothing to follow, which leaves the ordinary tap
+   behaviour and the platform's own cursor. The test is the pointer, not the
+   window width: a narrow desktop window still has a mouse, and a tablet with a
+   wide screen still does not. */
+@media (hover: none), (pointer: coarse) {
+  .mouse-cursor { display: none; }
+}
+
+/* Where there is a pointer, the dots are the cursor, so the native arrow is
+   taken away and they are not both on screen at once. cursor is inherited and
+   nothing here sets cursor: pointer, so the one declaration covers the page.
+   Only index.html loads this file, and only index.html carries the dots. */
+@media (hover: hover) and (pointer: fine) {
+  /* body alone is not enough. cursor is inherited, but a declaration made on
+     the element always beats an inherited value, and plenty of them exist:
+     the browser own stylesheet on links, Bootstrap on buttons and
+     [role=button], the theme on .cursor-pointer. Those are class and
+     attribute selectors, so they outrank body *, and the only thing that
+     reliably covers a set of vendor rules nobody here controls is
+     !important. It is scoped to this one page and this one media query. */
+  html, body, body * { cursor: none !important; }
+}
