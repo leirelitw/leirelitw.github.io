@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap');
+
+/* Accent. One colour for the page, in two values so hover and active states can
+   step brighter against the dark ground. --accent-rgb exists because rgba()
+   cannot take a hex variable. */
+:root {
+  --accent: #f2a9c7;
+  --accent-strong: #f7c8dd;
+  --accent-rgb: 242, 169, 199;
+}
+
+/* The base template ships a cyan accent (#12c2e9) on the custom cursor and on
+   .color-font-blue. Overridden here rather than in style.css, which the other
+   project pages also load. */
+/* The template's body is #111215 and its sections #111218; every other page
+   on the site is #0b0c10. One near-black, set here rather than in the
+   vendor stylesheet. */
+body { background: #0b0c10; }
+
+.mouse-cursor.cursor-outer { border-color: var(--accent); }
+.mouse-cursor.cursor-inner { background: var(--accent); }
+.color-font-blue { color: var(--accent); }
+.portfolio-frl .filtering .filter span::after { background: var(--accent); }
+.progress-wrap::after { color: var(--accent); }
+.progress-wrap svg.progress-circle path { stroke: var(--accent); }
+
+.portfolio-frl .sec-head h6 { color: var(--accent); letter-spacing: .2em; }
+.portfolio-frl .sec-head h3 { color: #f3f1ed; letter-spacing: -.05em; }
+.portfolio-frl .filtering .filter span { color: #a9acb6; transition: color .2s ease; }
+.portfolio-frl .filtering .filter span.active, .portfolio-frl .filtering .filter span:hover { color: var(--accent-strong); }
+.freelancre { min-height: 88vh; background: #0b0c10; }
+.freelancre .cont h1 { max-width: 780px; color: #f3f1ed; font-family: 'Space Grotesk', sans-serif; font-size: var(--hero-size); font-weight: 500; letter-spacing: var(--hero-tracking); line-height: var(--hero-leading); }
+/* The emphasised clause takes the accent. Upright, not italic: the emphasis
+   is carried by the colour, and an italic at this size and tracking would
+   clip its own descenders. Same device as the case study heroes. */
+.freelancre .cont h1 em { font-style: normal; color: var(--accent); }
+.freelancre > .container > .row { min-height: 70vh; align-items: center; }
+.freelancre .col-lg-6:last-child { display: flex; justify-content: flex-end; }
+.hero-memoji { display: none; }
+@media (min-width: 992px) {
+  .hero-memoji {
+    display: block; width: min(100%, 410px); aspect-ratio: 1;
+    border-radius: 50%; object-fit: cover; background: #14161c; cursor: pointer;
+  }
+  .hero-memoji:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+}
+.freelancre .line.color-font-blue { background: var(--accent); }
+.portfolio-frl { background: #0b0c10; color: #f3f1ed; }
+.portfolio-frl .sec-head { padding-bottom: 18px; }
+.portfolio-frl .gallery .item-img .cont p { display: none; }
+.portfolio-frl .gallery .item-img .cont h6 { color: #f3f1ed; font-family: 'Space Grotesk', sans-serif; font-size: 21px; font-weight: 500; letter-spacing: -.04em; }
+/* The chips are labels, not links: nothing filters on them and they never
+   navigated anywhere, so the styling moved off the anchor onto the span. */
+.portfolio-frl .gallery .tags span { color: var(--accent-strong); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+.portfolio-frl .gallery .item-img-overlay { background: rgba(var(--accent-rgb), .2); }
+.sub-bg { background: #0b0c10; }
+.mcd-index-featured { display: none; }
+.mcd-index-featured { position: relative; display: grid; grid-template-columns: .8fr 1.2fr; gap: 28px; align-items: center; margin: 15px 15px 70px; padding: 38px; overflow: hidden; background: #0b0c10; color: #f3f1ed; }
+.mcd-index-featured::after { content: ''; position: absolute; right: -14%; bottom: -55%; width: 55%; height: 105%; border-radius: 50%; background: radial-gradient(circle, rgba(var(--accent-rgb), .26), transparent 67%); pointer-events: none; }
+.mcd-index-featured__copy { position: relative; z-index: 1; }
+.mcd-index-featured__label { margin-bottom: 14px; color: var(--accent-strong); font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.mcd-index-featured h4 { max-width: 430px; margin: 0 0 15px; color: #f3f1ed; font-size: clamp(2rem, 4vw, 4.4rem); font-weight: 500; letter-spacing: -.07em; line-height: .96; }
+.mcd-index-featured p { max-width: 450px; margin: 0; color: #d7d8de; font-size: 16px; line-height: 1.55; }
+.mcd-index-featured__link { display: inline-flex; margin-top: 28px; padding-bottom: 6px; border-bottom: 1px solid var(--accent); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; }
+.mcd-index-featured__visual { position: relative; z-index: 1; min-height: 290px; display: grid; place-items: center; }
+.mcd-index-featured__visual img { width: min(100%, 480px); filter: drop-shadow(0 30px 30px rgba(0,0,0,.45)); transform: rotate(3deg); transition: transform .55s cubic-bezier(.23,1,.32,1); }
+.mcd-index-featured:hover .mcd-index-featured__visual img { transform: rotate(0) translateY(-7px); }
+/* The portrait is there to balance the headline across two columns. Below
+   this width col-lg-6 stops being a column, so it would just be a large photo
+   sitting between the headline and the work. */
+@media (max-width: 991.98px) {
+  .freelancre .col-lg-6:last-child { display: none; }
+}
+@media (max-width: 767px) {
+  .freelancre { min-height: 40vh; padding-top: 80px; }
+  .freelancre > .container > .row { min-height: 0; }
+  .portfolio-frl .gallery .item-img .cont h6 { font-size: 18px; }
+}

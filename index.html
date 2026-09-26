@@ -1,213 +1,423 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="title" content="Leire Litwin">
-  <meta name="description" content="My name is Leire Litwin. I studied Computer Science and
-    Engineering and I am currently continuing my studies with an EIT master specialized in
-    HCID (Human Computer Interaction and Design). This is my personal website, in order to
-    publish my working projects, as well as my personal ones.">
-  <meta name="keywords" content="Leire Litwin, Computer Science degree, HCID, HTML,CSS,JavaScript,Databases,Coding">
-  <meta name="author" content="Leire Litwin">
 
+  <!-- Metas -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="keywords" content="HTML5 Template Vie onepage themeforest" />
+  <meta name="description" content="Vie - Onepage Multi-Purpose HTML5 Template" />
+  <meta name="author" content="" />
+
+  <!-- Title  -->
   <title>Leire Litwin</title>
-  <link rel="icon" href="images/favicon.ico">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css'>
-  <link rel="stylesheet" href="css/style-hobbie.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,500,600,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Noto+Sans:ital,wght@1,700&display=swap" rel="stylesheet">
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137989555-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/favicon.ico" />
 
-    gtag('config', 'UA-137989555-1');
-  </script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Plugins -->
+  <link rel="stylesheet" href="css/plugins.css" />
+
+  <!-- Core Style Css -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/index-modern.css" />
+  <link rel="stylesheet" href="css/site-nav.css" />
 
 </head>
 
-
 <body>
-<header id="header">
-  <div class="vert-text">
-	<div class="p-img">
-	   <img src="images/photo.png" alt="My profile image. Copyright © Leire Litwin" style="width:200px"/>
-  </div>
-  <h1>Hi, I'm Leire</h1>
-  <h2>I am a
-  <span
-     class="txt-rotate"
-     data-period="1000"
-     data-rotate='[ "UX/UI designer", "developer", "", "VR/AR enthusiast" ]'></span>
-  </h2>
-    <a href="#contacts" class="scroll-down nav-link"></a>
-  </div>
-</header>
 
-<div id="myModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="image_inside_modal">
-  <div id="caption"></div>
-</div>
 
-<div class="about-me" id="projects">
-  <div class="vert-text">
-    <h1>Projects</h1>
+  <!-- ==================== Start Loading ====================
 
-    <!--<button class="button-line-only" onclick="showUXUI()">UX/UI</button>-->
-
-    <div class="row col-sm-12 center-block first-row">
-      <div class="col-sm-3 UXUI programming">
-          <img src="images/sust.png" id="image_sustainability_coach" alt="Project for a course in HCI project called 'Sustainability Coach'. Worked in collaboration with other UPM students: Lukas Bruckner, Vincent Giardina and Carlos Maya<br/> Image copyright © Leire Litwin" width="100%" height="100%">
-          <a href="projects/sustainability-coach.html"><div class="overlay">
-            <!--<div class="overlay" onclick="openModal('image_sustainability_coach')">-->
-              <div class="text-inside-images">UX/UI for mobile app 'Sustainability Coach'</div>
-          </div></a>
-      </div>
-      <div class="col-sm-3 UXUI">
-        <img src="images/safeland-main.png" id="image_safeland" alt="Project for a hackathon to increase security awareness for kids. Worked in collaboration with other students: Maria Serralha and Yerai Zamorano <br/> Image copyright © Leire Litwin" width="100%" height="100%">
-        <a href="projects/safeland.html"><div class="overlay">
-          <!--<div class="overlay" onclick="openModal('image_safeland')">-->
-            <div class="text-inside-images">Cybersecurity platform for kids 'Safeland'</div>
-        </div></a>
-      </div>
-      <div class="col-sm-3 UXUI">
-          <img src="images/wakeapp2.png" id="image_wakeapp" alt="Project for a course in User Experience and Mobile Prototyping. It consisted of a process of making interviews, finding a need, creating personas and task scenarios, making a storyboard and a user journey map. Finally, from that, we created moodboards and a prototype (using Justinmind) for a waking up mobile app. Worked in collaboration with other UPM students: Niels Dikken, Paula Manzano and Tobias Piffrader <br/> Image copyright © Leire Litwin" width="100%" height="100%">
-          <a href="projects/wakeapp.html"><div class="overlay">
-            <!--<div class="overlay" onclick="openModal('image_wakeapp')">-->
-              <div class="text-inside-images">UX/UI for mobile app 'WakeApp'</div>
-          </div></a>
-      </div>
+    <div class="loading">
+        <span>L</span>
+        <span>o</span>
+        <span>a</span>
+        <span>d</span>
+        <span>i</span>
+        <span>n</span>
+        <span>g</span>
     </div>
 
-      <div class="row col-sm-12 center-block second-row">
-        <div class="col-sm-3 programming">
-          <img src="images/desktop4.png" id="image_desktop" alt="News application made for desktop, web and mobile using different platforms. Worked in collaboration with Lukas Brückner and Vincent Giardina. Github repository: <br/><a target='_blank' href='https://github.com/luksurious/pui-newsmanager-desktop'> https://github.com/luksurious/pui-newsmanager-desktop </a><br/> Image copyright © Leire Litwin" width="100%" height="100%">
-          <a href="projects/news-app.html"><div class="overlay">
-            <!--<div class="overlay" onclick="openModal('image_desktop')">-->
-            <div class="text-inside-images">News app made for desktop, web and mobile</div>
-          </div></a>
-        </div>
-        <div class="col-sm-3 programming">
-          <img src="images/unity2.png" id="image_unity" alt="'Roll-a-ball' multiplayer videogame developed with Unity and Java. Worked in collaboration with other SFSU students: Ekta Tandel, James Quintero, Matthew Berkman, Cheng-Feng Huang and Pohung Wang <br/> Github repository: <a target='_blank' href='https://github.com/leirelitw/unity631'> https://github.com/leirelitw/unity631</a><br/> Image copyright © Leire Litwin" width="100%" height="100%">
-          <a href="projects/unity-game.html"><div class="overlay">
-            <!--<div class="overlay" onclick="openModal('image_unity')">-->
-              <div class="text-inside-images">"Roll-a-ball" multiplayer videogame made with Unity</div>
-            </div></a>
-        </div>
-        <div class="col-sm-3 programming">
-          <img src="images/mooc2.png" id="image_mooc" alt="My bachelor's thesis. The topic was to create a university ranking according to their number of content online (MOOCs). This is the url: <br/> <a target='_blank' href='https://moocs-university-ranking.herokuapp.com/'> https://moocs-university-ranking.herokuapp.com/ </a> <br/> Image copyright © Leire Litwin" width="100%" height="100%">
-          <a href="projects/tfg-moocs.html"><div class="overlay">
-            <!--<div class="overlay" onclick="openModal('image_mooc')">-->
-            <div class="text-inside-images">My bachelor's thesis web application</div>
-          </div></a>
-        </div>
+    <div id="preloader">
     </div>
 
-</div>
-</div>
+    ==================== End Loading ==================== -->
 
-<div class="hobbies" id="hobbies">
-  <h1>Hobbies</h1>
-</div>
 
-  <div class="container-hobbies">
-    <div class="blog-slider">
-    <div class="blog-slider__wrp swiper-wrapper">
-      <div class="blog-slider__item swiper-slide">
-        <div class="blog-slider__img">
 
-          <img src="images/hobbie-virtual.jpeg" alt="">
-        </div>
-        <div class="blog-slider__content">
-          <div class="blog-slider__title">Virtual and Augmented Reality</div>
-          <div class="blog-slider__text">I am an enthusiast of the VR/AR, especially augmented reality where the
-            physical and virtual world get integrated together, taking the human-computer interaction to another level.</div>
-        </div>
+  <!-- ==================== Start progress-scroll-button ==================== -->
+
+  <div class="progress-wrap cursor-pointer">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    </svg>
+  </div>
+
+  <!-- ==================== End progress-scroll-button ==================== -->
+
+
+
+  <!-- ==================== Start cursor ==================== -->
+
+  <div class="mouse-cursor cursor-outer"></div>
+  <div class="mouse-cursor cursor-inner"></div>
+
+  <!-- ==================== End cursor ==================== -->
+
+
+
+  <!-- ==================== Start Navbar ==================== -->
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <img src="img/logo.jpg" alt="Leire Portfolio Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-nav-toggle="collapse" data-nav-target="navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="icon-bar"><i class="fas fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-nav-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Works</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="projects/mycarddeck.html">MyCardDeck</a>
+              <a class="dropdown-item" href="projects/vestiaire-collective.html">Vestiaire Collective</a>
+              <a class="dropdown-item" href="projects/bim-fitness-app.html">Bim - Fitness App</a>
+              <a class="dropdown-item" href="projects/saint-gobain.html">St-Gobain AR App</a>
+              <a class="dropdown-item" href="projects/sodexo.html">Sodexo</a>
+              <a class="dropdown-item" href="projects/safeland.html">Safeland - Cybersecurity for kids</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item mode-item">
+            <div class="mode-toggle" role="group" aria-label="Portfolio mode">
+              <span class="mode-opt is-on" aria-current="true">Default</span>
+              <a class="mode-opt" href="universe-select.html">Fun</a>
+            </div>
+          </li>
+        </ul>
       </div>
-      <div class="blog-slider__item swiper-slide">
-        <div class="blog-slider__img">
-          <img src="images/hobbie-travel.png" alt="">
+    </div>
+  </nav>
+
+  <!-- ==================== End Navbar ==================== -->
+
+
+
+  <!-- ==================== Start Slider ==================== -->
+
+  <header class="freelancre valign">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 valign">
+          <div class="cont">
+            <h1><em>I’m a product designer.</em><br>I design, experiment, and build things that people actually use.</h1>
+          </div>
         </div>
-        <div class="blog-slider__content">
-          <div class="blog-slider__title">Travelling</div>
-          <div class="blog-slider__text"> Exploring the world opens your mind, helps you to understand other cultures
-            and takes you to see amazing places. I would love to live abroad for several years and get integrated into
-            different cultures to experience them.</div>
+
+        <!-- Decorative, desktop only, and deliberately not autoplay: with
+             preload="none" nothing is fetched until the script at the end of
+             the page decides the screen is wide enough, so a phone never
+             downloads 1.5MB for a circle it is not shown. -->
+        <div class="col-lg-6">
+          <video class="hero-memoji" src="img/memoji-video.mp4" muted loop playsinline
+                 preload="none" disablepictureinpicture
+                 tabindex="0" role="button" aria-label="Pause the animation"></video>
         </div>
+
       </div>
 
-      <div class="blog-slider__item swiper-slide">
-        <div class="blog-slider__img">
-          <img src="images/hobbie-chef.png" alt="">
-        </div>
-        <div class="blog-slider__content">
-          <div class="blog-slider__title">Cooking</div>
-          <div class="blog-slider__text">Eating is a pleasure and therefore I love trying new recipes and cooking for
-            my beloved ones. It represents more than the cooking itself, but gathering people together.</div>
-        </div>
-      </div>
-
-      <div class="blog-slider__item swiper-slide">
-        <div class="blog-slider__img">
-          <img src="images/hobbie-photographer.jpeg" alt="">
-        </div>
-        <div class="blog-slider__content">
-          <div class="blog-slider__title">Photography</div>
-          <div class="blog-slider__text">For me photography is a way of expressing myself and to keep a memory of
-            the special moments for the future.</div>
-        </div>
-      </div>
-
-      <div class="blog-slider__item swiper-slide">
-        <div class="blog-slider__img">
-          <img src="images/hobbie-languages2.png" alt="">
-        </div>
-        <div class="blog-slider__content">
-          <div class="blog-slider__title">Languages and diversity</div>
-          <div class="blog-slider__text">I speak Spanish, English and French. I would love to improve my French
-            language skills and start learning Italian.</div>
-        </div>
-      </div>
-
-      <div class="blog-slider__item swiper-slide">
-        <div class="blog-slider__img">
-          <img src="images/hobbie-designer.png" alt="">
-        </div>
-        <div class="blog-slider__content">
-          <div class="blog-slider__title">Arts and design</div>
-          <div class="blog-slider__text">Ever since I started my master in Human Computer Interaction and Design,
-            I am very interested in learning the design guidelines, techniques related to 3D modelling and logos design.</div>
-        </div>
-      </div>
 
 
     </div>
-    <div class="blog-slider__pagination"></div>
-  </div>
-  </div>
+    <div class="line bottom left color-font-blue"></div>
+  </header>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js'></script>
-<script  src="js/index.js"></script>
-<script  src="js/hobbie.js"></script>
+  <!-- ==================== End Slider ==================== -->
 
+
+
+
+  <!-- ==================== Start works ==================== -->
+
+  <section class="portfolio-frl section-ptb pb-70">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+          <div class="sec-head  text-center">
+            <h6 class="wow color-font-blue fadeIn" data-wow-delay=".5s">Portfolio</h6>
+            <h3 class="wow">Recent Works</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+
+        <!-- filter links -->
+        <div class="filtering text-center col-12">
+          <div class="filter wow fadeIn" data-wow-delay=".5s">
+            <span data-filter='*' class="active">All</span>
+            <span data-filter='.product'>Product Design</span>
+            <span data-filter='.mobile'>Mobile App</span>
+            <span data-filter='.brand'>Branding</span>
+            <span data-filter='.project'>Personal Projects</span>
+          </div>
+        </div>
+
+        <!-- gallery -->
+        <div class="gallery full-width">
+
+          <!-- gallery item -->
+          <div class="col-md-6 items product brand project wow fadeInUp" data-wow-delay=".2s">
+            <div class="item-img">
+              <div class="cont">
+                <h6>MyCardDeck</h6>
+                <p>Brand and product design for a custom playing card editor</p>
+              </div>
+              <a href="projects/mycarddeck.html" class="rota">
+                <img src="img/images/mycarddeck.jpg" alt="MyCardDeck packaging mockup">
+                <div class="item-img-overlay"></div>
+              </a>
+              <div class="tags">
+                <span>Web</span>
+                <span>Physical product</span>
+                <span>Creative</span>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- gallery item -->
+          <div class="col-md-6 items product mobile lg-mr wow fadeInUp" data-wow-delay=".4s">
+            <div class="item-img">
+              <div class="cont">
+                <h6>Vestiaire Collective</h6>
+                <p>Currently working as Product designer & System designer @Vestiaire</p>
+              </div>
+              <a href="projects/vestiaire-collective.html" class="rota">
+                <img src="img/images/vestiaire_1.jpg" alt="Image for Vestiaire Collective">
+                <div class="item-img-overlay"></div>
+              </a>
+              <div class="tags">
+                <span>App &amp; Web</span>
+                <span>E-commerce</span>
+                <span>Luxury retail</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- gallery item -->
+          <div class="col-md-6 items product mobile brand wow fadeInUp" data-wow-delay=".4s">
+            <div class="item-img">
+              <div class="cont">
+                <h6>Bim - Fitness Coach</h6>
+                <p>Product design for a Live Fitness Mobile App</p>
+              </div>
+              <a href="projects/bim-fitness-app.html" class="rota">
+                <img src="img/images/bim_1.jpg" alt="image">
+                <div class="item-img-overlay"></div>
+              </a>
+              <div class="tags">
+                <span>Mobile app</span>
+                <span>Fitness</span>
+                <span>Social</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- gallery item -->
+          <div class="col-md-6 items product mobile wow fadeInUp" data-wow-delay=".4s">
+            <div class="item-img">
+              <div class="cont">
+                <h6>Saint-Gobain AR App</h6>
+                <p>Ui / Ux creative mobile app design</p>
+              </div>
+              <a href="projects/saint-gobain.html" class="rota">
+                <img src="img/images/st_gobain_1.jpg" alt="image">
+                <div class="item-img-overlay"></div>
+              </a>
+              <div class="tags">
+                <span>Mobile app</span>
+                <span>Augmented reality</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- gallery item -->
+          <div class="col-md-6 items product wow fadeInUp" data-wow-delay=".4s">
+            <div class="item-img">
+              <div class="cont">
+                <h6>Sodexo Platform Redesign</h6>
+                <p>Ui / Ux creative mobile app design</p>
+              </div>
+              <a href="projects/sodexo.html" class="rota">
+                <img src="img/images/sodexo_1.jpg" alt="image">
+                <div class="item-img-overlay"></div>
+              </a>
+              <div class="tags">
+                <span>Web platform</span>
+                <span>Salesforce</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- gallery item -->
+          <div class="col-md-6 items project wow fadeInUp" data-wow-delay=".4s">
+            <div class="item-img">
+              <div class="cont">
+                <h6>SafeLand - Cybersecurity for Kids</h6>
+                <p>Ui / Ux creative mobile app design</p>
+              </div>
+              <a href="projects/safeland.html" class="rota">
+                <img src="img/images/safeland_1.jpg" alt="image">
+                <div class="item-img-overlay"></div>
+              </a>
+              <div class="tags">
+                <span>Game</span>
+                <span>Hackathon</span>
+                <span>Creative</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== End works ==================== -->
+
+
+
+  <!-- ==================== Start Contact ====================
+
+  <section class="contact-sec style2 section-padding position-re">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+          <div class="sec-head  text-center">
+            <h6 class="wow color-font-blue fadeIn" data-wow-delay=".5s">Contact Me</h6>
+            <h3 class="wow">Let's work together</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="form wow fadeInUp" data-wow-delay=".5s">
+            <form id="contact-form" method="post" action="contact.php">
+
+              <div class="messages"></div>
+
+              <div class="controls">
+
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <input id="form_name" type="text" name="name" placeholder="Name" required="required">
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <input id="form_email" type="email" name="email" placeholder="Email" required="required">
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <input id="form_name" type="text" name="name" placeholder="Name" required="required">
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <textarea id="form_message" name="message" placeholder="Message" rows="4" required="required"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="text-center">
+                      <a href="#0" class="butn bord curve mt-30">
+                        <span>Send Massege</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== End Contact ==================== -->
+
+
+
+
+
+  <!-- jQuery -->
+  <script src="js/jquery-3.0.0.min.js"></script>
+  <script src="js/jquery-migrate-3.0.0.min.js"></script>
+
+  <!-- plugins -->
+  <script src="js/plugins.js"></script>
+
+  <!-- animated.headline -->
+  <script src="js/animated.headline.js"></script>
+
+  <!-- custom scripts -->
+  <script src="js/scripts.js"></script>
+
+  <script>
+    // The memoji plays only where it is shown. It is muted and looping, so it
+    // never asks for sound or for a click; under reduced motion it loads far
+    // enough to show a still frame and stays there.
+    (function () {
+      var v = document.querySelector(".hero-memoji");
+      if (!v || !window.matchMedia("(min-width: 992px)").matches) return;
+      v.muted = true;
+
+      // It is a control now, so it says which way it goes and answers the
+      // keyboard as well as the pointer. That is also why it is no longer
+      // aria-hidden: nothing focusable should be.
+      function relabel() {
+        v.setAttribute("aria-label", v.paused ? "Play the animation" : "Pause the animation");
+      }
+      function toggle() {
+        if (v.paused) v.play().catch(function () {}); else v.pause();
+      }
+      v.addEventListener("click", toggle);
+      v.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " " && e.key !== "Spacebar") return;
+        e.preventDefault();          // space would otherwise scroll the page
+        toggle();
+      });
+      v.addEventListener("play", relabel);
+      v.addEventListener("pause", relabel);
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        v.preload = "auto";
+        v.load();                    // a still frame; a click can still start it
+        relabel();
+        return;
+      }
+      v.play().catch(function () {});
+      relabel();
+    }());
+  </script>
+  <script src="js/site-nav.js"></script>
 </body>
 
 </html>

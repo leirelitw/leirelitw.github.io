@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Shared header navigation: used by index.html and every project page.
+
+   Poppins is imported here rather than linked per page: the header asks for
+   it, and it was only loaded on index.html, so the nav quietly fell back to
+   DM Sans on the other seven.
+
+   The highlight is the portfolio's pink accent, declared here under its own
+   name rather than reused from --accent: the case study pages redefine
+   --accent per chapter (blue on dark, navy on paper), and the header must not
+   change colour underneath them. */
+
+:root {
+  --nav-accent: #f2a9c7;
+
+  /* Hero title scale. Every page's h1 is set from these, so the index, the
+     About page and the six case studies stay the same size as each other.
+     They live here because this is the one stylesheet all of them load.
+
+     Stepped rather than fluid: a vw-based size lands on whatever the
+     viewport makes it (57.6px at 1440, 61.2px at 1530), so nothing sits on
+     a grid. These are whole multiples of 4, and so is every leading, at
+     every step. The cost is that the size jumps at a breakpoint instead of
+     sliding.
+
+     Two leadings, because larger type wants relatively tighter leading:
+     --hero-leading is size + 4 for the index and About, --hero-leading-tight
+     is size - 4 for the case study heroes, which is the display setting the
+     portfolio already used. */
+  --hero-size: 32px;
+  --hero-leading: 36px;
+  --hero-leading-tight: 32px;
+  --hero-tracking: -.065em;
+
+  /* Section headings, one step below the hero at every width so a subheading
+     is never larger than the title above it. Same grid. */
+  --h2-size: 28px;
+  --h2-leading: 32px;
+  --h2-tracking: -.045em;
+}
+
+@media (min-width: 600px)  { :root { --hero-size: 40px; --hero-leading: 44px; --hero-leading-tight: 36px; --h2-size: 32px; --h2-leading: 36px; } }
+@media (min-width: 900px)  { :root { --hero-size: 48px; --hero-leading: 52px; --hero-leading-tight: 44px; --h2-size: 40px; --h2-leading: 44px; } }
+@media (min-width: 1200px) { :root { --hero-size: 56px; --hero-leading: 60px; --hero-leading-tight: 52px; --h2-size: 48px; --h2-leading: 52px; } }
+
+
+nav.navbar { position: fixed; top: 0; left: 0; z-index: 999; width: 100%; min-height: 72px; margin: 0; padding: 0; background: #111218; border-bottom: 1px solid rgba(255,255,255,.08); transform: none; transition: none; }
+nav.navbar.nav-scroll { top: 0; background: #111218; border-color: rgba(255,255,255,.08); transform: none; transition: none; }
+nav.navbar .logo { width: 50px; margin: 0; }
+nav.navbar .logo img { width: 30px; height: 30px; }
+
+nav.navbar .navbar-toggler { padding: 0; border: 0; outline: 0; box-shadow: none; }
+nav.navbar .navbar-toggler:focus, nav.navbar .navbar-toggler:active { outline: 0; box-shadow: none; }
+nav.navbar .icon-bar { display: grid; width: 40px; height: 40px; place-items: center; border-radius: 8px; color: #f3f1ed; font-size: 18px; transition: background .2s ease; }
+nav.navbar .navbar-toggler[aria-expanded="true"] .icon-bar { background: rgba(255,255,255,.1); }
+
+nav.navbar .navbar-nav .nav-link { margin: 0 0 0 32px; padding: 8px 0; color: #f3f1ed; font-family: 'Poppins', 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; transition: color .25s ease; }
+nav.navbar .navbar-nav .nav-link:hover, nav.navbar .navbar-nav .nav-link:focus { color: var(--nav-accent); }
+
+nav.navbar .nav-link:focus, nav.navbar .dropdown-item:focus { outline: 0; }
+nav.navbar .nav-link:focus-visible, nav.navbar .dropdown-item:focus-visible { outline: 2px solid var(--nav-accent); outline-offset: -2px; }
+nav.navbar .navbar-nav .dropdown-menu { display: block; right: 0; left: auto; min-width: 280px; margin-top: 0; padding: 10px 0; border: 0; border-radius: 0; background: #1b1d21; box-shadow: 0 16px 40px rgba(0,0,0,.35); opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity .25s ease, transform .25s ease, visibility .25s; }
+nav.navbar .navbar-nav .dropdown-menu.show { opacity: 1; visibility: visible; transform: translateY(0); }
+nav.navbar .navbar-nav .dropdown-item { padding: 12px 24px; color: #f3f1ed; font-family: 'Poppins', 'DM Sans', sans-serif; font-size: 15px; line-height: 1.3; opacity: 1; white-space: nowrap; transition: color .2s ease; }
+nav.navbar .navbar-nav .dropdown-item::after { content: none; }
+nav.navbar .navbar-nav .dropdown-item:hover, nav.navbar .navbar-nav .dropdown-item:focus { padding: 12px 24px; background: transparent; color: var(--nav-accent); }
+
+@media (max-width: 1199.98px) {
+  nav.navbar .container { max-width: none; padding-right: 32px; padding-left: 32px; }
+}
+
+@media (max-width: 991.98px) {
+  nav.navbar { min-height: 64px; }
+  nav.navbar .container { padding-top: 16px; padding-bottom: 16px; }
+  nav.navbar .navbar-toggler { margin-right: -8px; }
+  nav.navbar .navbar-collapse { max-height: calc(100vh - 64px); overflow-y: auto; margin: 0; padding: 4px 0 18px; background: transparent; text-align: left; }
+  nav.navbar .navbar-nav .nav-link { margin: 0 !important; padding: 14px 0; font-size: 14px; }
+  nav.navbar .navbar-nav .dropdown-menu { display: none; position: static; float: none; min-width: 0; margin: 0 0 6px; padding: 4px 0; background: rgba(255,255,255,.05); box-shadow: none; opacity: 1; visibility: visible; transform: none; transition: none; }
+  nav.navbar .navbar-nav .dropdown-menu.show { display: block; }
+  nav.navbar .navbar-nav .dropdown-item { padding: 12px 16px; font-size: 15px; white-space: normal; }
+  nav.navbar .navbar-nav .dropdown-item:hover, nav.navbar .navbar-nav .dropdown-item:focus { padding: 12px 16px; }
+}
+
+@media (max-width: 575.98px) {
+  nav.navbar .container { padding-right: 20px; padding-left: 20px; }
+}
+
+/* Mode toggle. Default mode is the ordinary site, fun mode is the galaxy in
+   universe-select.html, so the two halves are one label and one link rather
+   than a stateful control: whichever side you are on is the one that is not a
+   link. It lives here rather than in index-modern.css because more than the
+   index carries it. */
+.mode-item { display: flex; align-items: center; margin-left: 30px; }
+.mode-toggle { display: inline-flex; padding: 4px; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; background: rgba(255,255,255,.05); }
+.mode-opt { padding: 6px 15px; border-radius: 999px; color: #a9acb6; font-family: 'Poppins', 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: .02em; line-height: 1.4; white-space: nowrap; transition: color .2s ease, background-color .2s ease; }
+a.mode-opt { text-decoration: none; }
+a.mode-opt:hover { color: #fff; background: rgba(255,255,255,.09); }
+.mode-opt.is-on { background: var(--nav-accent); color: #17131a; }
+
+/* Fun mode is a drag-and-pinch galaxy on a canvas, and it is not offered on a
+   small screen, so the way into it goes too. universe-select.html keeps its
+   own toggle, so anyone who arrives there by link can still get back. */
+@media (max-width: 991.98px) {
+  .mode-item { display: none; }
+}

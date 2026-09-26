@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vestiaire Collective case study by Leire Litwin: Smart Listing, a photo-first AI-assisted listing flow, plus design system and product work.">
+  <title>Vestiaire Collective &mdash; Leire Litwin</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <link rel="stylesheet" href="../css/plugins/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/plugins/fontawesome-all.min.css">
+  <link rel="stylesheet" href="../css/vestiaire.css">
+  <link rel="stylesheet" href="../css/site-nav.css">
+</head>
+<body class="vc-page" data-brand="vestiaire">
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="logo" href="../index.html">
+        <img src="../img/logo.jpg" alt="Leire Portfolio Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-nav-toggle="collapse" data-nav-target="navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="icon-bar"><i class="fas fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-nav-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Works</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="../projects/mycarddeck.html">MyCardDeck</a>
+              <a class="dropdown-item" href="../projects/vestiaire-collective.html">Vestiaire Collective</a>
+              <a class="dropdown-item" href="../projects/bim-fitness-app.html">Bim - Fitness App</a>
+              <a class="dropdown-item" href="../projects/saint-gobain.html">St-Gobain AR App</a>
+              <a class="dropdown-item" href="../projects/sodexo.html">Sodexo</a>
+              <a class="dropdown-item" href="../projects/safeland.html">Safeland - Cybersecurity for kids</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+          <li class="nav-item mode-item">
+            <div class="mode-toggle" role="group" aria-label="Portfolio mode">
+              <span class="mode-opt is-on" aria-current="true">Default</span>
+              <a class="mode-opt" href="../universe-select.html">Fun</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ===== Hero ===================================================== -->
+    <header class="vc-hero">
+      <div class="vc-wrap vc-hero__inner">
+        <div>
+          <h1>Second-hand <em>luxury</em> fashion marketplace</h1>
+          <p class="vc-hero__intro">I worked 4+ years on Vestiaire Collective, a marketplace with 20M active users.</p>
+          <p class="vc-hero__intro vc-hero__intro--2">Collaborated with 2 product squads (Engagement &amp; CRM, Seller) to improve the current user experience within the scopes, do user interviews and testing, explore and design new feature opportunities, help with A/B test analysis.</p>
+        </div>
+        <div class="vc-hero__mark">
+          <img src="../img/vestiaire/vc-wordmark.jpg" alt="Vestiaire Collective wordmark" width="1500" height="340" fetchpriority="high">
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== Tabs ===================================================== -->
+    <div class="vc-tabbar">
+      <div class="vc-tabbar__inner" role="tablist" aria-label="Vestiaire Collective workstreams">
+        <button class="vc-tab" type="button" role="tab" id="tab-smart-listing" aria-controls="panel-smart-listing" aria-selected="true">
+          Smart Listing
+        </button>
+        <!-- Design system tab is hidden for now. To bring it back, uncomment
+             this button and the matching panel further down, both marked
+             "DESIGN SYSTEM (HIDDEN)".
+        <button class="vc-tab" type="button" role="tab" id="tab-design-system" aria-controls="panel-design-system" aria-selected="false" tabindex="-1">
+          Design system <span class="vc-tab__i" aria-hidden="true">In progress</span>
+        </button>
+        -->
+        <button class="vc-tab" type="button" role="tab" id="tab-homepage" aria-controls="panel-homepage" aria-selected="false" tabindex="-1">
+          Homepage revamp
+        </button>
+        <button class="vc-tab" type="button" role="tab" id="tab-other-work" aria-controls="panel-other-work" aria-selected="false" tabindex="-1">
+          Other work <span class="vc-tab__i" aria-hidden="true">4 projects</span>
+        </button>
+      </div>
+    </div>
+
+
+    <!-- ================================================================
+         PANEL 1 - SMART LISTING
+         ================================================================ -->
+    <div class="vc-panel" id="panel-smart-listing" role="tabpanel" aria-labelledby="tab-smart-listing" tabindex="0">
+
+      <!-- Facts + unlock -->
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap">
+          <h2 class="vc-h2">Designing a photo-first, AI-assisted listing experience</h2>
+          <p class="vc-lead">Helping sellers create listings faster by using their photos to pre-fill the listing, while keeping them in control of the final information.</p>
+
+          <dl class="vc-facts reveal">
+            <div><dt>Role</dt><dd>Product Designer</dd></div>
+            <div><dt>Team</dt><dd>Big squad of 1 PM, 1 EM, 1 Data, 2 devs per platform, 4 backends</dd></div>
+            <div><dt>Timeline</dt><dd>2-3 months to launch, followed by 3 months of iteration</dd></div>
+            <div><dt>Platform</dt><dd>iOS, Android and Web</dd></div>
+            <div class="vc-facts__wide"><dt>Scope</dt><dd>Discovery, UX strategy, interaction design, prototyping, testing, launch and post-launch improvements</dd></div>
+          </dl>
+
+          <!-- Unlock: the single gate for every locked block on this page -->
+          <div class="vc-unlock reveal" data-vc-gate="smart-listing">
+            <div class="vc-unlock__copy">
+              <strong>Full case study</strong>
+              <p>The public version leaves out the discovery numbers, the competitor benchmark, the decision rationale and the exact post-launch results.</p>
+            </div>
+            <form class="vc-unlock__form" autocomplete="off">
+              <label for="vc-password-smart-listing">Password</label>
+              <div class="vc-unlock__row">
+                <input type="password" id="vc-password-smart-listing" name="password" placeholder="Enter password" autocomplete="off">
+                <button class="vc-btn" type="submit">Unlock</button>
+              </div>
+              <p class="vc-unlock__msg" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Context -->
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap vc-split">
+          <div class="reveal">
+            <p class="vc-eyebrow">Context</p>
+            <h2 class="vc-h2">Context</h2>
+            <p class="vc-body">Creating a listing required sellers to move through a long, multi-step experience and manually enter important information about their item. The process was important for marketplace quality and discoverability, but it was also repetitive and difficult to correct when something was wrong.</p>
+            <p class="vc-body">At the same time, sellers were already preparing their items through photos before entering the listing flow. This created an opportunity to explore whether photos could become the starting point for a faster, more assisted experience.</p>
+          </div>
+          <div class="vc-pull reveal">
+            <p>What if sellers could start with their photos and let Vestiaire do more of the repetitive work?</p>
+            <span>The opportunity</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Discovery -->
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap">
+          <h2 class="vc-h2 reveal">Discovery</h2>
+          <p class="vc-lead reveal">The discovery combined existing user research, seller feedback, quantitative listing data, a UX audit of the current flow and a benchmark of competitor listing experiences.</p>
+          <p class="vc-body reveal" style="margin-top:18px">The research highlighted recurring friction around the length of the listing process, finding the right category or model, managing photos, writing descriptions, understanding pricing and correcting information after submission.</p>
+
+          <ul class="vc-findings reveal">
+            <li><p>The process felt long and complex, especially when sellers had to complete many fields manually.</p></li>
+            <li><p>Taxonomy and model selection did not always reflect how sellers described their items.</p></li>
+            <li><p>Sellers needed more flexibility to review and correct their information.</p></li>
+            <li><p>Incomplete descriptions with limited support and missing details could reduce buyer confidence.</p></li>
+            <li><p>Rigid flow, with too many clicks and an outdated UX.</p></li>
+          </ul>
+
+          <!-- LOCKED: discovery evidence table -->
+          <div class="vc-locked reveal" data-vc-slot="evidence">
+            <button class="vc-locked__stub" type="button" data-vc-unlock>
+              <i class="fas fa-lock" aria-hidden="true"></i>
+              <b>The discovery evidence</b>
+              Survey reach, completion by platform, abandonment by market and the photo behaviour that justified starting from photos.
+              <span>Unlock</span>
+            </button>
+          </div>
+
+          <details class="vc-disclosure reveal">
+            <summary>Out of scope</summary>
+            <div class="vc-disclosure__body">
+              <p class="vc-disclosure__intro">The discovery also surfaced several pain points that were important to sellers but fell outside the scope of this revamp. These were kept in the roadmap or assigned to the relevant teams.</p>
+              <div>
+                <strong>Editing after submission</strong>
+                <p>Sellers still couldn't edit a listing once submitted. This remained on the roadmap, with the added consideration of the recropping and revalidation costs triggered by changes.</p>
+              </div>
+              <div>
+                <strong>Price recommendations</strong>
+                <p>Some sellers felt recommended prices were too low. This was linked to the existing pricing algorithm and therefore remained outside the scope of the listing experience.</p>
+              </div>
+              <div>
+                <strong>Curation and rejection</strong>
+                <p>Sellers reported long validation times and limited clarity around rejection reasons. These issues were primarily related to curation operations and were therefore addressed separately by the OPS team.</p>
+              </div>
+              <div>
+                <strong>Taxonomy revamp</strong>
+                <p>The current taxonomy remains unchanged for now due to its complexity, but it remains an area for future improvement.</p>
+              </div>
+            </div>
+          </details>
+
+          <!-- LOCKED: competitor benchmark -->
+          <div class="vc-locked reveal" data-vc-slot="benchmark">
+            <button class="vc-locked__stub" type="button" data-vc-unlock>
+              <i class="fas fa-lock" aria-hidden="true"></i>
+              <b>The competitor benchmark</b>
+              How Depop, Poshmark and Vinted each handle photo-first listing, with screens.
+              <span>Unlock</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- The challenge -->
+      <section class="vc-statement">
+        <div class="vc-wrap reveal">
+          <blockquote>How might we use AI to reduce the effort of creating a listing without taking control away from the seller?</blockquote>
+          <p>The challenge was not simply to add AI to the existing form. It was to create an experience that balanced speed, accuracy, clarity and seller control.</p>
+        </div>
+      </section>
+
+      <!-- The flow -->
+      <section class="vc-section">
+        <div class="vc-wrap">
+          <h2 class="vc-h2 reveal">Defining the experience</h2>
+          <p class="vc-lead reveal">The new experience was structured around a photo-first flow.</p>
+          <ol class="vc-flow reveal">
+            <li><b>1</b><strong>Photo selection</strong><span>Photos became the starting point of the experience instead of the final step of a form.</span></li>
+            <li><b>2</b><strong>AI analysis</strong><span>The system prepares information such as category, brand, model, colour, material, size, condition and description.</span></li>
+            <li><b>3</b><strong>Recap and edit</strong><span>The seller reviews everything in one place and edits anything the AI did not get right.</span></li>
+            <li><b>4</b><strong>Publish</strong><span>The listing goes live once the seller confirms the information.</span></li>
+          </ol>
+          <p class="vc-body reveal" style="margin-top:46px">The AI could help prepare information such as category, brand, model, colour, material, size, condition, description. The seller would still review and edit the information before publishing.</p>
+        </div>
+      </section>
+
+      <!-- Principles -->
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap">
+          <h2 class="vc-h2 reveal">Design principles</h2>
+          <ul class="vc-track reveal">
+            <li>
+              <strong>Start with photos</strong>
+              <p>Photos became the starting point of the experience instead of the final step of a form.</p>
+            </li>
+            <li>
+              <strong>Let AI do the repetitive work</strong>
+              <p>The system could analyse the photos and prepare information that sellers previously had to enter manually.</p>
+            </li>
+            <li>
+              <strong>Keep the seller in control</strong>
+              <p>AI-generated values were presented as information to review and edit, not as irreversible decisions.</p>
+            </li>
+            <li>
+              <strong>Design for uncertainty</strong>
+              <p>When the AI could not infer mandatory information, the seller could complete the missing information manually.</p>
+            </li>
+            <li>
+              <strong>Keep the MVP focused</strong>
+              <p>The first release focused on photo analysis, prefilled information and seller review rather than redesigning the entire listing ecosystem.</p>
+            </li>
+          </ul>
+
+          <!-- LOCKED: decision rationale -->
+          <div class="vc-locked reveal" data-vc-slot="rationale">
+            <button class="vc-locked__stub" type="button" data-vc-unlock>
+              <i class="fas fa-lock" aria-hidden="true"></i>
+              <b>Why the flow is shaped this way</b>
+              The reasoning behind starting from photos, the single recap, full editability and the manual fallback.
+              <span>Unlock</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prototyping -->
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap">
+          <h2 class="vc-h2 reveal">Prototyping and validation</h2>
+          <p class="vc-lead reveal">I created an interactive prototype in Figma Make to test the experience as a complete flow rather than as a collection of individual screens.</p>
+          <p class="vc-body reveal" style="margin-top:18px">We explored whether sellers understood what Smart Listing was doing, whether the generated information felt credible and whether they knew where they could make changes. Testing helped us refine the structure and hierarchy of the recap screen, which became the central place for reviewing the generated listing.</p>
+          <!-- LOCKED: prototype learnings and the screens behind them -->
+          <div class="vc-locked reveal" data-vc-slot="learnings">
+            <button class="vc-locked__stub" type="button" data-vc-unlock>
+              <i class="fas fa-lock" aria-hidden="true"></i>
+              <b>What changed after the prototype</b>
+              The five things testing sent us back to change, and the screens they came from.
+              <span>Unlock</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Before and after -->
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap">
+          <div class="vc-compare__head reveal">
+            <div>
+              <p class="vc-eyebrow">Before and after</p>
+              <h2 class="vc-h2" style="margin-bottom:0">A view per platform</h2>
+            </div>
+            <div class="vc-switch" role="group" aria-label="Choose platform">
+              <button type="button" data-vc-view="mobile" aria-pressed="true">Mobile</button>
+              <button type="button" data-vc-view="web" aria-pressed="false">Web</button>
+            </div>
+          </div>
+
+          <!-- Web -->
+          <div class="vc-compare__view" data-vc-view-panel="web" hidden>
+            <div class="vc-compare__grid">
+              <figure class="vc-figure reveal">
+                <div class="vc-browser">
+                  <div class="vc-browser__chrome">
+                    <span class="vc-browser__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="vc-browser__url">vestiairecollective.com/sell</span>
+                  </div>
+                  <div class="vc-browser__screen" tabindex="0" role="group" aria-label="Scrollable screenshot of the manual listing flow on web">
+                    <img src="../img/vestiaire/smart-listing/web-manual-details.png" alt="Manual listing flow on web: the item details step with brand, category and measurements to fill in" width="3024" height="3966" loading="lazy" decoding="async">
+                    <img src="../img/vestiaire/smart-listing/web-manual-description.png" alt="Manual listing flow on web: the description step with measurements, origin, serial number and packaging fields" width="3024" height="5376" loading="lazy" decoding="async">
+                  </div>
+                </div>
+                <figcaption>
+                  <b>Before</b>
+                  <strong>Manual listing</strong>
+                  <span>Five numbered steps, each its own screen. Scroll the frame to see how much the seller filled in by hand.</span>
+                </figcaption>
+              </figure>
+
+              <figure class="vc-figure reveal">
+                <div class="vc-browser">
+                  <div class="vc-browser__chrome">
+                    <span class="vc-browser__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="vc-browser__url">vestiairecollective.com/sell</span>
+                  </div>
+                  <div class="vc-browser__screen" tabindex="0" role="group" aria-label="Scrollable screenshot of the Smart Listing recap on web">
+                    <img src="../img/vestiaire/smart-listing/web-smart-recap.png" alt="Smart Listing recap on web: photos on the left, prefilled brand, category, model, condition, colour, material, measurements, price and description on the right, all editable" width="3024" height="4124" loading="lazy" decoding="async">
+                  </div>
+                </div>
+                <figcaption>
+                  <b>After</b>
+                  <strong>Smart Listing</strong>
+                  <span>One recap screen. Every generated value sits in place and stays editable until the seller confirms.</span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <!-- Mobile -->
+          <div class="vc-compare__view" data-vc-view-panel="mobile">
+            <div class="vc-compare__grid vc-compare__grid--mobile">
+              <figure class="vc-figure reveal">
+                <div class="vc-phone">
+                  <video src="../img/vestiaire/smart-listing/mobile-manual.mp4#t=0.1" controls muted loop playsinline preload="metadata"></video>
+                </div>
+                <figcaption>
+                  <b>Before</b>
+                  <strong>Manual listing</strong>
+                  <span>Step after step, with the seller typing or selecting every attribute.</span>
+                </figcaption>
+              </figure>
+
+              <figure class="vc-figure reveal">
+                <div class="vc-phone">
+                  <video src="../img/vestiaire/smart-listing/mobile-smart.mp4#t=0.1" controls muted loop playsinline preload="metadata"></video>
+                </div>
+                <figcaption>
+                  <b>After</b>
+                  <strong>Smart Listing</strong>
+                  <span>Photos, a short analysis, then the recap with everything already in place.</span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline -->
+      <section class="vc-section">
+        <div class="vc-wrap">
+          <h2 class="vc-h2 reveal">Timeline</h2>
+          <ol class="vc-timeline reveal">
+            <li>
+              <b>2-3 months</b>
+              <strong>Discovery to launch</strong>
+              <p>The project moved from discovery to launch in approximately 2-3 months.</p>
+            </li>
+            <li>
+              <b>Progressive</b>
+              <strong>Rollout</strong>
+              <p>The MVP was designed for progressive rollout, first with internal and beta testers group of users, allowing the team to test the experience, gradually expose it to sellers and learn from real usage.</p>
+            </li>
+            <li>
+              <b>3 months</b>
+              <strong>After launch</strong>
+              <p>Launch was the beginning of the next learning cycle. For the following three months, we continued to monitor the experience, collect feedback and identify opportunities for improvement.</p>
+            </li>
+          </ol>
+          <p class="vc-body reveal" style="margin-top:46px">A short contextual feedback module at the end of the flow helped us gather feedback while the experience was still fresh for sellers. The post-launch work focused on fixing issues found in real usage, improving the generated description, improving accuracy of prefilled information and handling edge cases.</p>
+        </div>
+      </section>
+
+      <!-- Impact -->
+      <section class="vc-section">
+        <div class="vc-wrap">
+          <p class="vc-eyebrow reveal">Impact</p>
+          <h2 class="vc-h2 reveal">Impact</h2>
+          <p class="vc-lead reveal" style="margin-bottom:8px">The project was followed through four product metrics. We decreased Time to List and increased Completion Rate and Listings per Seller, which shows the listing form became easier.</p>
+          <ul class="vc-impact reveal">
+            <li>
+              <span class="vc-impact__dir"><i class="fas fa-arrow-down" aria-hidden="true"></i>Lower</span>
+              <strong>Median Time to List</strong>
+              <p>Whether the new flow reduced the time required to create a listing.</p>
+            </li>
+            <li>
+              <span class="vc-impact__dir"><i class="fas fa-arrow-up" aria-hidden="true"></i>Higher</span>
+              <strong>Completion Rate</strong>
+              <p>Whether sellers were able to complete the new experience.</p>
+            </li>
+            <li>
+              <span class="vc-impact__dir"><i class="fas fa-arrow-up" aria-hidden="true"></i>Higher</span>
+              <strong>Listings per Seller</strong>
+              <p>Whether the experience supported additional marketplace supply.</p>
+            </li>
+          </ul>
+          <p class="vc-note reveal">Measured against the manual listing flow as baseline. The exact figures, and the fourth metric, are in the full version.</p>
+
+          <!-- LOCKED: exact numbers -->
+          <div class="vc-locked reveal" data-vc-slot="metrics">
+            <button class="vc-locked__stub" type="button" data-vc-unlock>
+              <i class="fas fa-lock" aria-hidden="true"></i>
+              <b>The exact results</b>
+              All four KPIs with results, baselines and deltas.
+              <span>Unlock</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ================================================================
+         DESIGN SYSTEM - HIDDEN FOR NOW
+         Kept in a <template> so it is inert and renders nothing. To bring the
+         tab back: move this markup out of the template, and uncomment the
+         matching tab button near the top of the file.
+         ================================================================ -->
+    <template id="panel-design-system-hidden">
+    <div class="vc-panel" id="panel-design-system" role="tabpanel" aria-labelledby="tab-design-system" tabindex="0" hidden>
+      <div class="vc-paper">
+      <div class="vc-wrap vc-empty">
+        <div>
+          <h2 class="vc-h2">The design system write-up is still being put together.</h2>
+          <p class="vc-lead">Alongside product work I spend a large part of my time on the system that the rest of the product is built from. I would rather show it properly than post a thin version of it, so this section is going up once the material is ready.</p>
+          <ul class="vc-chips">
+            <li>Foundations and tokens</li>
+            <li>Components across iOS, Android and web</li>
+            <li>Documentation</li>
+            <li>Contribution and governance</li>
+            <li>Adoption</li>
+          </ul>
+          <p class="vc-note">In the meantime, I am happy to walk through it in a conversation.</p>
+        </div>
+        <div class="vc-empty__visual" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      </div>
+    </div>
+    </template>
+
+    <!-- ================================================================
+         PANEL - HOMEPAGE REVAMP
+         ================================================================ -->
+    <div class="vc-panel" id="panel-homepage" role="tabpanel" aria-labelledby="tab-homepage" tabindex="0" hidden>
+
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap">
+          <h2 class="vc-h2">Rebuilding the homepage around who is looking at it</h2>
+          <p class="vc-lead">The homepage was trying to serve very different users with a single experience. Instead of one page for everyone, we defined two core structures and a modular system the teams could adapt.</p>
+
+          <dl class="vc-facts vc-facts--two reveal">
+            <div><dt>Role</dt><dd>Product Designer</dd></div>
+            <div><dt>Platform</dt><dd>iOS, Android and web</dd></div>
+            <div class="vc-facts__wide"><dt>My input</dt><dd>Product designer on the squad. I worked on the structure of the page, the hierarchy between the modules and how the whole thing held together across the three platforms.</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap">
+          <div class="vc-unlock reveal" data-vc-gate="homepage">
+            <div class="vc-unlock__copy">
+              <strong>Full case study</strong>
+              <p>The public version leaves out the engagement data, the commercial thinking behind the sales formats, the menswear numbers and the results.</p>
+            </div>
+            <form class="vc-unlock__form" autocomplete="off">
+              <label for="vc-password-homepage">Password</label>
+              <div class="vc-unlock__row">
+                <input type="password" id="vc-password-homepage" name="password" placeholder="Enter password" autocomplete="off">
+                <button class="vc-btn" type="submit">Unlock</button>
+              </div>
+              <p class="vc-unlock__msg" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Context -->
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap vc-split">
+          <div>
+            <h2 class="vc-h2">Context</h2>
+            <p class="vc-body">Our homepage was trying to serve very different users with a single experience. For new visitors the questions were about what Vestiaire Collective is, whether it can be trusted, what kind of products and brands they would find, and whether the prices are fair.</p>
+            <p class="vc-body">For recurring users the need was different. They already understood Vestiaire and were looking for relevant products, inspiration and new discoveries.</p>
+            <p class="vc-body">At the same time the existing homepage was difficult for internal teams to evolve. Its outdated modules limited our ability to create premium merchandising experiences, showcase inspiration and drive product discovery.</p>
+          </div>
+          <div class="vc-pull reveal">
+            <p>What is Vestiaire Collective? Can I trust it? What can I find here, and are these prices fair?</p>
+            <span>The new visitor</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- The vision -->
+      <section class="vc-section">
+        <div class="vc-wrap">
+          <h2 class="vc-h2 reveal">More than one homepage</h2>
+          <p class="vc-lead reveal">Rather than trying to build one homepage that works for everyone, we defined two core structures, each adapted to a main type of user.</p>
+          <ul class="vc-findings reveal">
+            <li>
+              <strong>New visitors: reassurance and discovery</strong>
+              <p>Help users understand Vestiaire, build trust and discover the assortment.</p>
+            </li>
+            <li>
+              <strong>Recurring users: personalisation and inspiration</strong>
+              <p>Surface relevant products, brands, trends and content based on each user's behaviour.</p>
+            </li>
+          </ul>
+          <p class="vc-body reveal" style="margin-top:44px">Personalisation would then take this a step further, adapting content at user level based on brands, categories and products viewed, liked or purchased. Campaigns could modify content at module level, letting marketing and merchandising teams adapt the experience without redesigning the page.</p>
+        </div>
+      </section>
+
+      <!-- New visitors -->
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap">
+          <h2 class="vc-h2 reveal">New visitors</h2>
+          <p class="vc-lead reveal">The new visitor homepage focused on three jobs.</p>
+          <ol class="vc-flow reveal">
+            <li><b>1</b><strong>Understand Vestiaire</strong><span>An educational Hero explaining who Vestiaire is, reinforcing the luxury positioning through the brands and the assortment. The Hero was deliberately made smaller to bring more brands and discovery content into view.</span></li>
+            <li><b>2</b><strong>Discover the assortment</strong><span>Categories, curated lists and brand merchandising to help new users navigate the platform rather than expecting them to know where to start.</span></li>
+            <li><b>3</b><strong>Build trust</strong><span>Reassurance content answering the implicit question. Authentication expertise and Official Partner brands, plus community and fashion-curated editorial to show Vestiaire is a fashion community with a point of view, not simply a marketplace.</span></li>
+          </ol>
+
+          <p class="vc-body reveal" style="margin-top:40px">The intention was to serve this homepage for a user's first 24 hours. On web we could not target that window, so there it went to unlogged users instead.</p>
+
+          <p class="vc-eyebrow vc-media__label">Before and after</p>
+          <div class="vc-compare__grid vc-compare__grid--mobile">
+            <figure class="vc-figure reveal">
+              <div class="vc-phone vc-phone--tall">
+                  <div class="vc-phone__screen" tabindex="0" role="group" aria-label="The homepage before the redesign, scrollable">
+                    <img src="../img/vestiaire/homepage/hp-before.jpg" alt="The homepage before the redesign, scrollable" width="754" height="9450" loading="lazy" decoding="async">
+                  </div>
+                </div>
+              <figcaption>
+                <b>Before</b>
+                <strong>One homepage for everyone</strong>
+                <span>Scroll the frame to see the full page.</span>
+              </figcaption>
+            </figure>
+            <figure class="vc-figure reveal">
+              <div class="vc-phone vc-phone--tall">
+                  <div class="vc-phone__screen" tabindex="0" role="group" aria-label="The new visitor homepage, scrollable">
+                    <img src="../img/vestiaire/homepage/hp-new-users.jpg" alt="The new visitor homepage, scrollable" width="750" height="8726" loading="lazy" decoding="async">
+                  </div>
+                </div>
+              <figcaption>
+                <b>After</b>
+                <strong>The new visitor homepage</strong>
+                <span>Educational Hero, then brands, categories and reassurance.</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- LOCKED: which entry points new visitors actually used -->
+          <div class="vc-locked reveal" data-vc-slot="homepage-entry-points">
+            <button class="vc-locked__stub" type="button" data-vc-unlock>
+              <i class="fas fa-lock" aria-hidden="true"></i>
+              <b>Which entry points new visitors used</b>
+              The share of clicks going to categories, to brands and to deals, and which one came out first.
+              <span>Unlock</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recurring users -->
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap">
+          <h2 class="vc-h2 reveal">Recurring users</h2>
+          <p class="vc-lead reveal">For returning users the homepage shifted from education to relevance. The goal was to make it feel less like a static storefront and more like a personalised entry point into Vestiaire.</p>
+          <p class="vc-body reveal" style="margin-top:18px">The experience explored:</p>
+          <ul class="vc-findings reveal">
+            <li><strong>Just For You</strong><p>Personalised product recommendations.</p></li>
+            <li><strong>Brands For You</strong><p>Extending the brands users already browse, to encourage further discovery.</p></li>
+            <li><strong>Recently Viewed</strong><p>Picking a user back up where they left off.</p></li>
+            <li><strong>Matching Your Alerts</strong><p>New products matching saved alerts.</p></li>
+            <li><strong>Daily Deals</strong><p>Recent price drops surfaced as a reason to come back.</p></li>
+            <li><strong>Latest Arrivals</strong><p>Leaning on the attractiveness of the existing New In experience.</p></li>
+            <li><strong>Curated Lists</strong><p>Trends and inspiration.</p></li>
+            <li><strong>Community and user content</strong><p>Surfacing fashion lovers and handpicked items.</p></li>
+          </ul>
+
+          <p class="vc-eyebrow vc-media__label">Before and after</p>
+          <div class="vc-compare__grid vc-compare__grid--mobile">
+            <figure class="vc-figure reveal">
+              <div class="vc-phone vc-phone--tall">
+                <div class="vc-phone__screen" tabindex="0" role="group" aria-label="The homepage before the redesign, scrollable">
+                  <img src="../img/vestiaire/homepage/hp-before.jpg" alt="The homepage before the redesign, scrollable" width="754" height="9450" loading="lazy" decoding="async">
+                </div>
+              </div>
+              <figcaption>
+                <b>Before</b>
+                <strong>One homepage for everyone</strong>
+                <span>The same starting point. Scroll the frame to see the full page.</span>
+              </figcaption>
+            </figure>
+
+            <figure class="vc-figure reveal">
+              <div class="vc-phone vc-phone--tall">
+                  <div class="vc-phone__screen" tabindex="0" role="group" aria-label="The recurring user homepage, scrollable">
+                    <img src="../img/vestiaire/homepage/hp-recurring-users.jpg" alt="The recurring user homepage, scrollable" width="750" height="11400" loading="lazy" decoding="async">
+                  </div>
+                </div>
+              <figcaption>
+                <b>After</b>
+                <strong>The recurring user homepage</strong>
+                <span>Personalised modules stacked ahead of editorial content. Scroll the frame to see the full page.</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- LOCKED: module performance -->
+          <div class="vc-locked reveal" data-vc-slot="homepage-modules-data">
+            <button class="vc-locked__stub" type="button" data-vc-unlock>
+              <i class="fas fa-lock" aria-hidden="true"></i>
+              <b>How the modules performed</b>
+              The click-through rate behind the strongest module, and the share of product views coming from price drops.
+              <span>Unlock</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Flexible system -->
+      <section class="vc-section">
+        <div class="vc-wrap">
+          <h2 class="vc-h2 reveal">A flexible homepage system</h2>
+          <p class="vc-lead reveal">The redesign was also a chance to move from a rigid set of components to a modular system that could adapt to different users, content and business moments.</p>
+          <p class="vc-body reveal" style="margin-top:22px">Marketing and merchandising teams also needed greater flexibility to adapt the homepage for major commercial moments, with more distinct experiences for large-scale campaigns and sales events. We therefore designed a range of reusable modules and Hero formats that could be combined depending on the objective.</p>
+
+          <!-- LOCKED: the commercial intent behind the sales formats -->
+          <div class="vc-locked reveal" data-vc-slot="homepage-commercial">
+            <button class="vc-locked__stub" type="button" data-vc-unlock>
+              <i class="fas fa-lock" aria-hidden="true"></i>
+              <b>The commercial thinking behind it</b>
+              What the sales homepage was actually built to do, and how far it was allowed to go.
+              <span>Unlock</span>
+            </button>
+          </div>
+
+          <h3 class="vc-h3 reveal" style="margin-top:64px">Hero formats</h3>
+          <p class="vc-body reveal">A range of Hero formats the teams could pick from depending on the objective, rather than one fixed Hero for every moment.</p>
+          <div class="vc-gallery reveal">
+            <figure>
+              <img src="../img/vestiaire/homepage/hero-educational.jpg" alt="Educational Hero: a lifestyle image with the line Buy and Sell pre-loved luxury fashion, over category chips" width="750" height="883" loading="lazy" decoding="async">
+              <figcaption><strong>Educational Hero</strong><span>Introduces Vestiaire and explains the value of the platform. Chips underneath give direct entry points into categories and brands.</span></figcaption>
+            </figure>
+            <figure>
+              <img src="../img/vestiaire/homepage/hero-basic.jpg" alt="Single-image Hero: a product still life with a Gift guide headline and a single call to action" width="750" height="837" loading="lazy" decoding="async">
+              <figcaption><strong>Single-image Hero</strong><span>A simpler format for editorial and everyday content, to optimise the above-the-fold experience.</span></figcaption>
+            </figure>
+            <figure>
+              <img src="../img/vestiaire/homepage/hero-carousel.jpg" alt="Carousel Hero: the same still life with an editorial headline and pagination bars beneath" width="748" height="873" loading="lazy" decoding="async">
+              <figcaption><strong>Carousel Hero</strong><span>Several messages or pieces of inspiration in the same space, with pagination underneath.</span></figcaption>
+            </figure>
+            <figure>
+              <img src="../img/vestiaire/homepage/hero-sales.jpg" alt="Campaign Hero: a full-bleed sale panel with a discount headline, a promotional code and a button" width="750" height="610" loading="lazy" decoding="async">
+              <figcaption><strong>Campaign Hero</strong><span>For major commercial moments, making them feel clearly distinct from the everyday editorial homepage.</span></figcaption>
+            </figure>
+            <figure>
+              <img src="../img/vestiaire/homepage/hero-with-products.jpg" alt="Campaign Hero with products: a campaign image and sale headline above a horizontal product swiper" width="750" height="1231" loading="lazy" decoding="async">
+              <figcaption><strong>Campaign Hero with products</strong><span>The campaign message carrying a product swiper directly underneath, so the offer leads straight into the assortment.</span></figcaption>
+            </figure>
+            <figure>
+              <img src="../img/vestiaire/homepage/sales-banner.jpg" alt="Sales Banner: a compact promotional strip with a voucher code and a link" width="750" height="290" loading="lazy" decoding="async">
+              <figcaption><strong>Sales Banner</strong><span>A lighter format for recurring campaigns such as weekly drops, vouchers and buyer and seller activations.</span></figcaption>
+            </figure>
+          </div>
+
+          <h3 class="vc-h3 reveal" style="margin-top:64px">A more flexible content system</h3>
+          <p class="vc-body reveal">Alongside the Hero, a modular approach to the rest of the page: horizontal product swipers for New In, We Love and Recently Viewed; small and medium marketing modules; editorial merchandising modules with larger imagery; product-led campaign modules; category and brand discovery modules; sales and promotional modules; and personalised recommendation modules. Teams could build different homepage experiences without a new design for every campaign.</p>
+          <p class="vc-body reveal" style="margin-top:22px">The visual system also improved the fundamentals: denser spacing, clearer hierarchy, better use of the container and more content visible above the fold. That gave internal teams more control over what content appeared, when it appeared and who it was relevant to.</p>
+          <p class="vc-eyebrow vc-media__label">How marketing promoted a moment</p>
+          <div class="vc-media">
+            <figure>
+              <img src="../img/vestiaire/homepage/marketing-before.png" alt="The old marketing module: a single wide banner with a headline and a link" width="1592" height="478" loading="lazy" decoding="async">
+              <figcaption>Before</figcaption>
+            </figure>
+            <figure>
+              <img src="../img/vestiaire/homepage/marketing-after.png" alt="The new marketing modules: several sized blocks combining imagery, message and products" width="3024" height="1400" loading="lazy" decoding="async">
+              <figcaption>After</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Men -->
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap">
+          <h2 class="vc-h2 reveal">Adapting the experience for men</h2>
+          <p class="vc-lead reveal">A large share of the people landing on the homepage were shopping menswear, while the page predominantly featured women's products. That led us to explore a dedicated men's homepage, and the ability for users to switch their primary homepage.</p>
+          <p class="vc-body reveal" style="margin-top:22px">The concept combined menswear-specific merchandising, education and reassurance, category and brand discovery, and inspiration and curated content.</p>
+
+          <p class="vc-eyebrow vc-media__label">Before and after</p>
+          <div class="vc-compare__grid vc-compare__grid--mobile">
+            <figure class="vc-figure reveal">
+              <div class="vc-phone vc-phone--tall">
+                <div class="vc-phone__screen" tabindex="0" role="group" aria-label="The homepage before the redesign, scrollable">
+                  <img src="../img/vestiaire/homepage/hp-before.jpg" alt="The homepage before the redesign, scrollable" width="754" height="9450" loading="lazy" decoding="async">
+                </div>
+              </div>
+              <figcaption>
+                <b>Before</b>
+                <strong>One homepage for everyone</strong>
+                <span>Predominantly womenswear, whoever was looking at it.</span>
+              </figcaption>
+            </figure>
+
+            <figure class="vc-figure reveal">
+              <div class="vc-phone vc-phone--tall">
+                  <div class="vc-phone__screen" tabindex="0" role="group" aria-label="The menswear homepage concept, scrollable">
+                    <img src="../img/vestiaire/homepage/hp-men.jpg" alt="The menswear homepage concept, scrollable" width="750" height="8262" loading="lazy" decoding="async">
+                  </div>
+                </div>
+              <figcaption>
+                <b>Concept</b>
+                <strong>The menswear homepage</strong>
+                <span>The same structure, with menswear merchandising, categories and brands.</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- LOCKED: the men's numbers and where it sat on the roadmap -->
+          <div class="vc-locked reveal" data-vc-slot="homepage-men">
+            <button class="vc-locked__stub" type="button" data-vc-unlock>
+              <i class="fas fa-lock" aria-hidden="true"></i>
+              <b>The size of the menswear gap</b>
+              The audience split, the difference in bounce rate, the share of items sold, and what happened to this work.
+              <span>Unlock</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results -->
+      <section class="vc-section">
+        <div class="vc-wrap">
+          <h2 class="vc-h2 reveal">Results</h2>
+          <p class="vc-lead reveal">What the experiments showed, what we did with the result, and where the work landed. All of it sits behind the password.</p>
+
+          <!-- LOCKED: the measured results -->
+          <div class="vc-locked reveal" data-vc-slot="homepage-results">
+            <button class="vc-locked__stub" type="button" data-vc-unlock>
+              <i class="fas fa-lock" aria-hidden="true"></i>
+              <b>The results, and what we did with them</b>
+              What moved and what did not, why reading the experiments was so hard, and the call we made months later.
+              <span>Unlock</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ================================================================
+         PANEL 3 - OTHER WORK
+         ================================================================ -->
+    <div class="vc-panel" id="panel-other-work" role="tabpanel" aria-labelledby="tab-other-work" tabindex="0" hidden>
+      <!-- TODO Leire: replace every .vc-todo and .vc-slot below with the real
+           copy and the real screenshot or video before publishing. -->
+
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap">
+          <div class="vc-unlock reveal" data-vc-gate="other-work">
+            <div class="vc-unlock__copy">
+              <strong>The numbers behind these projects</strong>
+              <p>The public version leaves out the Favorites results and what the saved searches experiments showed.</p>
+            </div>
+            <form class="vc-unlock__form" autocomplete="off">
+              <label for="vc-password-other-work">Password</label>
+              <div class="vc-unlock__row">
+                <input type="password" id="vc-password-other-work" name="password" placeholder="Enter password" autocomplete="off">
+                <button class="vc-btn" type="submit">Unlock</button>
+              </div>
+              <p class="vc-unlock__msg" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <div class="vc-paper">
+        <div class="vc-wrap">
+
+        <section class="vc-dossier">
+          <div class="vc-dossier__head">
+            <h3>Favorites</h3>
+            <span>iOS, Android and web</span>
+          </div>
+          <div class="vc-dossier__grid">
+            <div>
+              <h4>Context and opportunity</h4>
+              <ul>
+                <li>A clear correlation between how engaged a user is and how often they like items.</li>
+                <li>Top buyers hold 150+ items in their favorites, which needs management features.</li>
+                <li>Favorites are an important part of the conversion journey.</li>
+                <li>Users are most likely to buy within 7 days of liking an item.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>My input</h4>
+              <ul>
+                <li>Rapid iterations on the mockups, to fit quick development and a test launch.</li>
+                <li>Design mockups for the different iterations on all platforms.</li>
+                <li>Usability testing.</li>
+                <li>Collaboration with cross functional teams on converging the design and the tech solution.</li>
+                <li>Daily design support, discussions on tech solutions, and design QA.</li>
+                <li>Helping prepare the Town Hall presentation.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Features</h4>
+              <ul>
+                <li>Product tiles showing offers, See similar and Add to cart.</li>
+                <li>Favorites added to the nav bar, with notifications moved to the top bar.</li>
+                <li>Removing items sold more than 6 months ago.</li>
+                <li>Filters on favorites.</li>
+                <li>An improved empty state for users with no favorites.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- LOCKED: the Favorites numbers -->
+          <div class="vc-locked reveal" data-vc-slot="favorites-results">
+            <button class="vc-locked__stub" type="button" data-vc-unlock>
+              <i class="fas fa-lock" aria-hidden="true"></i>
+              <b>The Favorites results</b>
+              What the feature contributed in revenue, how many members reached it, and the share of orders that came through it.
+              <span>Unlock</span>
+            </button>
+          </div>
+
+          <p class="vc-eyebrow vc-media__label">Web</p>
+          <div class="vc-compare__grid">
+            <figure class="vc-figure reveal">
+              <div class="vc-browser">
+                <div class="vc-browser__chrome">
+                  <span class="vc-browser__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="vc-browser__url">vestiairecollective.com/favorites</span>
+                </div>
+                <div class="vc-browser__screen vc-browser__screen--fit">
+                  <img src="../img/vestiaire/favorites/before-web.png" alt="Favorites on web before the redesign: a plain grid of saved items with only a sort control" width="2136" height="1208" loading="lazy" decoding="async">
+                </div>
+              </div>
+              <figcaption>
+                <b>Before</b>
+                <strong>Favorites on web</strong>
+                <span>A sorted grid, with no way to narrow it down.</span>
+              </figcaption>
+            </figure>
+
+            <figure class="vc-figure reveal">
+              <div class="vc-browser">
+                <div class="vc-browser__chrome">
+                  <span class="vc-browser__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="vc-browser__url">vestiairecollective.com/favorites</span>
+                </div>
+                <div class="vc-browser__screen vc-browser__screen--fit">
+                  <img src="../img/vestiaire/favorites/after-web.png" alt="Favorites on web after the redesign: filter controls above the grid and tiles carrying See similar and Add to cart" width="2106" height="1264" loading="lazy" decoding="async">
+                </div>
+              </div>
+              <figcaption>
+                <b>After</b>
+                <strong>Favorites on web</strong>
+                <span>Filters across the top, and tiles that carry See similar and Add to cart.</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <p class="vc-eyebrow vc-media__label">App</p>
+          <div class="vc-compare__grid vc-compare__grid--mobile">
+            <figure class="vc-figure reveal">
+              <div class="vc-phone">
+                <img src="../img/vestiaire/favorites/before-app.jpeg" alt="Favorites in the app before the redesign: a two column grid with notifications in the bottom bar" width="538" height="1170" loading="lazy" decoding="async">
+              </div>
+              <figcaption>
+                <b>Before</b>
+                <strong>Favorites in the app</strong>
+                <span>Reached from search, with notifications taking the place in the bottom bar.</span>
+              </figcaption>
+            </figure>
+
+            <figure class="vc-figure reveal">
+              <div class="vc-phone">
+                <img src="../img/vestiaire/favorites/after-app.jpeg" alt="Favorites in the app after the redesign: filters above the grid, Favorites in the bottom bar and notifications moved to the top" width="548" height="1194" loading="lazy" decoding="async">
+              </div>
+              <figcaption>
+                <b>After</b>
+                <strong>Favorites in the app</strong>
+                <span>Favorites promoted into the bottom bar, notifications moved to the top, and the same filters as web.</span>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="vc-dossier">
+          <div class="vc-dossier__head">
+            <h3>Saved searches</h3>
+            <span>iOS and web</span>
+          </div>
+          <div class="vc-dossier__grid">
+            <div>
+              <h4>Context</h4>
+              <ul>
+                <li>Saved searches existed, but few people found them.</li>
+                <li>The work was about visibility rather than about building something new.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>My input</h4>
+              <ul>
+                <li>Explorations on how to raise the visibility of the feature.</li>
+                <li>Surfacing saved searches in the search bar, where it previously showed only recent searches.</li>
+                <li>Designing the bookmark icon in the search bar, and the tooltip introducing it.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Features</h4>
+              <ul>
+                <li>Saved searches in the search bar alongside recent searches.</li>
+                <li>A bookmark icon in the search bar to save the current search.</li>
+                <li>A tooltip pointing the icon out the first time.</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="vc-eyebrow vc-media__label">Web</p>
+          <div class="vc-compare__grid">
+            <figure class="vc-figure reveal">
+              <div class="vc-browser">
+                <div class="vc-browser__chrome">
+                  <span class="vc-browser__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="vc-browser__url">vestiairecollective.com</span>
+                </div>
+                <div class="vc-browser__screen vc-browser__screen--fit">
+                  <img src="../img/vestiaire/saved-searches/web-before.jpg" alt="The web search bar before: only recent searches listed underneath" width="933" height="433" loading="lazy" decoding="async">
+                </div>
+              </div>
+              <figcaption>
+                <b>Before</b>
+                <strong>Recent searches only</strong>
+                <span>Nothing in the search bar pointed to saved searches.</span>
+              </figcaption>
+            </figure>
+            <figure class="vc-figure reveal">
+              <div class="vc-browser">
+                <div class="vc-browser__chrome">
+                  <span class="vc-browser__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="vc-browser__url">vestiairecollective.com</span>
+                </div>
+                <div class="vc-browser__screen vc-browser__screen--fit">
+                  <img src="../img/vestiaire/saved-searches/web-after.jpg" alt="The web search bar after: saved searches listed alongside recent ones, with a bookmark icon" width="933" height="433" loading="lazy" decoding="async">
+                </div>
+              </div>
+              <figcaption>
+                <b>After</b>
+                <strong>Saved searches in the bar</strong>
+                <span>Saved searches sit next to recent ones, with a bookmark icon to save the current one.</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <p class="vc-eyebrow vc-media__label">App</p>
+          <div class="vc-compare__grid vc-compare__grid--mobile">
+            <figure class="vc-figure reveal">
+              <div class="vc-phone">
+                <img src="../img/vestiaire/saved-searches/app-before.jpg" alt="The app search screen before, showing recent searches" width="750" height="1624" loading="lazy" decoding="async">
+              </div>
+              <figcaption>
+                <b>Before</b>
+                <strong>Recent searches only</strong>
+                <span>The feature was there, but not from here.</span>
+              </figcaption>
+            </figure>
+            <figure class="vc-figure reveal">
+              <div class="vc-phone">
+                <img src="../img/vestiaire/saved-searches/app-after.jpg" alt="The app search screen after, showing saved searches and the bookmark icon with its tooltip" width="750" height="1624" loading="lazy" decoding="async">
+              </div>
+              <figcaption>
+                <b>After</b>
+                <strong>Saved searches and the bookmark</strong>
+                <span>The tooltip introduces the icon the first time it appears.</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- LOCKED: the two experiments -->
+          <div class="vc-locked reveal" data-vc-slot="saved-searches-results">
+            <button class="vc-locked__stub" type="button" data-vc-unlock>
+              <i class="fas fa-lock" aria-hidden="true"></i>
+              <b>What the two experiments showed</b>
+              Adoption on web and on iOS, and what happened to the metrics around them.
+              <span>Unlock</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="vc-dossier">
+          <div class="vc-dossier__head">
+            <h3>The design system</h3>
+            <span>Web, iOS and Android</span>
+          </div>
+          <div class="vc-dossier__grid">
+            <div>
+              <h4>Context</h4>
+              <ul>
+                <li>I joined in 2022 with the mission of establishing the design system.</li>
+                <li>It meant redefining the visual identity around a luxury and minimalist direction.</li>
+                <li>A transition phase: the product was still running legacy designs alongside the new system.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Design challenges</h4>
+              <ul>
+                <li>Defining tokens, components and patterns, and organising the library files.</li>
+                <li>Writing the usage guidelines.</li>
+                <li>Advocating for adoption inside the design team.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Tech challenges</h4>
+              <ul>
+                <li>Three technologies to serve at once, across web, iOS and Android.</li>
+                <li>The code migration was still in progress, so some pages could not take the system yet.</li>
+                <li>Keeping updates aligned across several teams.</li>
+              </ul>
+            </div>
+          </div>
+
+          <ul class="vc-impact reveal">
+            <li>
+              <span class="vc-impact__dir"><i class="fas fa-layer-group" aria-hidden="true"></i>Libraries</span>
+              <strong>5</strong>
+              <p>Shared libraries, with shared tokens and variables in Figma.</p>
+            </li>
+            <li>
+              <span class="vc-impact__dir"><i class="fas fa-th-large" aria-hidden="true"></i>Figma</span>
+              <strong>600+</strong>
+              <p>Components built to support the design teams.</p>
+            </li>
+            <li>
+              <span class="vc-impact__dir"><i class="fas fa-code" aria-hidden="true"></i>Per platform</span>
+              <strong>15+</strong>
+              <p>Custom components built on each platform to support developers, on top of the native ones.</p>
+            </li>
+          </ul>
+
+          <div class="vc-media">
+            <figure>
+              <img src="../img/vestiaire/design-system/overview-design-system.jpeg" alt="The Figma library overview, with component groups for navigation, inputs, lists, product tiles, banners, cards, empty states and errors" width="1600" height="732" loading="lazy" decoding="async">
+              <figcaption>The Figma library holding the core components</figcaption>
+            </figure>
+            <figure>
+              <img src="../img/vestiaire/design-system/example-product-tile-specs.jpeg" alt="Handoff documentation for the product tile, with sizes, spacing and states specified" width="732" height="1254" loading="lazy" decoding="async">
+              <figcaption>An extract of the product tile handoff documentation</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="vc-dossier">
+          <div class="vc-dossier__head">
+            <h3>A Figma plugin for the design team</h3>
+            <span>Internal tool</span>
+          </div>
+          <div class="vc-dossier__grid">
+            <div>
+              <h4>Context</h4>
+              <p>The project started from a repetitive and inefficient task in our Figma workflow: editing product tiles required manually preparing data.</p>
+            </div>
+            <div>
+              <h4>My role</h4>
+              <p>I used ChatGPT to help me create a custom Figma plugin, figuring out how to retrieve our product data as JSON and then match that data to the right Figma layers. I iterated through the technical challenges until the workflow was working reliably. The plugin became Vestiaire's first internally created Figma plugin, and I presented the process at a Tech Town Hall. The team can now either upload a JSON for specific products or use an integrated database of 300+ products.</p>
+            </div>
+            <div>
+              <h4>Impact</h4>
+              <p>Saved the design team time by automating a repetitive product-tile editing task.</p>
+            </div>
+          </div>
+          <!-- Full width rather than the usual two columns: these are wide
+               screen recordings and the UI detail is unreadable at half width.
+               preload="metadata" so the page does not pull the video files
+               until someone presses play. -->
+          <div class="vc-media vc-media--stack">
+            <figure>
+              <p class="vc-eyebrow">Before</p>
+              <video src="../img/vestiaire/figma-plugin/current-process.mp4#t=0.1" controls preload="metadata" playsinline width="3024" height="1204"></video>
+              <figcaption>From the Tech Town Hall: the old process, preparing the data by hand for every product tile.</figcaption>
+            </figure>
+            <figure>
+              <p class="vc-eyebrow">After</p>
+              <video src="../img/vestiaire/figma-plugin/after-process.mp4#t=0.1" controls preload="metadata" playsinline width="3024" height="1204"></video>
+              <figcaption>The same work with the plugin, matching product data onto the right Figma layers.</figcaption>
+            </figure>
+            <figure>
+              <video src="../img/vestiaire/figma-plugin/demo-products.mp4#t=0.1" controls preload="metadata" playsinline width="2880" height="1588"></video>
+              <figcaption>Working from the integrated database of 300+ products.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="../js/jquery-3.0.0.min.js"></script>
+  <script src="../js/plugins.js"></script>
+  <script src="../js/vestiaire.js"></script>
+  <script src="../js/site-nav.js"></script>
+</body>
+</html>

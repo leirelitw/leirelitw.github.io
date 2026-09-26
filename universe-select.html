@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leire Litwin — Universe Select</title>
+<link rel="shortcut icon" href="img/favicon.ico">
+</head>
+<body>
+<style>
+  :root{
+    --void:#0a0715;
+    --ink:#f4efff;
+    --ink-dim:#b6a9d9;
+    --coral:#ff6f6f;
+    --sun:#ffd166;
+    --lilac:#9d8cff;
+    --seafoam-dim:#2c8f81;
+    --glass-bg: rgba(255,255,255,.07);
+    --glass-border: rgba(255,255,255,.18);
+    --glass-highlight: rgba(255,255,255,.32);
+    --font-display: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    --font-body: var(--font-display);
+    --font-hud: var(--font-display);
+    color-scheme: dark;
+  }
+  *{ box-sizing:border-box; }
+  html, body{ margin:0; height:100%; background:var(--void); }
+
+  .stage{
+    position:fixed; inset:0; overflow:hidden;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% -8%, #241a44 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 90% 100%, #1c1440 0%, transparent 55%),
+      var(--void);
+    color:var(--ink);
+    font-family:var(--font-body);
+  }
+
+  /* ---------- liquid glass ---------- */
+  .glass{
+    position:relative;
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(22px) saturate(170%);
+    backdrop-filter: blur(22px) saturate(170%);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 30px rgba(0,0,0,.4), inset 0 1px 0 var(--glass-highlight);
+    border-radius: 18px;
+  }
+  .glass::before{
+    content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+    background: linear-gradient(125deg, rgba(255,255,255,.22) 0%, transparent 35%, transparent 68%, rgba(255,255,255,.06) 100%);
+    mix-blend-mode: overlay;
+  }
+  .glass-btn{ font-family:var(--font-hud); color:var(--ink-dim); background:transparent; border:none; cursor:pointer; }
+  button:focus-visible, [tabindex]:focus-visible{ outline:2px solid var(--seafoam-dim); outline-offset:2px; }
+
+  /* ---------- top bar ---------- */
+  .ui-top{ position:absolute; top:16px; left:16px; right:16px; z-index:40; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    pointer-events:none; }
+  .ui-top > *{ pointer-events:auto; }
+  .brand-chip{ padding:9px 16px; }
+  .brand-chip .eyebrow{ margin:0; font-family:var(--font-hud); font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-dim); }
+  .brand-chip .title-mini{
+    margin:2px 0 0; font-family:var(--font-display); font-weight:800; font-size:13.5px;
+    background: linear-gradient(90deg, var(--coral), var(--sun) 55%, var(--lilac));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .mode-toggle{ display:inline-flex; padding:4px; border-radius:999px; }
+  .mode-opt{ padding:7px 16px; border-radius:999px; font-family:var(--font-hud); font-size:11.5px; font-weight:600;
+    letter-spacing:.03em; color:var(--ink-dim); text-decoration:none; white-space:nowrap;
+    transition: color .2s ease, background-color .2s ease; }
+  a.mode-opt:hover{ color:var(--ink); background:rgba(255,255,255,.12); }
+  .mode-opt.is-on{ background:var(--ink); color:var(--void); }
+
+
+  /* ---------- bottom bar ---------- */
+  .ui-bottom{ position:absolute; bottom:16px; left:16px; right:16px; z-index:40; display:flex; align-items:flex-end; justify-content:space-between; gap:10px;
+    pointer-events:none; transition: opacity .3s ease, visibility .3s ease; }
+  .ui-bottom > *{ pointer-events:auto; }
+  /* Inside a planet there is no galaxy to drag or to reset, and on a short
+     window this bar sat on top of Back to galaxy. visibility, not just
+     pointer-events, because the children switch pointers back on. */
+  .scene:has(.planet-focus.open) ~ .ui-bottom{ opacity:0; visibility:hidden; }
+  .info-btn{ width:40px; height:40px; border-radius:50%; font-size:15px; display:flex; align-items:center; justify-content:center; }
+  .note-card{
+    position:absolute; bottom:64px; left:0; width:min(320px, 80vw); padding:16px 18px;
+    font-size:12.5px; line-height:1.55; color:var(--ink-dim);
+    opacity:0; transform:translateY(8px); pointer-events:none; transition: opacity .18s ease, transform .18s ease;
+  }
+  .note-card.open{ opacity:1; transform:none; pointer-events:auto; }
+  .note-card b{ color:var(--ink); }
+  .note-card p{ margin:0; }
+  .reset-btn{ padding:11px 18px; font-size:11.5px; letter-spacing:.03em; border-radius:16px; display:flex; align-items:center; gap:8px; }
+  .reset-btn:hover{ color:var(--ink); }
+  .reset-btn .reset-ico{ font-size:20px; line-height:1; margin-top:-1px; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+  .reset-btn:hover .reset-ico{ transform: rotate(-120deg); }
+
+  /* ---------- CANVAS 3D GALAXY (drag to orbit, wheel/pinch to zoom) ---------- */
+  .scene{ position:absolute; inset:0; }
+  #glCanvas{ width:100%; height:100%; display:block; cursor:grab; touch-action:none; }
+  #glCanvas.grabbing{ cursor:grabbing; }
+
+  /* ---------- planet focus overlay ---------- */
+  .planet-focus{
+    position:absolute; inset:0; z-index:30; overflow:hidden;
+    background: rgba(6,4,16,.55);
+    -webkit-backdrop-filter: blur(30px) saturate(150%); backdrop-filter: blur(30px) saturate(150%);
+    opacity:0; pointer-events:none; transition: opacity .35s ease;
+  }
+  .planet-focus.open{ opacity:1; pointer-events:auto; }
+
+  /* giant, dim wordmark sitting behind the planet crest, pinned to the top */
+  .focus-bigtitle{
+    position:absolute; top:0; left:0; right:0; z-index:0; display:flex; align-items:flex-start; justify-content:center;
+    padding:clamp(28px,7vh,56px) 24px 0; pointer-events:none;
+  }
+  .focus-bigtitle span{
+    font-family:var(--font-display); font-weight:800; font-size:clamp(40px, 9vw, 80px);
+    letter-spacing:-0.03em; line-height:.95; text-align:center; text-wrap:balance;
+    color:rgba(255,255,255,.09);
+  }
+
+  .focus-fg{
+    position:relative; z-index:1; height:100%; display:flex; flex-direction:column; align-items:center;
+    justify-content:flex-start; gap:18px; padding:clamp(28px,7vh,56px) 24px 32px; overflow-y:auto;
+  }
+  .focus-orb-wrap{ position:relative; width:64px; height:64px; flex:none; }
+  .focus-orb{ position:absolute; inset:0; border-radius:50%; box-shadow:0 0 40px 8px rgba(0,0,0,.35); }
+  .focus-blurb{ font-size:13.5px; font-weight:400; color:#DDDDDD; margin:0; max-width:380px; text-align:center; line-height:1.5; }
+
+  /* ---------- the one to three case studies inside a planet ---------- */
+  .image-row{ display:flex; flex-wrap:wrap; justify-content:center; align-items:stretch; gap:22px; max-width:min(1000px,94vw); margin-top:8px; }
+
+  /* The card is a glass frame with the image inset inside it, rather than a
+     photograph with a black scrim dropped over the bottom of it. --accent is
+     set per planet in buildImageRow, so each world tints its own cards. */
+  .project-card{
+    --accent: var(--lilac);
+    position:relative; display:flex; flex-direction:column; width:clamp(190px, 27vw, 292px);
+    padding:10px; border-radius:26px; cursor:pointer; text-decoration:none; color:inherit;
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:0 18px 40px rgba(0,0,0,.45);
+    transition: transform .4s cubic-bezier(.2,.8,.2,1), background-color .3s ease, border-color .3s ease, box-shadow .4s ease;
+  }
+  /* a planet with a single case study would look lost at one third of the row */
+  .image-row[data-count="1"] .project-card{ width:clamp(230px, 34vw, 336px); }
+
+  .project-card__media{
+    position:relative; display:block; overflow:hidden; border-radius:18px;
+    aspect-ratio:4/5; background:rgba(0,0,0,.34);
+  }
+  .project-card__media img{
+    width:100%; height:100%; display:block; object-fit:cover;
+    transition: transform .6s cubic-bezier(.2,.8,.2,1);
+  }
+  /* the tint sits on the image, not on the type, so the words stay at full contrast */
+  .project-card__media::after{
+    content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+    background: linear-gradient(210deg, transparent 42%, color-mix(in srgb, var(--accent) 40%, transparent) 100%);
+    opacity:0; transition: opacity .4s ease;
+  }
+
+  .project-card__body{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 6px 5px; }
+  .project-card__title{ font-family:var(--font-display); font-weight:600; font-size:13.5px; letter-spacing:-.01em; line-height:1.3; }
+  .project-card__cue{
+    flex:none; display:grid; place-items:center; width:28px; height:28px; border-radius:50%;
+    border:1px solid rgba(255,255,255,.18); font-size:12px; line-height:1; color:var(--ink-dim);
+    transition: transform .3s ease, color .3s ease, background-color .3s ease, border-color .3s ease;
+  }
+
+  .project-card:hover, .project-card:focus-visible{
+    transform:translateY(-10px);
+    background:rgba(255,255,255,.095);
+    border-color: color-mix(in srgb, var(--accent) 52%, transparent);
+    box-shadow:0 32px 58px rgba(0,0,0,.6);
+  }
+  .project-card:hover .project-card__media img,
+  .project-card:focus-visible .project-card__media img{ transform:scale(1.06); }
+  .project-card:hover .project-card__media::after,
+  .project-card:focus-visible .project-card__media::after{ opacity:1; }
+  .project-card:hover .project-card__cue,
+  .project-card:focus-visible .project-card__cue{
+    color:var(--void); background:var(--accent); border-color:var(--accent); transform:translateX(2px);
+  }
+  .project-card:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+  .back-btn{
+    font-family:var(--font-display); font-weight:600; font-size:13px; color:var(--ink);
+    display:flex; align-items:center; gap:8px; border:none; padding:12px 22px 12px 18px; border-radius:24px;
+    cursor:pointer; margin-top:6px; transition: transform .15s ease, background .15s ease;
+  }
+  .back-btn:hover{ transform:translateY(-2px); background:rgba(255,255,255,.14); }
+
+  .modal-overlay{ position:fixed; inset:0; background:rgba(6,4,16,.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    display:flex; align-items:center; justify-content:center; z-index:60; opacity:0; pointer-events:none; transition:opacity .18s ease; padding:20px; }
+  .modal-overlay.open{ opacity:1; pointer-events:auto; }
+  .modal-card{ padding:24px; max-width:360px; width:100%; transform:scale(.94) translateY(8px); transition: transform .18s ease; }
+  .modal-overlay.open .modal-card{ transform:none; }
+  .modal-card h3{ font-family:var(--font-display); margin:0 0 8px; font-size:18px; }
+  .modal-card p{ margin:0 0 14px; font-size:13.5px; color:var(--ink-dim); line-height:1.5; }
+  .modal-tags{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+  .modal-tags span{ font-family:var(--font-hud); font-size:9.5px; background:rgba(255,255,255,.1); padding:4px 8px; border-radius:6px; text-transform:uppercase; letter-spacing:.05em; }
+  .modal-close{ font-family:var(--font-hud); font-size:11px; background:var(--seafoam-dim); color:#fff; border:none; padding:8px 14px; border-radius:8px; cursor:pointer; }
+
+  @media (prefers-reduced-motion: reduce){ * { animation-duration:.001ms !important; animation-iteration-count:1 !important; } }
+  @media (max-width:560px){ .ui-top{ flex-direction:column; align-items:stretch; } }
+</style>
+
+<div class="stage">
+
+  <div class="ui-top">
+    <div class="brand-chip glass">
+      <p class="eyebrow">Leire Litwin</p>
+      <p class="title-mini">Universe Select</p>
+    </div>
+    <div class="mode-toggle glass" role="group" aria-label="Portfolio mode">
+      <a class="mode-opt" href="index.html">Default</a>
+      <span class="mode-opt is-on" aria-current="true">Fun</span>
+    </div>
+  </div>
+
+  <div class="scene">
+    <canvas id="glCanvas"></canvas>
+
+    <div class="planet-focus" id="planetFocus">
+      <div class="focus-bigtitle"><span id="focusTitle"></span></div>
+      <div class="focus-fg">
+        <div class="focus-orb-wrap">
+          <div class="focus-orb" id="focusOrb"></div>
+        </div>
+        <p class="focus-blurb" id="focusBlurb"></p>
+        <div class="image-row" id="imageRow"></div>
+        <button class="glass back-btn" id="backBtn"><span aria-hidden="true">←</span> Back to galaxy</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-bottom">
+    <div style="position:relative;">
+      <div class="note-card glass" id="noteCard">
+        <p>Drag to look around &middot; scroll/pinch to zoom &middot; click a planet to open it</p>
+      </div>
+      <button class="info-btn glass glass-btn" id="infoBtn" aria-label="About this view">i</button>
+    </div>
+    <button class="reset-btn glass glass-btn" id="resetBtn"><span class="reset-ico" aria-hidden="true">⟲</span> Reset view</button>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  // ---------------- shared data ----------------
+  var universes = [
+    { id:"vestiaire", name:"Vestiaire Collective", color:"#ff6f6f", colorDim:"#7a2f38", size:1.0, ring:true,
+      blurb:"Four years on a second-hand luxury marketplace with 20M members.",
+      moons:[ {id:"vc-smart-listing"}, {id:"vc-homepage"}, {id:"vc-other"} ] },
+    { id:"agency", name:"Agency", color:"#ffd166", colorDim:"#9a6c1f", size:0.8,
+      blurb:"Client work built with agency teams: internal platforms and augmented reality.",
+      moons:[ {id:"sodexo"}, {id:"stgobain"} ] },
+    { id:"sport", name:"Bim, Sport World", color:"#4f8cff", colorDim:"#2a4c94", size:0.7,
+      blurb:"Product design and product management for a live fitness app, and the design system behind it.",
+      moons:[ {id:"bim"} ] },
+    { id:"personal", name:"Personal Projects", color:"#ff6fb0", colorDim:"#99315f", size:0.62,
+      blurb:"Side quests, built for the love of it.",
+      moons:[ {id:"mycarddeck"}, {id:"safeland"} ] }
+  ];
+  // The star at the centre. It is not a universe, so it is not in the list
+  // above and gets no planet, but openFocus treats it like one: clicking it
+  // opens the same preview every planet opens.
+  var ABOUT = { id:"sun", name:"About me", color:"#fffaf0", colorDim:"#c9c3b4",
+    blurb:"My career, the roles behind the case studies, and my CV to download.",
+    moons:[ {id:"about"} ] };
+
+  // The same six case studies the default mode lists, pointing at the same
+  // files. Add one here and in index.html together, or the two modes drift.
+  var projects = {
+    "vc-smart-listing":{ title:"Smart Listing", href:"projects/vestiaire-collective.html#smart-listing", img:"img/images/vestiaire-smart-listing.jpg" },
+    "vc-homepage":{      title:"Homepage revamp", href:"projects/vestiaire-collective.html#homepage",    img:"img/images/vestiaire-homepage.jpg" },
+    "vc-other":{         title:"Other projects",  href:"projects/vestiaire-collective.html#other-work",  img:"img/images/vestiaire-others.jpg" },
+    sodexo:{    title:"Sodexo",               href:"projects/sodexo.html",               img:"img/images/sodexo_1.jpg" },
+    stgobain:{  title:"Saint-Gobain AR App",  href:"projects/saint-gobain.html",         img:"img/images/st_gobain_1.jpg" },
+    bim:{       title:"Bim, Fitness Coach",   href:"projects/bim-fitness-app.html",      img:"img/images/bim_1.jpg" },
+    mycarddeck:{title:"MyCardDeck",           href:"projects/mycarddeck.html",           img:"img/images/mycarddeck-vertical.jpg" },
+    safeland:{  title:"SafeLand",             href:"projects/safeland.html",             img:"img/images/safeland_1.jpg" },
+    about:{     title:"Read about my career",  href:"about.html",                         img:"img/images/profile2.jpg" }
+  };
+  // world layout: [x,z] roughly in -9..9, sun at origin
+  var layout = { vestiaire:[0,-6], agency:[0,6], personal:[-6,0], sport:[6,0] };
+
+  document.addEventListener("keydown", function(e){ if (e.key==="Escape") closeFocus(); });
+
+  // ---------------- PLANET FOCUS ----------------
+  var focus = document.getElementById("planetFocus");
+  var focusOrb = document.getElementById("focusOrb");
+  var focusTitle = document.getElementById("focusTitle");
+  var focusBlurb = document.getElementById("focusBlurb");
+
+  function openFocus(uid){
+    var u = uid === ABOUT.id ? ABOUT : universes.find(function(x){ return x.id===uid; });
+    if (!u) return;
+    focusOrb.style.background = "radial-gradient(circle at 35% 30%, #fff, "+u.color+" 55%, "+u.colorDim+" 100%)";
+    focusTitle.textContent = u.name;
+    focusBlurb.textContent = u.blurb;
+    buildImageRow(u);
+    focus.classList.add("open");
+  }
+  function closeFocus(){
+    if (!focus.classList.contains("open")) return;
+    focus.classList.remove("open");
+    flyOutToGalaxy();
+  }
+  document.getElementById("backBtn").addEventListener("click", closeFocus);
+
+  // ---------------- PROJECT IMAGES (side by side, hover to animate) ----------------
+  var imageRow = document.getElementById("imageRow");
+  function buildImageRow(u){
+    imageRow.innerHTML = "";
+    imageRow.dataset.count = u.moons.filter(function(m){ return projects[m.id]; }).length;
+    u.moons.forEach(function(m){
+      var p = projects[m.id];
+      if (!p) return;
+      var card = document.createElement("a");
+      card.className = "project-card";
+      card.href = p.href;
+      card.style.setProperty("--accent", u.color);
+      // The image is decorative: the title next to it is the link's name.
+      card.innerHTML =
+        '<span class="project-card__media"><img src="" alt="" loading="lazy" decoding="async"></span>' +
+        '<span class="project-card__body">' +
+          '<span class="project-card__title"></span>' +
+          '<span class="project-card__cue" aria-hidden="true">→</span>' +
+        '</span>';
+      card.querySelector("img").src = p.img;
+      card.querySelector(".project-card__title").textContent = p.title;
+      imageRow.appendChild(card);
+    });
+  }
+
+  // ---------------- INFO NOTE ----------------
+  var infoBtn = document.getElementById("infoBtn");
+  var noteCard = document.getElementById("noteCard");
+  infoBtn.addEventListener("click", function(){ noteCard.classList.toggle("open"); });
+
+  // small helper: distance & midpoint between two pointer records
+  function twoPointStats(map){
+    var pts = Array.from(map.values());
+    var dx = pts[0].x-pts[1].x, dy = pts[0].y-pts[1].y;
+    return { dist: Math.hypot(dx,dy), mx: (pts[0].x+pts[1].x)/2, my:(pts[0].y+pts[1].y)/2 };
+  }
+
+  // =====================================================================
+  // CANVAS 3D GALAXY — orbit camera locked on the system center
+  // (hand-rolled perspective/lighting math on plain <canvas> 2D — no WebGL
+  // dependency at all, so it renders even where GPU/WebGL access is restricted)
+  // =====================================================================
+  var canvas = document.getElementById("glCanvas");
+  var ctx = canvas.getContext("2d");
+  var dpr = 1;
+
+  function hex2rgb(hex){ var n=parseInt(hex.slice(1),16); return [(n>>16)&255, (n>>8)&255, n&255]; }
+  function rgbStr(rgb, a){ return "rgba("+rgb[0]+","+rgb[1]+","+rgb[2]+","+(a==null?1:a)+")"; }
+
+  var objIds = ["sun","vestiaire","agency","personal","sport"];
+  var objPos = { sun:[0,0,0], vestiaire:[layout.vestiaire[0],0,layout.vestiaire[1]], agency:[layout.agency[0],0,layout.agency[1]],
+    personal:[layout.personal[0],0,layout.personal[1]], sport:[layout.sport[0],0,layout.sport[1]] };
+  var objRad = { sun:0.8 };
+  var objCol = { sun:[255,255,255] };
+  var objColDim = { sun:[255,255,255] };
+  var objUniverse = {};
+  universes.forEach(function(u){
+    objRad[u.id] = 0.55 + u.size*0.55;
+    objCol[u.id] = hex2rgb(u.color);
+    objColDim[u.id] = hex2rgb(u.colorDim);
+    objUniverse[u.id] = u;
+  });
+
+  var stars = [];
+  (function(){
+    for (var i=0;i<180;i++){
+      var v = [Math.random()*2-1, Math.random()*2-1, Math.random()*2-1];
+      var len = Math.hypot(v[0],v[1],v[2]) || 1;
+      stars.push({ dir:[v[0]/len, v[1]/len, v[2]/len], b: 0.25 + Math.random()*0.75, r: Math.random()<0.15 ? 1.6 : 1 });
+    }
+  })();
+
+  // ---- orbit camera, always looking at the origin (the whole system) ----
+  var DEFAULT_CAM = { az:0.55, el:0.5, dist:15 };
+  var cam = { az:DEFAULT_CAM.az, el:DEFAULT_CAM.el, dist:DEFAULT_CAM.dist };
+  var MIN_DIST=4, MAX_DIST=28, MIN_EL=-1.3, MAX_EL=1.3;
+  var basis = {};
+
+  function updateBasis(){
+    // camera orbits the origin at (az, el, dist) in spherical coords; always looks at the origin
+    var eye = [
+      cam.dist*Math.cos(cam.el)*Math.sin(cam.az),
+      cam.dist*Math.sin(cam.el),
+      cam.dist*Math.cos(cam.el)*Math.cos(cam.az)
+    ];
+    var flen = Math.hypot(eye[0],eye[1],eye[2]);
+    var fwd = [-eye[0]/flen, -eye[1]/flen, -eye[2]/flen];
+    var worldUp = [0,1,0];
+    var right = [ fwd[1]*worldUp[2]-fwd[2]*worldUp[1], fwd[2]*worldUp[0]-fwd[0]*worldUp[2], fwd[0]*worldUp[1]-fwd[1]*worldUp[0] ];
+    var rlen = Math.hypot(right[0],right[1],right[2]);
+    right = [right[0]/rlen, right[1]/rlen, right[2]/rlen];
+    var up = [ right[1]*fwd[2]-right[2]*fwd[1], right[2]*fwd[0]-right[0]*fwd[2], right[0]*fwd[1]-right[1]*fwd[0] ];
+    basis = { eye:eye, fwd:fwd, right:right, up:up };
+  }
+  updateBasis();
+
+  function dot3(a,b){ return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]; }
+
+  // ---- camera "warp" flights: fly the eye toward/away from a planet, always looking at a fixed target ----
+  var flight = null; // { startEye, endEye, target, t0, duration, onDone }
+  var savedCam = null;
+  function lerp(a,b,t){ return a+(b-a)*t; }
+  function easeInOutCubic(t){ return t<0.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
+  function beginFlight(startEye, endEye, target, duration, onDone){
+    flight = { startEye:startEye.slice(), endEye:endEye.slice(), target:target.slice(), t0:performance.now(), duration:duration, onDone:onDone };
+  }
+  function orbitEyeFor(c){
+    return [ c.dist*Math.cos(c.el)*Math.sin(c.az), c.dist*Math.sin(c.el), c.dist*Math.cos(c.el)*Math.cos(c.az) ];
+  }
+  function flyIntoPlanet(id){
+    var target = objPos[id];
+    savedCam = { az:cam.az, el:cam.el, dist:cam.dist };
+    var dir = [basis.eye[0]-target[0], basis.eye[1]-target[1], basis.eye[2]-target[2]];
+    var dl = Math.hypot(dir[0],dir[1],dir[2]) || 1;
+    dir = [dir[0]/dl, dir[1]/dl, dir[2]/dl];
+    var stopDist = objRad[id]*3.6;
+    var endEye = [ target[0]+dir[0]*stopDist, target[1]+dir[1]*stopDist, target[2]+dir[2]*stopDist ];
+    beginFlight(basis.eye, endEye, target, 750, function(){ openFocus(id); });
+  }
+  function flyOutToGalaxy(){
+    var restoreCam = savedCam || DEFAULT_CAM;
+    var endEye = orbitEyeFor(restoreCam);
+    beginFlight(basis.eye, endEye, [0,0,0], 700, function(){
+      cam.az = restoreCam.az; cam.el = restoreCam.el; cam.dist = restoreCam.dist;
+      updateBasis();
+    });
+  }
+
+  var moonDefs = [];
+  universes.forEach(function(u){
+    u.moons.forEach(function(m, i){
+      moonDefs.push({ uid:u.id, base:objPos[u.id], radius: objRad[u.id]+0.55, speed: 0.6+i*0.3, phase: i*2.1 });
+    });
+  });
+
+  document.getElementById("resetBtn").addEventListener("click", function(){
+    if (flight || focus.classList.contains("open")) return;
+    cam.az=DEFAULT_CAM.az; cam.el=DEFAULT_CAM.el; cam.dist=DEFAULT_CAM.dist; updateBasis();
+  });
+
+  // ---- drag to orbit, wheel/pinch to dolly ----
+  var pointers = new Map();
+  var dragStart = null, wasDragging = false, pinchStart = null;
+
+  canvas.addEventListener("pointerdown", function(e){
+    if (flight) return;
+    canvas.setPointerCapture(e.pointerId);
+    pointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
+    wasDragging = false;
+    if (pointers.size===1){
+      dragStart = { x:e.clientX, y:e.clientY, az:cam.az, el:cam.el };
+      canvas.classList.add("grabbing");
+    } else if (pointers.size===2){
+      pinchStart = { dist: twoPointStats(pointers).dist };
+    }
+  });
+  canvas.addEventListener("pointermove", function(e){
+    if (!pointers.has(e.pointerId)) return;
+    pointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
+    if (pointers.size===1 && dragStart){
+      var dx = e.clientX-dragStart.x, dy = e.clientY-dragStart.y;
+      if (Math.hypot(dx,dy) > 5) wasDragging = true;
+      cam.az = dragStart.az - dx*0.006;
+      cam.el = Math.max(MIN_EL, Math.min(MAX_EL, dragStart.el + dy*0.006));
+      updateBasis();
+    } else if (pointers.size===2 && pinchStart){
+      var st = twoPointStats(pointers);
+      var factor = st.dist / pinchStart.dist;
+      pinchStart.dist = st.dist;
+      wasDragging = true;
+      cam.dist = Math.max(MIN_DIST, Math.min(MAX_DIST, cam.dist / factor));
+      updateBasis();
+    }
+  });
+  function endPointer(e){
+    pointers.delete(e.pointerId);
+    canvas.classList.remove("grabbing");
+    if (pointers.size===1){
+      var remaining = Array.from(pointers.values())[0];
+      dragStart = { x:remaining.x, y:remaining.y, az:cam.az, el:cam.el };
+    } else { dragStart = null; }
+    pinchStart = null;
+    setTimeout(function(){
+      if (!wasDragging) pickAndWarp(e.clientX, e.clientY);
+      wasDragging = false;
+    }, 0);
+  }
+  canvas.addEventListener("pointerup", endPointer);
+  canvas.addEventListener("pointercancel", function(e){ pointers.delete(e.pointerId); canvas.classList.remove("grabbing"); dragStart=null; pinchStart=null; });
+  canvas.addEventListener("wheel", function(e){
+    e.preventDefault();
+    if (flight) return;
+    cam.dist = Math.max(MIN_DIST, Math.min(MAX_DIST, cam.dist * Math.pow(1.0015, e.deltaY)));
+    updateBasis();
+  }, { passive:false });
+
+  function pickAndWarp(clientX, clientY){
+    var r = canvas.getBoundingClientRect();
+    var mx = clientX - r.left, my = clientY - r.top;
+    var uv = [ (mx - r.width/2)/r.height, (r.height/2 - my)/r.height ];
+    var rd = [ basis.fwd[0]*1.4 + basis.right[0]*uv[0] + basis.up[0]*uv[1],
+               basis.fwd[1]*1.4 + basis.right[1]*uv[0] + basis.up[1]*uv[1],
+               basis.fwd[2]*1.4 + basis.right[2]*uv[0] + basis.up[2]*uv[1] ];
+    var len = Math.hypot(rd[0],rd[1],rd[2]); rd = [rd[0]/len, rd[1]/len, rd[2]/len];
+    var ro = basis.eye;
+    var best = null, bestT = 1e9;
+    universes.forEach(function(u){
+      var c = objPos[u.id]; var rad = objRad[u.id];
+      var oc = [ro[0]-c[0], ro[1]-c[1], ro[2]-c[2]];
+      var b = oc[0]*rd[0]+oc[1]*rd[1]+oc[2]*rd[2];
+      var cc = oc[0]*oc[0]+oc[1]*oc[1]+oc[2]*oc[2] - rad*rad;
+      var h = b*b - cc;
+      if (h >= 0){ var t = -b - Math.sqrt(h); if (t>0 && t<bestT){ bestT=t; best=u.id; } }
+    });
+    // The star at the centre of the system is the About page, so it is picked
+    // the same way a planet is, against its own radius.
+    var sc = objPos.sun, srad = objRad.sun;
+    var soc = [ro[0]-sc[0], ro[1]-sc[1], ro[2]-sc[2]];
+    var sb = soc[0]*rd[0]+soc[1]*rd[1]+soc[2]*rd[2];
+    var scc = soc[0]*soc[0]+soc[1]*soc[1]+soc[2]*soc[2] - srad*srad;
+    var sh = sb*sb - scc;
+    if (sh >= 0){
+      var st = -sb - Math.sqrt(sh);
+      if (st > 0 && st < bestT){ if (!flight) flyIntoPlanet("sun"); return; }
+    }
+
+    if (best && !flight) flyIntoPlanet(best);
+  }
+
+  function resizeCanvas(){
+    var r = canvas.getBoundingClientRect();
+    if (r.width < 2 || r.height < 2) return;
+    dpr = Math.min(window.devicePixelRatio||1, 2);
+    canvas.width = Math.max(2, Math.round(r.width*dpr));
+    canvas.height = Math.max(2, Math.round(r.height*dpr));
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  if (window.ResizeObserver){ new ResizeObserver(resizeCanvas).observe(canvas); }
+  else { window.addEventListener("resize", resizeCanvas); }
+  setTimeout(resizeCanvas, 50);
+
+  var t0 = performance.now();
+
+  function project(pos){
+    var rel = [pos[0]-basis.eye[0], pos[1]-basis.eye[1], pos[2]-basis.eye[2]];
+    var c = dot3(rel, basis.fwd);
+    if (c <= 0.25) return null;
+    var a = dot3(rel, basis.right), b = dot3(rel, basis.up);
+    return { c:c, uvx:a*1.4/c, uvy:b*1.4/c };
+  }
+
+  function render(){
+    var r = canvas.getBoundingClientRect();
+    var w = r.width, h = r.height;
+
+    if (flight){
+      var ft = Math.min(1, (performance.now()-flight.t0)/flight.duration);
+      var fte = easeInOutCubic(ft);
+      var eye = [ lerp(flight.startEye[0],flight.endEye[0],fte), lerp(flight.startEye[1],flight.endEye[1],fte), lerp(flight.startEye[2],flight.endEye[2],fte) ];
+      var fv = [ flight.target[0]-eye[0], flight.target[1]-eye[1], flight.target[2]-eye[2] ];
+      var flen2 = Math.hypot(fv[0],fv[1],fv[2]) || 1;
+      var ffwd = [fv[0]/flen2, fv[1]/flen2, fv[2]/flen2];
+      var fworldUp = [0,1,0];
+      var fright = [ ffwd[1]*fworldUp[2]-ffwd[2]*fworldUp[1], ffwd[2]*fworldUp[0]-ffwd[0]*fworldUp[2], ffwd[0]*fworldUp[1]-ffwd[1]*fworldUp[0] ];
+      var frlen = Math.hypot(fright[0],fright[1],fright[2]) || 1;
+      fright = [fright[0]/frlen, fright[1]/frlen, fright[2]/frlen];
+      var fup = [ fright[1]*ffwd[2]-fright[2]*ffwd[1], fright[2]*ffwd[0]-fright[0]*ffwd[2], fright[0]*ffwd[1]-fright[1]*ffwd[0] ];
+      basis = { eye:eye, fwd:ffwd, right:fright, up:fup };
+      if (ft >= 1){ var onDone = flight.onDone; flight = null; if (onDone) onDone(); }
+    }
+
+    if (!focus.classList.contains("open") && w > 2 && h > 2){
+      var time = (performance.now()-t0)/1000;
+
+      ctx.clearRect(0,0,w,h);
+      var bg = ctx.createLinearGradient(0,0,0,h);
+      bg.addColorStop(0, "rgb(14,11,28)"); bg.addColorStop(1, "rgb(8,5,18)");
+      ctx.fillStyle = bg; ctx.fillRect(0,0,w,h);
+
+      // starfield — directions at infinity, so only the camera's rotation moves them
+      stars.forEach(function(s){
+        var c = dot3(s.dir, basis.fwd);
+        if (c <= 0.05) return;
+        var a = dot3(s.dir, basis.right), b = dot3(s.dir, basis.up);
+        var sx = (a*1.4/c)*h + w/2, sy = h/2 - (b*1.4/c)*h;
+        if (sx<-10||sx>w+10||sy<-10||sy>h+10) return;
+        ctx.beginPath(); ctx.arc(sx, sy, s.r, 0, Math.PI*2);
+        ctx.fillStyle = "rgba(255,255,255,"+(s.b*Math.min(1,c*3))+")";
+        ctx.fill();
+      });
+
+      // project sun + planets, painter's-algorithm sort (farthest first)
+      var drawList = [];
+      objIds.forEach(function(id){
+        var p = project(objPos[id]);
+        if (!p) return;
+        var scale = 1.4/p.c;
+        drawList.push({ id:id, sx:p.uvx*h+w/2, sy:h/2-p.uvy*h, ar: Math.max(1.5, objRad[id]*scale*h), depth:p.c });
+      });
+      drawList.sort(function(a,b){ return b.depth - a.depth; });
+
+      drawList.forEach(function(o){
+        if (o.id === "sun"){
+          var pulse = 1 + 0.06*Math.sin(time*2);
+          var ar = o.ar*pulse;
+          ctx.save();
+          ctx.globalAlpha = 0.82;
+          ctx.shadowColor = "rgba(255,255,255,.7)"; ctx.shadowBlur = ar*1.4;
+          var g = ctx.createRadialGradient(o.sx-ar*0.3, o.sy-ar*0.3, 0, o.sx, o.sy, ar);
+          g.addColorStop(0, "rgba(255,255,255,1)"); g.addColorStop(0.55, "rgba(255,252,246,.9)"); g.addColorStop(1, "rgba(255,255,255,.35)");
+          ctx.beginPath(); ctx.arc(o.sx, o.sy, ar, 0, Math.PI*2); ctx.fillStyle = g; ctx.fill();
+          ctx.restore();
+          ctx.font = "600 10px " + '"SF Mono","JetBrains Mono",ui-monospace,monospace';
+          ctx.fillStyle = "rgba(244,239,255,.9)"; ctx.textAlign = "center";
+          ctx.fillText("ABOUT ME", o.sx, o.sy + ar + 16);
+          return;
+        }
+        var u = objUniverse[o.id];
+        if (u.ring){
+          ctx.save();
+          ctx.translate(o.sx, o.sy); ctx.rotate(-0.3); ctx.scale(1, 0.36);
+          ctx.beginPath(); ctx.arc(0,0, o.ar*1.7, 0, Math.PI*2);
+          ctx.strokeStyle = "rgba(244,239,255,.35)"; ctx.lineWidth = 2;
+          ctx.stroke(); ctx.restore();
+        }
+        var col = objCol[o.id], dim = objColDim[o.id];
+        var g2 = ctx.createRadialGradient(o.sx-o.ar*0.32, o.sy-o.ar*0.32, 0, o.sx, o.sy, o.ar);
+        g2.addColorStop(0, "rgb(255,255,255)");
+        g2.addColorStop(0.5, rgbStr(col));
+        g2.addColorStop(1, rgbStr(dim));
+        ctx.beginPath(); ctx.arc(o.sx, o.sy, o.ar, 0, Math.PI*2); ctx.fillStyle = g2; ctx.fill();
+
+        ctx.font = "600 10px "+ '"SF Mono","JetBrains Mono",ui-monospace,monospace';
+        ctx.fillStyle = "rgba(182,169,217,.9)"; ctx.textAlign = "center";
+        ctx.fillText(u.name.toUpperCase(), o.sx, o.sy + o.ar + 14);
+      });
+
+      // moons, drawn on top as small orbiting markers
+      moonDefs.forEach(function(m){
+        var ang = time*m.speed + m.phase;
+        var mx = m.base[0] + Math.cos(ang)*m.radius;
+        var mz = m.base[2] + Math.sin(ang)*m.radius;
+        var p = project([mx, 0.15, mz]);
+        if (!p) return;
+        var sx = p.uvx*h+w/2, sy = h/2-p.uvy*h;
+        ctx.beginPath(); ctx.arc(sx, sy, 3, 0, Math.PI*2);
+        ctx.fillStyle = "#f4efff"; ctx.shadowColor="rgba(255,255,255,.8)"; ctx.shadowBlur=6; ctx.fill(); ctx.shadowBlur=0;
+      });
+    }
+    requestAnimationFrame(render);
+  }
+  requestAnimationFrame(render);
+})();
+</script>
+
+</body>
+</html>

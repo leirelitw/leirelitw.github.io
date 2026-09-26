@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="bim case study by Leire Litwin: designing a social fitness app for coaches, from research and prioritisation through to the design system behind the product.">
+  <title>bim, Social Fitness App — Leire Litwin</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <link rel="stylesheet" href="../css/plugins/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/plugins/fontawesome-all.min.css">
+  <link rel="stylesheet" href="../css/vestiaire.css">
+  <link rel="stylesheet" href="../css/bim.css">
+  <link rel="stylesheet" href="../css/site-nav.css">
+</head>
+<body class="vc-page" data-brand="bim">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="logo" href="../index.html">
+        <img src="../img/logo.jpg" alt="Leire Portfolio Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-nav-toggle="collapse" data-nav-target="navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="icon-bar"><i class="fas fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-nav-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Works</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="../projects/mycarddeck.html">MyCardDeck</a>
+              <a class="dropdown-item" href="../projects/vestiaire-collective.html">Vestiaire Collective</a>
+              <a class="dropdown-item" href="../projects/bim-fitness-app.html">Bim - Fitness App</a>
+              <a class="dropdown-item" href="../projects/saint-gobain.html">St-Gobain AR App</a>
+              <a class="dropdown-item" href="../projects/sodexo.html">Sodexo</a>
+              <a class="dropdown-item" href="../projects/safeland.html">Safeland - Cybersecurity for kids</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+          <li class="nav-item mode-item">
+            <div class="mode-toggle" role="group" aria-label="Portfolio mode">
+              <span class="mode-opt is-on" aria-current="true">Default</span>
+              <a class="mode-opt" href="../universe-select.html">Fun</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <header class="vc-hero">
+      <div class="vc-wrap vc-hero__inner">
+        <div>
+          <h1>Training together, <em>through the screen</em></h1>
+          <p class="vc-hero__intro">bim brought social interaction to fitness by letting people work out together over video call. This is how it turned into a tool coaches could build a business on, and the design system that had to serve both audiences at once.</p>
+        </div>
+        <div class="vc-hero__mark">
+          <img src="../img/bim/logo-white.png" alt="The bim wordmark" width="2048" height="1051" fetchpriority="high">
+        </div>
+      </div>
+    </header>
+
+    <div class="vc-tabbar">
+      <div class="vc-tabbar__inner" role="tablist" aria-label="bim workstreams">
+        <button class="vc-tab" type="button" role="tab" id="tab-case-study" aria-controls="panel-case-study" aria-selected="true">
+          The case study
+        </button>
+        <button class="vc-tab" type="button" role="tab" id="tab-design-system" aria-controls="panel-design-system" aria-selected="false" tabindex="-1">
+          The design system <span class="vc-tab__i" aria-hidden="true">Brand, colour, components</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="vc-panel" id="panel-case-study" role="tabpanel" aria-labelledby="tab-case-study">
+
+    <section class="vc-section vc-paper">
+      <div class="vc-wrap">
+        <h2 class="vc-h2">The challenge</h2>
+        <p class="vc-lead">The pandemic made bim's premise obvious and then took it away again. Daily active users fell, and the business model had to change with them.</p>
+
+        <dl class="vc-facts vc-facts--two reveal">
+          <div><dt>Role</dt><dd>Product designer and product manager</dd></div>
+          <div><dt>Method</dt><dd>Sprints, user-centred design</dd></div>
+          <div class="vc-facts__wide"><dt>Scope</dt><dd>Interviews with coaches, personas, prioritisation with the team, wireframes and flows, the interface, user testing, and the design system</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="vc-section vc-paper">
+      <div class="vc-wrap vc-split">
+        <div>
+          <h2 class="vc-h2">The vision</h2>
+          <p class="vc-body">Today, through the communities, people interact with their friends, coworkers or a coach to chat, exchange, compete and motivate each other.</p>
+          <p class="vc-body">The direction the company wanted next was to sell bim to coaches as a tool: a way to grow their communities and earn from them, by running classes with students and with companies.</p>
+          <p class="vc-body">That changes who the product is for. It has two audiences now, and they do not want the same thing from it.</p>
+        </div>
+        <div class="vc-pull reveal">
+          <p>bim has to stay fun for the people training, and at the same time be competent and professional for the coaches and the companies paying for it.</p>
+          <span>The tension to design against</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="vc-section">
+      <div class="vc-wrap">
+        <h2 class="vc-h2 reveal">The team</h2>
+        <p class="vc-lead reveal">Ten people, working in sprints. One designer, which is why the design system mattered as much as the screens did.</p>
+        <dl class="vc-facts reveal">
+          <div><dt>Building</dt><dd>6 developers and 1 tester</dd></div>
+          <div><dt>Business</dt><dd>The CEO, and 1 business and marketing</dd></div>
+          <div><dt>Design</dt><dd>1 product designer and manager</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="vc-section vc-paper">
+      <div class="vc-wrap">
+        <h2 class="vc-h2 reveal">Research</h2>
+        <p class="vc-lead reveal">The new direction pointed at coaches, and nobody on the team had designed for them before. So we went and asked them.</p>
+        <ol class="vc-flow reveal">
+          <li><b>1</b><strong>Find the coaches</strong><span>Recruiting people who actually teach for a living, not people who go to the gym.</span></li>
+          <li><b>2</b><strong>Interview in pairs</strong><span>Semi-structured interviews run by two people at a time, marketing and design together.</span></li>
+          <li><b>3</b><strong>Personas</strong><span>Needs and pain points, written down so the whole team could argue with the same material.</span></li>
+          <li><b>4</b><strong>Define and prioritise</strong><span>Card sorting on what came out of the interviews, then a scored list.</span></li>
+          <li><b>5</b><strong>Wireframing</strong><span>Flows first, screens second.</span></li>
+        </ol>
+
+        <div class="vc-media">
+          <figure>
+            <img src="../img/bim/personas-1.jpeg" alt="Persona card for Charles, 32, a fitness coach specialised in injuries, with his scenario, motivations, objectives and frustrations" width="2048" height="1152" loading="lazy" decoding="async">
+            <figcaption>Charles teaches mostly one to one, runs his sessions on Zoom and sends his clients the exercises as PDFs.</figcaption>
+          </figure>
+          <figure>
+            <img src="../img/bim/personas-2.jpeg" alt="Persona card for a coach and influencer, 26, with her scenario, motivations, objectives and frustrations" width="2048" height="1152" loading="lazy" decoding="async">
+            <figcaption>A coach who is also an influencer. Face to face classes plus video, and video is where the revenue could grow.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="vc-section vc-paper">
+      <div class="vc-wrap">
+        <h2 class="vc-h2 reveal">What to build first</h2>
+        <p class="vc-lead reveal">Card sorting on the key points from the interviews. Each person proposed functionalities against a need or a pain point, we discussed what was missing, then everyone prioritised individually before we compared.</p>
+        <div class="vc-scroller reveal">
+          <table class="vc-table">
+            <caption>What came out of it, scored by priority and by what each side would have to spend to build it.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Functionality</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Technical effort</th>
+                <th scope="col">Design effort</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Create a coach account, or switch to coach</th><td class="vc-num">1</td><td>Low</td><td>Low</td></tr>
+              <tr><th scope="row">Improvement of communities</th><td class="vc-num">2</td><td>Low</td><td>Medium</td></tr>
+              <tr><th scope="row">Video recording</th><td class="vc-num">2</td><td>High</td><td>High</td></tr>
+              <tr><th scope="row">Free session</th><td class="vc-num">3</td><td>Low</td><td>Medium</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="vc-body reveal" style="margin-top:44px">Wireframing started from the flows rather than the screens, and every flow went through the same three questions.</p>
+        <ul class="vc-findings reveal">
+          <li>
+            <strong>Are there any missing paths?</strong>
+            <p>The ones nobody drew because nobody had hit them yet.</p>
+          </li>
+          <li>
+            <strong>Are there constraints in this flow?</strong>
+            <p>Technical or business, asked while the flow was still cheap to change.</p>
+          </li>
+          <li>
+            <strong>Can the path be improved?</strong>
+            <p>Fewer steps, fewer decisions, less waiting.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="vc-section">
+      <div class="vc-wrap">
+        <h2 class="vc-h2 reveal">The design solution</h2>
+        <p class="vc-lead reveal">Five pieces of work, each one at a different point in the pipeline. This is where they stood.</p>
+        <ul class="vc-changes reveal">
+          <li>
+            <strong>Onboarding</strong>
+            <p>Completed and live.</p>
+          </li>
+          <li>
+            <strong>Improvement of communities</strong>
+            <p>Completed and live.</p>
+          </li>
+          <li>
+            <strong>Video recording and uploading</strong>
+            <p>In the development sprint.</p>
+          </li>
+          <li>
+            <strong>Free session</strong>
+            <p>In the design sprint.</p>
+          </li>
+          <li>
+            <strong>Subscription, through Purchasely</strong>
+            <p>In validation.</p>
+          </li>
+        </ul>
+
+        <div class="vc-compare__grid vc-compare__grid--mobile" style="margin-top:52px">
+          <figure class="vc-figure reveal">
+            <div class="vc-phone">
+              <img src="../img/bim/bim-onboarding.jpeg" alt="The bim onboarding screen: personalised programs, with workout cards and a login button" width="500" height="1080" loading="lazy" decoding="async">
+            </div>
+            <figcaption>
+              <strong>Onboarding</strong>
+              <span>Shortened after testing, with some of the fields made optional.</span>
+            </figcaption>
+          </figure>
+          <figure class="vc-figure reveal">
+            <div class="vc-phone">
+              <img src="../img/bim/bim-community.jpeg" alt="The bim communities screen: my gyms and explore, popular groups to join, and a list of more groups" width="500" height="1080" loading="lazy" decoding="async">
+            </div>
+            <figcaption>
+              <strong>Communities</strong>
+              <span>Groups to find, join and train with, whether they come from a gym, a coach or a set of friends.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="vc-section vc-paper">
+      <div class="vc-wrap">
+        <h2 class="vc-h2 reveal">A session, running</h2>
+        <p class="vc-lead reveal">The exercise, the timer and the other people in the room, on a phone and on a tablet at the same time.</p>
+        <figure class="vc-figure reveal" style="margin-top:44px">
+          <img src="../img/bim/mockup-training.png" alt="A phone and a tablet running the same bim session: the exercise video, a plank timer, and the other participants on video call" width="2048" height="1483" loading="lazy" decoding="async">
+        </figure>
+        <div class="vc-media vc-media--stack">
+          <figure>
+            <video src="../img/bim/demo-bim.mp4#t=0.1" controls preload="metadata" playsinline width="1920" height="1080"></video>
+            <figcaption>A walkthrough of the app.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="vc-section">
+      <div class="vc-wrap">
+        <h2 class="vc-h2 reveal">User testing</h2>
+        <p class="vc-lead reveal">Twice, on either side of the build. Task analysis before it existed, and numbers once it did.</p>
+        <ol class="vc-flow reveal">
+          <li><b>1</b><strong>Before development</strong><span>Task analysis with friends, family and the partner coaches.</span></li>
+          <li><b>2</b><strong>After development</strong><span>Google Analytics, Amplitude and satisfaction surveys.</span></li>
+        </ol>
+        <p class="vc-sub reveal" style="margin-top:56px">What came back</p>
+        <ul class="vc-changes reveal">
+          <li>
+            <strong>Onboarding was too long</strong>
+            <p>We cut it down and made some of the fields optional.</p>
+          </li>
+          <li>
+            <strong>Videos sat outside the communities</strong>
+            <p>At the beginning they were not inside the group they belonged to, which is where people looked for them.</p>
+          </li>
+          <li>
+            <strong>Cameras go off</strong>
+            <p>In most live classes people turn their own camera off, which is worth knowing before designing a screen built around faces.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    </div><!-- /panel-case-study -->
+
+    <div class="vc-panel" id="panel-design-system" role="tabpanel" aria-labelledby="tab-design-system" hidden>
+
+    <section class="vc-section vc-paper">
+      <div class="vc-wrap">
+        <h2 class="vc-h2 reveal">The design system</h2>
+        <p class="vc-lead reveal">One designer, six developers and a product with two audiences. The system had to hold the visual identity together and be specific enough to hand over, in light mode and in dark mode, without being rewritten every sprint.</p>
+        <p class="vc-note reveal">Written as a living document. The parts that were still being decided are marked as such here, the same way they were marked in it.</p>
+      </div>
+    </section>
+
+    <section class="vc-section vc-paper">
+      <div class="vc-wrap">
+        <h2 class="vc-h2 reveal">Logo</h2>
+        <p class="vc-lead reveal">The mark is meant to express energy, movement and power. Three rules cover everywhere it lands.</p>
+        <div class="bim-logos reveal">
+          <figure>
+            <div class="bim-tile bim-tile--light bim-tile--logo">
+              <img src="../img/bim/logo.png" alt="The bim logo in its dark version: a blue lightning bolt forming the b, with im in charcoal" width="2048" height="1051" loading="lazy" decoding="async">
+            </div>
+            <figcaption>On a light background.</figcaption>
+          </figure>
+          <figure>
+            <div class="bim-tile bim-tile--logo">
+              <img src="../img/bim/logo-white.png" alt="The bim logo in white, on a dark background" width="2048" height="1051" loading="lazy" decoding="async">
+            </div>
+            <figcaption>On a dark background.</figcaption>
+          </figure>
+        </div>
+        <ul class="vc-changes reveal">
+          <li>
+            <strong>Light or dark ground</strong>
+            <p>Use the version that corresponds to it.</p>
+          </li>
+          <li>
+            <strong>Colourful ground</strong>
+            <p>Use the logo fully in white.</p>
+          </li>
+          <li>
+            <strong>On top of an image</strong>
+            <p>Use the white logo, and darken the area of the image it sits on.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="vc-section vc-paper">
+      <div class="vc-wrap">
+        <h2 class="vc-h2 reveal">Colour, mode by mode</h2>
+        <p class="vc-lead reveal">The app has a light mode and a dark mode, so the palette splits three ways: colours only for light, colours only for dark, and colours shared by both. Dark mode is built from white at a given opacity rather than from separate greys, which is why its swatches are shown over the dark card they sit on.</p>
+
+        <div class="bim-group reveal">
+          <p class="vc-sub">Light mode</p>
+          <p class="vc-body">Text, backgrounds and cards.</p>
+          <ul class="bim-swatches">
+            <li><span class="bim-swatch__chip" style="background:#2E333E"></span><strong>Title</strong><span>#2E333E</span></li>
+            <li><span class="bim-swatch__chip" style="background:#80848F"></span><strong>Body text</strong><span>#80848F</span></li>
+            <li><span class="bim-swatch__chip" style="background:#AAADB4"></span><strong>Placeholder</strong><span>#AAADB4</span></li>
+            <li><span class="bim-swatch__chip" style="background:#C3CBD7"></span><strong>Medium grey</strong><span>#C3CBD7</span></li>
+            <li><span class="bim-swatch__chip" style="background:#F5F6F8"></span><strong>Light elements</strong><span>#F5F6F8</span></li>
+            <li><span class="bim-swatch__chip" style="background:#FFFFFF"></span><strong>Light card</strong><span>#FFFFFF</span></li>
+            <li><span class="bim-swatch__chip" style="background:#F5F6F8"></span><strong>Light background</strong><span>#F5F6F8</span></li>
+            <li><span class="bim-swatch__chip" style="background:#FFFFFF"></span><strong>White background</strong><span>#FFFFFF</span></li>
+          </ul>
+        </div>
+
+        <div class="bim-group reveal">
+          <p class="vc-sub">Dark mode</p>
+          <p class="vc-body">The same roles, built from white at four opacities over two greys.</p>
+          <ul class="bim-swatches">
+            <li><span class="bim-swatch__chip" style="background:linear-gradient(#FFFFFF,#FFFFFF) #212121"></span><strong>Title</strong><span>#FFFFFF</span></li>
+            <li><span class="bim-swatch__chip" style="background:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.7)) #212121"></span><strong>Body text</strong><span>#FFFFFF<b>70% opacity</b></span></li>
+            <li><span class="bim-swatch__chip" style="background:linear-gradient(rgba(255,255,255,.5),rgba(255,255,255,.5)) #212121"></span><strong>Placeholder</strong><span>#FFFFFF<b>50% opacity</b></span></li>
+            <li><span class="bim-swatch__chip" style="background:linear-gradient(rgba(255,255,255,.4),rgba(255,255,255,.4)) #212121"></span><strong>Medium grey</strong><span>#FFFFFF<b>40% opacity</b></span></li>
+            <li><span class="bim-swatch__chip" style="background:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1)) #212121"></span><strong>Light elements</strong><span>#FFFFFF<b>10% opacity</b></span></li>
+            <li><span class="bim-swatch__chip" style="background:#303030"></span><strong>Dark card</strong><span>#303030</span></li>
+            <li><span class="bim-swatch__chip" style="background:#212121"></span><strong>Dark background</strong><span>#212121</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="vc-section">
+      <div class="vc-wrap">
+        <h2 class="vc-h2 reveal">Colour, shared by both</h2>
+        <p class="vc-lead reveal">The primary blue carries the main elements. The gradients belong to badges and challenges, and they are the part of the palette that makes the product feel like a game rather than a tool.</p>
+
+        <div class="bim-group reveal">
+          <p class="vc-sub">Primary</p>
+          <ul class="bim-swatches">
+            <li><span class="bim-swatch__chip" style="background:#0E99FF"></span><strong>Primary</strong><span>#0E99FF</span></li>
+            <li><span class="bim-swatch__chip" style="background:linear-gradient(135deg,#0E99FF,#6CBFFC)"></span><strong>Primary gradient</strong><span>#0E99FF<b>#6CBFFC</b></span></li>
+          </ul>
+        </div>
+
+        <div class="bim-group reveal">
+          <p class="vc-sub">Gradients</p>
+          <p class="vc-body">Badges and challenges, the same in both modes.</p>
+          <ul class="bim-swatches">
+            <li><span class="bim-swatch__chip" style="background:linear-gradient(135deg,#5162FC,#9A4BFE)"></span><strong>Purple</strong><span>#5162FC<b>#9A4BFE</b></span></li>
+            <li><span class="bim-swatch__chip" style="background:linear-gradient(135deg,#B47CFB,#FF6565)"></span><strong>Pink</strong><span>#B47CFB<b>#FF6565</b></span></li>
+            <li><span class="bim-swatch__chip" style="background:linear-gradient(135deg,#FCB851,#FE4B84)"></span><strong>Red</strong><span>#FCB851<b>#FE4B84</b></span></li>
+            <li><span class="bim-swatch__chip" style="background:linear-gradient(135deg,#FAFF1E,#FF8A1F)"></span><strong>Yellow</strong><span>#FAFF1E<b>#FF8A1F</b></span></li>
+            <li><span class="bim-swatch__chip" style="background:linear-gradient(135deg,#EFF23B,#54EF5A)"></span><strong>Lime</strong><span>#EFF23B<b>#54EF5A</b></span></li>
+            <li><span class="bim-swatch__chip" style="background:linear-gradient(135deg,#4FE1EB,#1FCE70)"></span><strong>Green</strong><span>#4FE1EB<b>#1FCE70</b></span></li>
+            <li><span class="bim-swatch__chip" style="background:linear-gradient(135deg,#2BE3FF,#0287FD)"></span><strong>Light blue</strong><span>#2BE3FF<b>#0287FD</b></span></li>
+            <li><span class="bim-swatch__chip" style="background:linear-gradient(135deg,#498EF7,#141D6F)"></span><strong>Dark blue</strong><span>#498EF7<b>#141D6F</b></span></li>
+          </ul>
+        </div>
+
+        <div class="bim-group reveal">
+          <p class="vc-sub">States</p>
+          <p class="vc-body">Warnings, success, notifications and ratings.</p>
+          <ul class="bim-swatches">
+            <li><span class="bim-swatch__chip" style="background:#E85353"></span><strong>Error</strong><span>#E85353</span></li>
+            <li><span class="bim-swatch__chip" style="background:#FF6053"></span><strong>Notifications</strong><span>#FF6053</span></li>
+            <li><span class="bim-swatch__chip" style="background:#FFC700"></span><strong>Ratings</strong><span>#FFC700</span></li>
+            <li><span class="bim-swatch__chip" style="background:#61B779"></span><strong>Success</strong><span>#61B779</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="vc-section vc-paper">
+      <div class="vc-wrap">
+        <h2 class="vc-h2 reveal">Typography</h2>
+        <p class="vc-lead reveal">bim had just moved off Open Sans and onto Poppins when this was written, and the decision was not settled. Poppins, Noto Sans and Maven Pro were all still in play, so the type scale was left open rather than written down and immediately contradicted.</p>
+        <p class="vc-note reveal">This is the one part of the system that stayed unfinished, and it is in the document as an open question rather than as a rule.</p>
+      </div>
+    </section>
+
+    <section class="vc-section">
+      <div class="vc-wrap">
+        <h2 class="vc-h2 reveal">Iconography</h2>
+        <p class="vc-lead reveal">A linear set, drawn to be easier to tell apart at a glance and to make the app read cleaner and more current. Three families: utility, video call, and fitness.</p>
+        <div class="bim-tile reveal" style="margin-top:38px">
+          <img src="../img/bim/design-system-images/p13-icons-1.png" alt="The bim icon set: linear icons for search, profile, notifications, video call controls, timers, dumbbells and other fitness actions" width="1632" height="608" loading="lazy" decoding="async">
+        </div>
+        <p class="vc-body reveal" style="margin-top:26px">They were drawn ahead of the integration, for the developer to swap into the app once the set was complete.</p>
+      </div>
+    </section>
+
+    <section class="vc-section vc-paper">
+      <div class="vc-wrap">
+        <h2 class="vc-h2 reveal">Components</h2>
+        <p class="vc-lead reveal">Buttons and cards, documented as specimens so they could be picked up from the file rather than measured off a screen.</p>
+
+        <div class="bim-group reveal">
+          <p class="vc-sub">Buttons</p>
+          <div class="vc-gallery bim-specs">
+            <figure style="--w:180px">
+              <img src="../img/bim/design-system-images/p14-buttons-1.png" alt="Four versions of the create new button: white card, solid blue, dark with a white icon, and dark with a blue icon" width="360" height="1064" loading="lazy" decoding="async">
+              <figcaption><strong>Create new</strong><span>The same action across the four grounds it lands on.</span></figcaption>
+            </figure>
+            <figure style="--w:509px">
+              <img src="../img/bim/design-system-images/p14-buttons-2.png" alt="Button states: solid blue, disabled grey, and outlined, each with and without a leading icon" width="1018" height="456" loading="lazy" decoding="async">
+              <figcaption><strong>States</strong><span>Primary, disabled and outlined, with and without a leading icon.</span></figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="bim-group reveal">
+          <p class="vc-sub">Cards</p>
+          <div class="vc-gallery bim-specs">
+            <figure style="--w:327px">
+              <img src="../img/bim/design-system-images/p15-cards-communities-1.png" alt="A community card: cover photo, the group logo, its name and member count, and a join button" width="654" height="448" loading="lazy" decoding="async">
+              <figcaption><strong>Community</strong><span>Cover, logo, member count and the one action that matters.</span></figcaption>
+            </figure>
+            <figure style="--w:343px">
+              <img src="../img/bim/design-system-images/p16-cards-sessions-1.png" alt="A live session banner in primary blue, with the session name, an ongoing label, the participants and a join call button" width="686" height="278" loading="lazy" decoding="async">
+              <figcaption><strong>Session, ongoing</strong><span>The only card that takes the full primary blue, because it is the only one that is time critical.</span></figcaption>
+            </figure>
+            <figure style="--w:375px">
+              <img src="../img/bim/design-system-images/p16-cards-sessions-3.png" alt="A session card for today, with the time, the participants and a start call button" width="750" height="508" loading="lazy" decoding="async">
+              <figcaption><strong>Session, today</strong><span>Same anatomy, calmer, with the call still one tap away.</span></figcaption>
+            </figure>
+            <figure style="--w:375px">
+              <img src="../img/bim/design-system-images/p16-cards-sessions-2.png" alt="A scheduled session card with the date and time in blue, the participants, and an overflow menu" width="750" height="440" loading="lazy" decoding="async">
+              <figcaption><strong>Session, scheduled</strong><span>No call button yet, so the date carries the emphasis instead.</span></figcaption>
+            </figure>
+            <figure style="--w:327px">
+              <img src="../img/bim/design-system-images/p17-cards-workouts-4.png" alt="A featured workout card: a full bleed photo, the label today's workout, the workout name and its level and duration" width="654" height="654" loading="lazy" decoding="async">
+              <figcaption><strong>Workout, featured</strong><span>Photography carries it, the metadata sits in the band underneath.</span></figcaption>
+            </figure>
+            <figure style="--w:200px">
+              <img src="../img/bim/design-system-images/p17-cards-workouts-2.png" alt="A ranked workout card with a large numeral, a favourite control, the workout name, its level and duration" width="400" height="400" loading="lazy" decoding="async">
+              <figcaption><strong>Workout, ranked</strong><span>For ordered lists, with the position set over the image.</span></figcaption>
+            </figure>
+            <figure style="--w:327px">
+              <img src="../img/bim/design-system-images/p17-cards-workouts-3.png" alt="A compact workout row: thumbnail, workout name, level and duration, and a favourite control" width="654" height="200" loading="lazy" decoding="async">
+              <figcaption><strong>Workout, in a list</strong><span>The compact version, for when the photo is no longer the point.</span></figcaption>
+            </figure>
+            <figure style="--w:327px">
+              <img src="../img/bim/design-system-images/p17-cards-workouts-1.png" alt="A blue call to action banner: create your own routine, with over 160 exercises to build from" width="654" height="210" loading="lazy" decoding="async">
+              <figcaption><strong>Create your own</strong><span>The prompt to build a routine, placed in among the ones we made.</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vc-section">
+      <div class="vc-wrap">
+        <h2 class="vc-h2 reveal">Imagery</h2>
+        <p class="vc-lead reveal">Two rules, one per kind of image, because the two do completely different jobs.</p>
+
+        <div class="bim-group reveal">
+          <p class="vc-sub">Workouts</p>
+          <p class="vc-body">Colourful, someone actually doing the sport, and high quality. Never blurred.</p>
+          <div class="vc-gallery">
+            <figure>
+              <img src="../img/bim/design-system-images/p18-images-workouts-1.jpeg" alt="Workout photography: a person mid exercise in a bright room" width="1080" height="720" loading="lazy" decoding="async">
+            </figure>
+            <figure>
+              <img src="../img/bim/design-system-images/p18-images-workouts-2.jpeg" alt="Workout photography: a person training outdoors" width="750" height="500" loading="lazy" decoding="async">
+            </figure>
+            <figure>
+              <img src="../img/bim/design-system-images/p18-images-workouts-3.jpeg" alt="Workout photography: a person stretching" width="1250" height="833" loading="lazy" decoding="async">
+            </figure>
+          </div>
+        </div>
+
+        <div class="bim-group reveal">
+          <p class="vc-sub">Exercises</p>
+          <p class="vc-body">Short mp4 clips played on a loop. The background has to be white, so the set stays consistent and the person doing the exercise is the only thing you look at.</p>
+          <div class="vc-gallery">
+            <figure>
+              <img src="../img/bim/design-system-images/p19-images-exercises-1.jpeg" alt="A frame from an exercise clip: a kettlebell lift, shot against a white background" width="1080" height="1080" loading="lazy" decoding="async">
+            </figure>
+            <figure>
+              <img src="../img/bim/design-system-images/p19-images-exercises-2.jpeg" alt="A frame from a second exercise clip, shot against the same white background" width="1080" height="1080" loading="lazy" decoding="async">
+            </figure>
+            <figure>
+              <img src="../img/bim/design-system-images/p19-images-exercises-3.jpeg" alt="A frame from a third exercise clip, shot against the same white background" width="1080" height="1080" loading="lazy" decoding="async">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </div><!-- /panel-design-system -->
+
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* Reveals. Run per panel, because a hidden panel's items never
+         intersect and would otherwise stay invisible once it is shown. */
+      var io = null;
+      if ('IntersectionObserver' in window && !reduce) {
+        io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px' });
+      }
+      function observeReveals(root) {
+        var items = (root || document).querySelectorAll('.reveal:not(.is-visible)');
+        Array.prototype.forEach.call(items, function (el) {
+          if (io) io.observe(el); else el.classList.add('is-visible');
+        });
+      }
+
+      /* Tabs. The case study and the design system are two separate reads of
+         the same project, so they get a panel each rather than one long page. */
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.vc-tab'));
+      var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+      var SLUGS = { 'tab-case-study': 'case-study', 'tab-design-system': 'design-system' };
+
+      function selectTab(index, opts) {
+        opts = opts || {};
+        tabs.forEach(function (tab, i) {
+          var selected = i === index;
+          tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+          tab.tabIndex = selected ? 0 : -1;
+          if (!panels[i]) return;
+          panels[i].hidden = !selected;
+          if (!selected) {
+            Array.prototype.forEach.call(panels[i].querySelectorAll('video'), function (v) {
+              if (!v.paused) v.pause();
+            });
+          }
+        });
+        if (opts.focus) tabs[index].focus();
+        if (opts.updateHash !== false) {
+          var slug = SLUGS[tabs[index].id];
+          if (slug && window.history && history.replaceState) history.replaceState(null, '', '#' + slug);
+        }
+        observeReveals(panels[index]);
+        if (opts.scroll) {
+          var bar = document.querySelector('.vc-tabbar');
+          if (bar && bar.getBoundingClientRect().top < 0) {
+            bar.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+          }
+        }
+      }
+
+      tabs.forEach(function (tab, i) {
+        tab.addEventListener('click', function () { selectTab(i, { scroll: true }); });
+        tab.addEventListener('keydown', function (e) {
+          var next = null;
+          if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+          else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+          else if (e.key === 'Home') next = 0;
+          else if (e.key === 'End') next = tabs.length - 1;
+          if (next === null) return;
+          e.preventDefault();
+          selectTab(next, { focus: true });
+        });
+      });
+
+      /* Deep links: #case-study and #design-system. */
+      function applyHash() {
+        var slug = (window.location.hash || '').replace('#', '');
+        if (!slug) return;
+        for (var i = 0; i < tabs.length; i++) {
+          if (SLUGS[tabs[i].id] === slug) { selectTab(i, { updateHash: false }); return; }
+        }
+      }
+      applyHash();
+      window.addEventListener('hashchange', applyHash);
+      observeReveals(document.querySelector('.vc-panel:not([hidden])'));
+      observeReveals(document.querySelector('.vc-hero'));
+    }());
+  </script>
+  <script src="../js/site-nav.js"></script>
+</body>
+</html>
