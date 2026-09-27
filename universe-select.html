@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The same portfolio as a galaxy. Drag to look around, and open a planet to read the case studies inside it.">
+  <meta name="author" content="Leire Litwin">
+  <link rel="canonical" href="https://leirelitwin.com/universe-select.html">
+  <meta name="theme-color" content="#0b0c10">
+
+  <!-- How the link looks when it is shared -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Leire Litwin">
+  <meta property="og:title" content="Universe Select — Leire Litwin">
+  <meta property="og:description" content="The same portfolio as a galaxy. Drag to look around, and open a planet to read the case studies inside it.">
+  <meta property="og:url" content="https://leirelitwin.com/universe-select.html">
+  <meta property="og:image" content="https://leirelitwin.com/img/images/mycarddeck.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Universe Select — Leire Litwin">
+  <meta name="twitter:description" content="The same portfolio as a galaxy. Drag to look around, and open a planet to read the case studies inside it.">
+  <meta name="twitter:image" content="https://leirelitwin.com/img/images/mycarddeck.jpg">
 <title>Leire Litwin — Universe Select</title>
 <link rel="shortcut icon" href="img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap">
 </head>
 <body>
 <style>
@@ -19,9 +38,13 @@
     --glass-bg: rgba(255,255,255,.07);
     --glass-border: rgba(255,255,255,.18);
     --glass-highlight: rgba(255,255,255,.32);
-    --font-display: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
-    --font-body: var(--font-display);
-    --font-hud: var(--font-display);
+    /* The same three families as default mode, in the same roles: Space
+       Grotesk for display, DM Sans for running text, Poppins for the small
+       uppercase chrome. Fun mode was on the system font, which is what made it
+       read as a different site rather than another view of this one. */
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-hud: 'Poppins', sans-serif;
     color-scheme: dark;
   }
   *{ box-sizing:border-box; }
@@ -60,14 +83,14 @@
     pointer-events:none; }
   .ui-top > *{ pointer-events:auto; }
   .brand-chip{ padding:9px 16px; }
-  .brand-chip .eyebrow{ margin:0; font-family:var(--font-hud); font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-dim); }
+  .brand-chip .eyebrow{ margin:0; font-family:var(--font-hud); font-size:14px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-dim); }
   .brand-chip .title-mini{
-    margin:2px 0 0; font-family:var(--font-display); font-weight:800; font-size:13.5px;
+    margin:2px 0 0; font-family:var(--font-display); font-weight:600; font-size:15px;
     background: linear-gradient(90deg, var(--coral), var(--sun) 55%, var(--lilac));
     -webkit-background-clip:text; background-clip:text; color:transparent;
   }
   .mode-toggle{ display:inline-flex; padding:4px; border-radius:999px; }
-  .mode-opt{ padding:7px 16px; border-radius:999px; font-family:var(--font-hud); font-size:11.5px; font-weight:600;
+  .mode-opt{ padding:7px 16px; border-radius:999px; font-family:var(--font-hud); font-size:14px; font-weight:500;
     letter-spacing:.03em; color:var(--ink-dim); text-decoration:none; white-space:nowrap;
     transition: color .2s ease, background-color .2s ease; }
   a.mode-opt:hover{ color:var(--ink); background:rgba(255,255,255,.12); }
@@ -85,13 +108,13 @@
   .info-btn{ width:40px; height:40px; border-radius:50%; font-size:15px; display:flex; align-items:center; justify-content:center; }
   .note-card{
     position:absolute; bottom:64px; left:0; width:min(320px, 80vw); padding:16px 18px;
-    font-size:12.5px; line-height:1.55; color:var(--ink-dim);
+    font-size:14px; line-height:1.6; color:var(--ink-dim);
     opacity:0; transform:translateY(8px); pointer-events:none; transition: opacity .18s ease, transform .18s ease;
   }
   .note-card.open{ opacity:1; transform:none; pointer-events:auto; }
   .note-card b{ color:var(--ink); }
   .note-card p{ margin:0; }
-  .reset-btn{ padding:11px 18px; font-size:11.5px; letter-spacing:.03em; border-radius:16px; display:flex; align-items:center; gap:8px; }
+  .reset-btn{ padding:11px 18px; font-size:14px; letter-spacing:.03em; border-radius:16px; display:flex; align-items:center; gap:8px; }
   .reset-btn:hover{ color:var(--ink); }
   .reset-btn .reset-ico{ font-size:20px; line-height:1; margin-top:-1px; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
   .reset-btn:hover .reset-ico{ transform: rotate(-120deg); }
@@ -103,9 +126,15 @@
   /* A rocket while the pointer is over a planet. Only where there is a pointer
      to change: a touch screen has no hover. The planets are painted on the
      canvas, so no :hover rule can see them and this is driven by the same ray
-     cast the click uses. The hotspot is the nose of the rocket, at 16 2. */
+     cast the click uses. */
   @media (hover: hover) and (pointer: fine) {
-    #glCanvas.over-planet{ cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNMTYgMi4yYzMuMiAzLjUgNC45IDcuNiA0LjkgMTIuMnY0LjloLTkuOHYtNC45QzExLjEgOS44IDEyLjggNS43IDE2IDIuMnoiIGZpbGw9IiNmNGVmZmYiIHN0cm9rZT0iIzBhMDcxNSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48Y2lyY2xlIGN4PSIxNiIgY3k9IjExLjIiIHI9IjIuNiIgZmlsbD0iIzRmOGNmZiIgc3Ryb2tlPSIjMGEwNzE1IiBzdHJva2Utd2lkdGg9IjEuMSIvPjxwYXRoIGQ9Ik0xMS4xIDE1LjYgNi42IDIzLjJoNC41eiIgZmlsbD0iI2ZmNmY2ZiIgc3Ryb2tlPSIjMGEwNzE1IiBzdHJva2Utd2lkdGg9IjEuMSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0yMC45IDE1LjYgMjUuNCAyMy4yaC00LjV6IiBmaWxsPSIjZmY2ZjZmIiBzdHJva2U9IiMwYTA3MTUiIHN0cm9rZS13aWR0aD0iMS4xIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTEzLjMgMTkuM2g1LjRMMTYgMjguNHoiIGZpbGw9IiNmZmQxNjYiIHN0cm9rZT0iIzBhMDcxNSIgc3Ryb2tlLXdpZHRoPSIxLjEiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=") 16 2, pointer; }
+    /* The 48px copy: a cursor is sized in CSS pixels, so the 64 and 96 would
+       render at 64 and 96 across and stop reading as a pointer. image-set,
+       which would let a retina screen take the 96, is supported for
+       background-image but not for cursor, so there is nothing to gain by
+       naming the larger files here. 39 6 is the nose, measured off the
+       artwork rather than guessed. */
+    #glCanvas.over-planet{ cursor: url("img/cursor-rocket/icons8-rocket-48.png") 39 6, pointer; }
     #glCanvas.over-planet.grabbing{ cursor:grabbing; }
   }
 
@@ -124,8 +153,8 @@
     padding:clamp(28px,7vh,56px) 24px 0; pointer-events:none;
   }
   .focus-bigtitle span{
-    font-family:var(--font-display); font-weight:800; font-size:clamp(40px, 9vw, 80px);
-    letter-spacing:-0.03em; line-height:.95; text-align:center; text-wrap:balance;
+    font-family:var(--font-display); font-weight:600; font-size:clamp(40px, 9vw, 80px);
+    letter-spacing:-.05em; line-height:.95; text-align:center; text-wrap:balance;
     color:rgba(255,255,255,.09);
   }
 
@@ -135,7 +164,7 @@
   }
   .focus-orb-wrap{ position:relative; width:64px; height:64px; flex:none; }
   .focus-orb{ position:absolute; inset:0; border-radius:50%; box-shadow:0 0 40px 8px rgba(0,0,0,.35); }
-  .focus-blurb{ font-size:13.5px; font-weight:400; color:#DDDDDD; margin:0; max-width:380px; text-align:center; line-height:1.5; }
+  .focus-blurb{ font-size:16px; font-weight:400; color:#DDDDDD; margin:0; max-width:380px; text-align:center; line-height:1.5; }
 
   /* ---------- the one to three case studies inside a planet ---------- */
   .image-row{ display:flex; flex-wrap:wrap; justify-content:center; align-items:stretch; gap:22px; max-width:min(1000px,94vw); margin-top:8px; }
@@ -171,10 +200,10 @@
   }
 
   .project-card__body{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 6px 5px; }
-  .project-card__title{ font-family:var(--font-display); font-weight:600; font-size:13.5px; letter-spacing:-.01em; line-height:1.3; }
+  .project-card__title{ font-family:var(--font-display); font-weight:600; font-size:15px; letter-spacing:-.025em; line-height:1.3; }
   .project-card__cue{
     flex:none; display:grid; place-items:center; width:28px; height:28px; border-radius:50%;
-    border:1px solid rgba(255,255,255,.18); font-size:12px; line-height:1; color:var(--ink-dim);
+    border:1px solid rgba(255,255,255,.18); font-size:14px; line-height:1; color:var(--ink-dim);
     transition: transform .3s ease, color .3s ease, background-color .3s ease, border-color .3s ease;
   }
 
@@ -194,7 +223,7 @@
   }
   .project-card:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
   .back-btn{
-    font-family:var(--font-display); font-weight:600; font-size:13px; color:var(--ink);
+    font-family:var(--font-display); font-weight:500; font-size:15px; color:var(--ink);
     display:flex; align-items:center; gap:8px; border:none; padding:12px 22px 12px 18px; border-radius:24px;
     cursor:pointer; margin-top:6px; transition: transform .15s ease, background .15s ease;
   }
@@ -205,11 +234,11 @@
   .modal-overlay.open{ opacity:1; pointer-events:auto; }
   .modal-card{ padding:24px; max-width:360px; width:100%; transform:scale(.94) translateY(8px); transition: transform .18s ease; }
   .modal-overlay.open .modal-card{ transform:none; }
-  .modal-card h3{ font-family:var(--font-display); margin:0 0 8px; font-size:18px; }
-  .modal-card p{ margin:0 0 14px; font-size:13.5px; color:var(--ink-dim); line-height:1.5; }
+  .modal-card h3{ font-family:var(--font-display); margin:0 0 8px; font-size:20px; font-weight:500; letter-spacing:-.03em; }
+  .modal-card p{ margin:0 0 14px; font-size:16px; color:var(--ink-dim); line-height:1.5; }
   .modal-tags{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
-  .modal-tags span{ font-family:var(--font-hud); font-size:9.5px; background:rgba(255,255,255,.1); padding:4px 8px; border-radius:6px; text-transform:uppercase; letter-spacing:.05em; }
-  .modal-close{ font-family:var(--font-hud); font-size:11px; background:var(--seafoam-dim); color:#fff; border:none; padding:8px 14px; border-radius:8px; cursor:pointer; }
+  .modal-tags span{ font-family:var(--font-hud); font-size:14px; background:rgba(255,255,255,.1); padding:4px 8px; border-radius:6px; text-transform:uppercase; letter-spacing:.05em; }
+  .modal-close{ font-family:var(--font-hud); font-size:14px; background:var(--seafoam-dim); color:#fff; border:none; padding:8px 14px; border-radius:8px; cursor:pointer; }
 
   @media (prefers-reduced-motion: reduce){ * { animation-duration:.001ms !important; animation-iteration-count:1 !important; } }
   @media (max-width:560px){ .ui-top{ flex-direction:column; align-items:stretch; } }
@@ -220,7 +249,7 @@
   <div class="ui-top">
     <div class="brand-chip glass">
       <p class="eyebrow">Leire Litwin</p>
-      <p class="title-mini">Universe Select</p>
+      <p class="title-mini">Universes</p>
     </div>
     <div class="mode-toggle glass" role="group" aria-label="Portfolio mode">
       <a class="mode-opt" href="index.html">Default</a>
@@ -319,6 +348,20 @@
     flyOutToGalaxy();
   }
   document.getElementById("backBtn").addEventListener("click", closeFocus);
+
+  // Inside a planet, a click on a case study opens it and a click anywhere
+  // else goes back to the galaxy. The panel is mostly empty space, so that
+  // empty space is the way out, the same as tapping outside a sheet.
+  focus.addEventListener("click", function(e){
+    // The card is a link. Let it navigate.
+    if (e.target.closest(".project-card")) return;
+    // Back to galaxy has its own handler; do not run this one as well.
+    if (e.target.closest(".back-btn")) return;
+    // A click that ends a text selection is not a click on the backdrop.
+    var sel = window.getSelection();
+    if (sel && !sel.isCollapsed) return;
+    closeFocus();
+  });
 
   // ---------------- PROJECT IMAGES (side by side, hover to animate) ----------------
   var imageRow = document.getElementById("imageRow");
@@ -652,9 +695,11 @@
           g.addColorStop(0, "rgba(255,255,255,1)"); g.addColorStop(0.55, "rgba(255,252,246,.9)"); g.addColorStop(1, "rgba(255,255,255,.35)");
           ctx.beginPath(); ctx.arc(o.sx, o.sy, ar, 0, Math.PI*2); ctx.fillStyle = g; ctx.fill();
           ctx.restore();
-          ctx.font = "600 10px " + '"SF Mono","JetBrains Mono",ui-monospace,monospace';
+          ctx.font = "600 14px 'Poppins', sans-serif";
+          ctx.letterSpacing = "0.14em";
           ctx.fillStyle = "rgba(244,239,255,.9)"; ctx.textAlign = "center";
-          ctx.fillText("ABOUT ME", o.sx, o.sy + ar + 16);
+          ctx.fillText("ABOUT ME", o.sx, o.sy + ar + 22);
+          ctx.letterSpacing = "0px";
           return;
         }
         var u = objUniverse[o.id];
@@ -672,9 +717,11 @@
         g2.addColorStop(1, rgbStr(dim));
         ctx.beginPath(); ctx.arc(o.sx, o.sy, o.ar, 0, Math.PI*2); ctx.fillStyle = g2; ctx.fill();
 
-        ctx.font = "600 10px "+ '"SF Mono","JetBrains Mono",ui-monospace,monospace';
+        ctx.font = "600 14px 'Poppins', sans-serif";
+        ctx.letterSpacing = "0.14em";
         ctx.fillStyle = "rgba(182,169,217,.9)"; ctx.textAlign = "center";
-        ctx.fillText(u.name.toUpperCase(), o.sx, o.sy + o.ar + 14);
+        ctx.fillText(u.name.toUpperCase(), o.sx, o.sy + o.ar + 20);
+        ctx.letterSpacing = "0px";
       });
 
       // moons, drawn on top as small orbiting markers
