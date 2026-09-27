@@ -100,6 +100,14 @@
   .scene{ position:absolute; inset:0; }
   #glCanvas{ width:100%; height:100%; display:block; cursor:grab; touch-action:none; }
   #glCanvas.grabbing{ cursor:grabbing; }
+  /* A rocket while the pointer is over a planet. Only where there is a pointer
+     to change: a touch screen has no hover. The planets are painted on the
+     canvas, so no :hover rule can see them and this is driven by the same ray
+     cast the click uses. The hotspot is the nose of the rocket, at 16 2. */
+  @media (hover: hover) and (pointer: fine) {
+    #glCanvas.over-planet{ cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNMTYgMi4yYzMuMiAzLjUgNC45IDcuNiA0LjkgMTIuMnY0LjloLTkuOHYtNC45QzExLjEgOS44IDEyLjggNS43IDE2IDIuMnoiIGZpbGw9IiNmNGVmZmYiIHN0cm9rZT0iIzBhMDcxNSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48Y2lyY2xlIGN4PSIxNiIgY3k9IjExLjIiIHI9IjIuNiIgZmlsbD0iIzRmOGNmZiIgc3Ryb2tlPSIjMGEwNzE1IiBzdHJva2Utd2lkdGg9IjEuMSIvPjxwYXRoIGQ9Ik0xMS4xIDE1LjYgNi42IDIzLjJoNC41eiIgZmlsbD0iI2ZmNmY2ZiIgc3Ryb2tlPSIjMGEwNzE1IiBzdHJva2Utd2lkdGg9IjEuMSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0yMC45IDE1LjYgMjUuNCAyMy4yaC00LjV6IiBmaWxsPSIjZmY2ZjZmIiBzdHJva2U9IiMwYTA3MTUiIHN0cm9rZS13aWR0aD0iMS4xIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTEzLjMgMTkuM2g1LjRMMTYgMjguNHoiIGZpbGw9IiNmZmQxNjYiIHN0cm9rZT0iIzBhMDcxNSIgc3Ryb2tlLXdpZHRoPSIxLjEiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=") 16 2, pointer; }
+    #glCanvas.over-planet.grabbing{ cursor:grabbing; }
+  }
 
   /* ---------- planet focus overlay ---------- */
   .planet-focus{
@@ -508,7 +516,9 @@
     updateBasis();
   }, { passive:false });
 
-  function pickAndWarp(clientX, clientY){
+  // Returns the id of the body under the pointer, or null. pickAndWarp flies
+  // to it; the hover handler only wants to know whether there is one.
+  function pickAt(clientX, clientY){
     var r = canvas.getBoundingClientRect();
     var mx = clientX - r.left, my = clientY - r.top;
     var uv = [ (mx - r.width/2)/r.height, (r.height/2 - my)/r.height ];
@@ -535,11 +545,29 @@
     var sh = sb*sb - scc;
     if (sh >= 0){
       var st = -sb - Math.sqrt(sh);
-      if (st > 0 && st < bestT){ if (!flight) flyIntoPlanet("sun"); return; }
+      if (st > 0 && st < bestT) return "sun";
     }
-
-    if (best && !flight) flyIntoPlanet(best);
+    return best;
   }
+
+  function pickAndWarp(clientX, clientY){
+    var id = pickAt(clientX, clientY);
+    if (id && !flight) flyIntoPlanet(id);
+  }
+
+  // Hover. The drag handler above returns early for a pointer that is not
+  // down, so the rocket needs a listener of its own. It stands down while
+  // dragging, while a flight is running and while a planet is open, since in
+  // none of those is there a planet sitting there waiting to be clicked.
+  canvas.addEventListener("pointermove", function(e){
+    if (e.pointerType === "touch") return;
+    if (pointers.size || flight || focus.classList.contains("open")) {
+      canvas.classList.remove("over-planet");
+      return;
+    }
+    canvas.classList.toggle("over-planet", pickAt(e.clientX, e.clientY) !== null);
+  });
+  canvas.addEventListener("pointerleave", function(){ canvas.classList.remove("over-planet"); });
 
   function resizeCanvas(){
     var r = canvas.getBoundingClientRect();
