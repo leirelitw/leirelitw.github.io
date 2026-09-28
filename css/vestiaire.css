@@ -168,6 +168,16 @@ body.vc-page {
 .vc-lead { max-width: 62ch; margin: 0; color: var(--text-2); font-size: 18px; line-height: 1.65; }
 .vc-body { max-width: 62ch; margin: 0 0 16px; color: var(--text-3); font-size: 16px; line-height: 1.7; }
 .vc-body:last-child { margin-bottom: 0; }
+/* Emphasis inside a paragraph is the full text colour, not the dimmed body
+   grey it would otherwise inherit: white on the dark chapters, ink on paper.
+   Weight alone was not enough to make the highlighted sentence carry. */
+.vc-body strong { color: var(--text); }
+
+/* A closing note that names what happens next. 15px sits between the body and
+   the smaller asides, so it reads as the next step rather than a footnote. */
+.vc-next { margin: 26px 0 0; }
+.vc-next strong { display: block; margin-bottom: 5px; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -.01em; }
+.vc-next p { max-width: 62ch; margin: 0; color: var(--text-3); font-size: 15px; line-height: 1.7; }
 
 .vc-section { padding: 92px 0; background: var(--surface); color: var(--text); }
 .vc-section:not(.vc-paper) + .vc-section:not(.vc-paper),
@@ -442,14 +452,12 @@ body[data-brand="bim"] .vc-pull {
 .vc-unlock__msg:empty { min-height: 0; }
 .vc-unlock__blocked { max-width: 34ch; margin: 0; color: var(--text-3); font-size: 14px; line-height: 1.6; }
 
-.vc-unlock--done { grid-template-columns: 1fr; border-color: var(--accent-line); }
-/* On localhost the gate opens by itself. Nothing was asked for and nothing was
-   answered, so the panel has nothing left to say and is not shown. */
-.vc-unlock--local { display: none; }
+/* Once it has opened, the panel goes: what it was gating is on the page, and
+   a box explaining that is not worth the room. */
+.vc-unlock--done { display: none; }
 /* A section whose only content was that panel: without this it stays as a
    band of empty paper. */
 .vc-section--empty { display: none; }
-.vc-unlock--done .vc-unlock__form { display: none; }
 
 /* Inline locked placeholders */
 .vc-locked { margin-top: 44px; }

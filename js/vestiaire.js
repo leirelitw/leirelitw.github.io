@@ -209,7 +209,7 @@
 
     // Kept so a language change can refill the slots without asking for the
     // password again. It never leaves this closure.
-    var lastHtml = null, lastOpts = null;
+    var lastHtml = null;
 
     document.addEventListener('i18n:applied', function () {
       if (!lastHtml) return;
@@ -217,12 +217,11 @@
         target.innerHTML = '';
         target.removeAttribute('data-state');
       });
-      reveal(lastHtml, lastOpts);
+      reveal(lastHtml);
     });
 
-    function reveal(html, opts) {
-      opts = opts || {};
-      lastHtml = html; lastOpts = opts;
+    function reveal(html) {
+      lastHtml = html;
       var doc = new DOMParser().parseFromString(html, 'text/html');
 
       // Images are carried once as a map rather than inlined into each
@@ -249,17 +248,10 @@
         target.setAttribute('data-state', 'open');
       });
 
+      // The panel has done its job. What it was gating is now on the page, so
+      // it goes rather than staying as a note about itself.
       panel.classList.add('vc-unlock--done');
-      if (opts.local) {
-        // Nobody typed anything here, so there is nothing to confirm. Left in,
-        // the panel is a banner on every tab explaining its own presence.
-        panel.classList.add('vc-unlock--local');
-        hideSectionAround(panel);
-      } else {
-        panel.querySelector('.vc-unlock__copy strong').textContent = t('Unlocked');
-        panel.querySelector('.vc-unlock__copy p').textContent =
-          t('The locked sections in this tab are now filled in.');
-      }
+      hideSectionAround(panel);
       observeReveals(document);
     }
 
@@ -296,7 +288,7 @@
           if (opts.remember !== false) {
             try { sessionStorage.setItem(STORE_PREFIX + slug, password); } catch (e) { /* private mode */ }
           }
-          reveal(html, { local: opts.local });
+          reveal(html);
         })
         .catch(function (err) {
           setBusy(false);
@@ -351,7 +343,7 @@
       .then(function (res) { return res.ok ? res.json() : null; })
       .then(function (data) {
         if (!data || !data.password) return;   // not built yet: the form stays
-        attempt(data.password, { silent: true, remember: false, local: true });
+        attempt(data.password, { silent: true, remember: false });
       })
       .catch(function () { /* no local key: the password form stays */ });
   }

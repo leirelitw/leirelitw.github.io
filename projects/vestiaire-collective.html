@@ -162,9 +162,9 @@
         <div class="vc-wrap vc-split">
           <div class="reveal">
             <p class="vc-eyebrow">Context</p>
-            <h2 class="vc-h2">Context</h2>
-            <p class="vc-body">Creating a listing required sellers to move through a long, multi-step experience and manually enter important information about their item. The process was important for marketplace quality and discoverability, but it was also repetitive and difficult to correct when something was wrong.</p>
-            <p class="vc-body">At the same time, sellers were already preparing their items through photos before entering the listing flow. This created an opportunity to explore whether photos could become the starting point for a faster, more assisted experience.</p>
+            <h2 class="vc-h2">Current experience</h2>
+            <p class="vc-body" data-i18n-rich>Creating a listing required sellers to move through a long, multi-step experience and <strong>manually enter all the information about their item</strong>. The process remains crucial for our marketplace supply quality and item discoverability, but for sellers it remains <strong>repetitive and hard to correct when something is wrong</strong>.</p>
+            <p class="vc-body" data-i18n-rich>At the same time, <strong>sellers had already prepared their photos before entering the listing flow</strong>. This created an opportunity to explore whether photos could become the starting point for a faster, more assisted experience.</p>
           </div>
           <div class="vc-pull reveal">
             <p>How might we reduce the effort it takes for sellers to create a listing?</p>
@@ -178,7 +178,7 @@
         <div class="vc-wrap">
           <h2 class="vc-h2 reveal">Discovery</h2>
           <p class="vc-lead reveal">The discovery combined existing user research, seller feedback, quantitative listing data, a UX audit of the current flow and a benchmark of competitor listing experiences.</p>
-          <p class="vc-body reveal" style="margin-top:18px">The research highlighted recurring friction around the length of the listing process, finding the right category or model, managing photos, writing descriptions, understanding pricing and correcting information after submission.</p>
+          <p class="vc-body reveal" style="margin-top:18px" data-i18n-rich>The research highlighted <strong>recurring friction around the length of the listing process</strong>, finding the right category or model, writing descriptions, understanding pricing and correcting information after submission.</p>
 
           <ul class="vc-findings reveal">
             <li><p>The process felt long and complex, especially when sellers had to complete many fields manually.</p></li>
@@ -266,7 +266,7 @@
               <p>Photos became the starting point of the experience instead of the final step of a form.</p>
             </li>
             <li>
-              <strong>Let AI do the repetitive work</strong>
+              <strong>Let AI do the tedious work</strong>
               <p>The system could analyse the photos and prepare information that sellers previously had to enter manually.</p>
             </li>
             <li>
@@ -275,11 +275,11 @@
             </li>
             <li>
               <strong>Design for uncertainty</strong>
-              <p>When the AI could not infer mandatory information, the seller could complete the missing information manually.</p>
+              <p>When the AI could not infer mandatory information, the seller should be able to complete the missing information manually.</p>
             </li>
             <li>
               <strong>Keep the MVP focused</strong>
-              <p>The first release focused on photo analysis, prefilled information and seller review rather than redesigning the entire listing ecosystem.</p>
+              <p>The MVP focused on photo analysis, prefilled information and seller review, leaving areas like pricing for later iterations.</p>
             </li>
           </ul>
 
@@ -299,8 +299,10 @@
       <section class="vc-section vc-paper">
         <div class="vc-wrap">
           <h2 class="vc-h2 reveal">Prototyping and validation</h2>
-          <p class="vc-lead reveal">I created an interactive prototype in Figma Make to test the experience as a complete flow rather than as a collection of individual screens.</p>
-          <p class="vc-body reveal" style="margin-top:18px">We explored whether sellers understood what Smart Listing was doing, whether the generated information felt credible and whether they knew where they could make changes. Testing helped us refine the structure and hierarchy of the recap screen, which became the central place for reviewing the generated listing.</p>
+          <p class="vc-lead reveal">I created an interactive Figma Make prototype to test the full flow, allowing sellers to explore different paths and interactions in moderated interview testing.</p>
+          <p class="vc-body reveal" style="margin-top:18px" data-i18n-rich>Testers were recruited from the survey according to their answers: we wanted <strong>heavy sellers who know the platform by heart and were excited to use AI, alongside others who had said they would refuse to use it</strong>.</p>
+          <p class="vc-body reveal" style="margin-top:18px" data-i18n-rich>We explored whether sellers understood what Smart Listing was doing, <strong>whether they would notice and how they would react if the AI got the information wrong</strong>, and whether they knew where they could make changes, as well as their overall perception of using AI here, especially among those reluctant to use it.</p>
+          <p class="vc-body reveal" style="margin-top:18px" data-i18n-rich>Testing helped us understand how users perceived it, and <strong>refine the structure and hierarchy of the recap screen</strong>, which became the central place for reviewing the generated listing.</p>
           <!-- LOCKED: prototype learnings and the screens behind them -->
           <div class="vc-locked reveal" data-vc-slot="learnings">
             <button class="vc-locked__stub" type="button" data-vc-unlock>
@@ -436,12 +438,12 @@
             <li>
               <span class="vc-impact__dir"><i class="fas fa-arrow-up" aria-hidden="true"></i>Higher</span>
               <strong>Completion Rate</strong>
-              <p>Whether sellers were able to complete the new experience.</p>
+              <p>Whether sellers starting a listing were finishing it and publishing the item.</p>
             </li>
             <li>
               <span class="vc-impact__dir"><i class="fas fa-arrow-up" aria-hidden="true"></i>Higher</span>
               <strong>Listings per Seller</strong>
-              <p>Whether the experience supported additional marketplace supply.</p>
+              <p>Whether the experience increased our marketplace supply.</p>
             </li>
           </ul>
           <p class="vc-note reveal">Measured against the manual listing flow as baseline. The exact figures, and the fourth metric, are in the full version.</p>

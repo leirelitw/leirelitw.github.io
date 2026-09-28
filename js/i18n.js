@@ -36,6 +36,7 @@
         if (!p || p.nodeType !== 1) return NodeFilter.FILTER_REJECT;
         var tag = p.nodeName;
         if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT') return NodeFilter.FILTER_REJECT;
+        if (p.closest(RICH)) return NodeFilter.FILTER_REJECT;   // handled whole, below
         return NodeFilter.FILTER_ACCEPT;
       }
     });
@@ -46,6 +47,23 @@
 
   // The English as it was before anything was swapped. Kept on the node so it
   // survives re-renders of everything except the node itself.
+  // A paragraph with emphasis inside it would otherwise arrive here as three
+  // text nodes: the words before the <strong>, the emphasised ones, and the
+  // rest. Translating those separately forces a translator to work on
+  // fragments of a sentence, and the emphasis almost never falls on the same
+  // words in another language. An element marked data-i18n-rich is keyed by
+  // its whole innerHTML instead, so each language places its own emphasis.
+  //
+  // This assigns innerHTML from the dictionary. The dictionaries are our own
+  // files from our own origin, the same trust as the markup itself; nothing
+  // a reader can influence reaches it.
+  var RICH = '[data-i18n-rich]';
+  var RICH_ORIGINAL = new WeakMap();
+  function richOriginal(el) {
+    if (!RICH_ORIGINAL.has(el)) RICH_ORIGINAL.set(el, el.innerHTML);
+    return RICH_ORIGINAL.get(el);
+  }
+
   var ORIGINAL = new WeakMap();
   function original(node) {
     if (!ORIGINAL.has(node)) ORIGINAL.set(node, node.nodeValue);
@@ -67,6 +85,11 @@
       node.nodeValue = src.replace(key, hit);
     });
 
+    document.querySelectorAll(RICH).forEach(function (el) {
+      var hit = strings[richOriginal(el).trim()];
+      if (hit) el.innerHTML = hit;
+    });
+
     var file = location.pathname.split('/').pop() || 'index.html';
     var meta = dict && dict.pages && dict.pages[file];
     document.title = (meta && meta.title) || pageMeta.title;
@@ -74,6 +97,11 @@
   }
 
   function reset() {
+    // The rich elements go back first: restoring one replaces its children,
+    // and the text nodes inside it are not the walker's to put back anyway.
+    document.querySelectorAll(RICH).forEach(function (el) {
+      if (RICH_ORIGINAL.has(el)) el.innerHTML = RICH_ORIGINAL.get(el);
+    });
     textNodes().forEach(function (node) {
       if (ORIGINAL.has(node)) node.nodeValue = ORIGINAL.get(node);
     });
