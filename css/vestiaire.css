@@ -50,7 +50,11 @@
   --btn-text: var(--ink);
   --btn-bg-hover: #fff;
   --danger: #ffa8a0;
-  --delta-down: #d9b8a0;
+  /* The result columns read as good or bad, not plus or minus: a listing
+     time of -28.2% is a win. Both sit near the same lightness so neither
+     column shouts over the other. 11.2:1 and 7.4:1 on this chapter. */
+  --delta-up: #7ed6a3;
+  --delta-down: #e08a4a;
 }
 
 /* ===== Per-project accent ==============================================
@@ -124,7 +128,8 @@ body[data-brand] .vc-paper {
   --btn-text: var(--paper);
   --btn-bg-hover: #2b2d36;
   --danger: #b03024;
-  --delta-down: #8a552f;
+  --delta-up: #216b45;
+  --delta-down: #7d431a;
   background: var(--surface);
   color: var(--text);
 }
@@ -438,10 +443,12 @@ body[data-brand="bim"] .vc-pull {
 .vc-unlock__blocked { max-width: 34ch; margin: 0; color: var(--text-3); font-size: 14px; line-height: 1.6; }
 
 .vc-unlock--done { grid-template-columns: 1fr; border-color: var(--accent-line); }
-/* Local preview is marked with a dashed edge so it can never be mistaken for
-   what a visitor sees. This state only exists on localhost. */
-.vc-unlock--local { border-style: dashed; }
-.vc-unlock--local .vc-unlock__copy strong::before { content: ''; display: inline-block; width: 8px; height: 8px; margin-right: 10px; border-radius: 50%; background: var(--accent); vertical-align: middle; }
+/* On localhost the gate opens by itself. Nothing was asked for and nothing was
+   answered, so the panel has nothing left to say and is not shown. */
+.vc-unlock--local { display: none; }
+/* A section whose only content was that panel: without this it stays as a
+   band of empty paper. */
+.vc-section--empty { display: none; }
 .vc-unlock--done .vc-unlock__form { display: none; }
 
 /* Inline locked placeholders */
@@ -466,7 +473,7 @@ body[data-brand="bim"] .vc-pull {
 .vc-table tbody tr:first-child th { border-top: 0; }
 .vc-table td { color: var(--text-3); }
 .vc-table .vc-num { color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 500; letter-spacing: -.02em; white-space: nowrap; }
-.vc-table .vc-delta { color: var(--accent-strong); font-family: 'Space Grotesk', sans-serif; font-weight: 500; white-space: nowrap; }
+.vc-table .vc-delta { color: var(--delta-up); font-family: 'Space Grotesk', sans-serif; font-weight: 500; white-space: nowrap; }
 .vc-table .vc-delta--down { color: var(--delta-down); }
 .vc-scroller { overflow-x: auto; }
 

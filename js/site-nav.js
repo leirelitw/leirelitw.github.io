@@ -12,43 +12,74 @@
   var nav = document.querySelector('nav.navbar');
   if (!nav) return;
 
-  var dropdown = nav.querySelector('[data-nav-toggle="dropdown"]');
-  var menu = dropdown && dropdown.parentElement.querySelector('.dropdown-menu');
+  // There is more than one of these now, Works and the language menu, so
+  // opening either has to close the other rather than leaving two menus down
+  // the page at once.
+  var dropdowns = [].slice.call(nav.querySelectorAll('[data-nav-toggle="dropdown"]'))
+    .map(function (toggle) {
+      return { toggle: toggle, menu: toggle.parentElement.querySelector('.dropdown-menu') };
+    })
+    .filter(function (d) { return d.menu; });
+
   var burger = nav.querySelector('[data-nav-toggle="collapse"]');
   var collapse = burger && document.getElementById(burger.getAttribute('data-nav-target'));
 
-  function setDropdown(open) {
-    if (!menu) return;
-    menu.classList.toggle('show', open);
-    dropdown.setAttribute('aria-expanded', open ? 'true' : 'false');
+  function setOpen(entry, open) {
+    entry.menu.classList.toggle('show', open);
+    entry.toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
 
-  if (dropdown && menu) {
-    dropdown.addEventListener('click', function (e) {
-      e.preventDefault();
-      setDropdown(menu.classList.contains('show') === false);
-    });
+  function closeAll(except) {
+    dropdowns.forEach(function (d) { if (d !== except) setOpen(d, false); });
+  }
 
-    // A click anywhere else closes it, including on one of its own links,
+  dropdowns.forEach(function (d) {
+    d.toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      var willOpen = !d.menu.classList.contains('show');
+      closeAll(d);
+      setOpen(d, willOpen);
+    });
+  });
+
+  if (dropdowns.length) {
+    // A click anywhere else closes them, including on one of their own links,
     // which is about to navigate anyway.
     document.addEventListener('click', function (e) {
-      if (dropdown.contains(e.target)) return;
-      if (menu.contains(e.target)) { setDropdown(false); return; }
-      setDropdown(false);
+      var inside = dropdowns.some(function (d) { return d.toggle.contains(e.target); });
+      if (inside) return;
+      closeAll(null);
     });
 
     document.addEventListener('keydown', function (e) {
-      if (e.key !== 'Escape' || !menu.classList.contains('show')) return;
-      setDropdown(false);
-      dropdown.focus();
+      if (e.key !== 'Escape') return;
+      var open = dropdowns.filter(function (d) { return d.menu.classList.contains('show'); });
+      if (!open.length) return;
+      closeAll(null);
+      open[0].toggle.focus();
     });
   }
 
   if (burger && collapse) {
-    burger.addEventListener('click', function () {
-      var open = collapse.classList.toggle('show');
+    function setCollapsed(open) {
+      collapse.classList.toggle('show', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (!open) setDropdown(false);
+      if (!open) closeAll(null);
+    }
+
+    burger.addEventListener('click', function () {
+      setCollapsed(!collapse.classList.contains('show'));
+    });
+
+    // Tapping the page behind the open menu closes it, which is what the rest
+    // of the page looks like it should do. Taps on the button itself are left
+    // alone: its own handler is about to run and would reopen what this shut.
+    // Above the breakpoint the menu is never given .show, so this does
+    // nothing there and needs no width check of its own.
+    document.addEventListener('click', function (e) {
+      if (!collapse.classList.contains('show')) return;
+      if (burger.contains(e.target) || collapse.contains(e.target)) return;
+      setCollapsed(false);
     });
   }
 }());

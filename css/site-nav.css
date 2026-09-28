@@ -66,6 +66,19 @@ nav.navbar .navbar-nav .dropdown-item { padding: 12px 24px; color: #f3f1ed; font
 nav.navbar .navbar-nav .dropdown-item::after { content: none; }
 nav.navbar .navbar-nav .dropdown-item:hover, nav.navbar .navbar-nav .dropdown-item:focus { padding: 12px 24px; background: transparent; color: var(--nav-accent); }
 
+/* The row is flex with the default align-items, so every li stretches to the
+   height of the tallest one, which is the Default and Fun pill. A plain li is
+   not a flex container, so its link stays at the top of that stretched box and
+   the words sit a couple of pixels above the pills beside them. Centring the
+   items lets each li be its own height and line up on the middle.
+
+   Only while the bar is a row: below 992px Bootstrap turns it into a column,
+   where align-items is the horizontal axis and centring would pull the drawer
+   links away from the left edge. */
+@media (min-width: 992px) {
+  nav.navbar .navbar-nav { align-items: center; }
+}
+
 @media (max-width: 1199.98px) {
   nav.navbar .container { max-width: none; padding-right: 32px; padding-left: 32px; }
 }
@@ -103,4 +116,24 @@ a.mode-opt:hover { color: #fff; background: rgba(255,255,255,.09); }
    own toggle, so anyone who arrives there by link can still get back. */
 @media (max-width: 991.98px) {
   .mode-item { display: none; }
+}
+
+/* Language menu. It reuses the Works dropdown so the header has one
+   behaviour rather than two. Each language is written in its own language,
+   which is the only spelling a speaker is sure to recognise; the flag is
+   decoration beside it, marked aria-hidden so it is not read out as a country.
+   The toggle shows the two-letter code, because the header is busy enough. */
+.lang-item { margin-left: 4px; }
+nav.navbar .navbar-nav .lang-toggle { display: inline-flex; align-items: center; gap: 6px; }
+.lang-toggle .lang-code { letter-spacing: .08em; }
+nav.navbar .navbar-nav .dropdown-menu--lang { min-width: 186px; }
+nav.navbar .navbar-nav .lang-choice {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  border: 0; background: none; text-align: left; cursor: pointer;
+}
+nav.navbar .navbar-nav .lang-choice.is-on { color: var(--nav-accent); }
+.lang-flag { font-size: 17px; line-height: 1; }
+
+@media (max-width: 991.98px) {
+  .lang-item { margin-left: 0; }
 }

@@ -6,6 +6,12 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // The gate's messages are written by this script rather than sitting in the
+  // markup, so the translator never walks over them. They look themselves up.
+  function t(text) {
+    return (window.i18n && window.i18n.t(text)) || text;
+  }
+
   /* ---------------------------------------------------------------- reveals */
   function observeReveals(root) {
     var items = (root || document).querySelectorAll('.reveal:not(.is-visible)');
@@ -201,41 +207,84 @@
       targets: panel.closest('.vc-panel').querySelectorAll('.vc-locked[data-vc-slot]')
     };
 
+    // Kept so a language change can refill the slots without asking for the
+    // password again. It never leaves this closure.
+    var lastHtml = null, lastOpts = null;
+
+    document.addEventListener('i18n:applied', function () {
+      if (!lastHtml) return;
+      Array.prototype.forEach.call(gate.targets, function (target) {
+        target.innerHTML = '';
+        target.removeAttribute('data-state');
+      });
+      reveal(lastHtml, lastOpts);
+    });
+
     function reveal(html, opts) {
       opts = opts || {};
+      lastHtml = html; lastOpts = opts;
       var doc = new DOMParser().parseFromString(html, 'text/html');
+
+      // Images are carried once as a map rather than inlined into each
+      // language's template, so the tags are filled in after import.
+      var assets = {};
+      var bag = doc.querySelector('script[data-vc-assets]');
+      if (bag) { try { assets = JSON.parse(bag.textContent); } catch (e) {} }
       Array.prototype.forEach.call(gate.targets, function (target) {
         // Idempotent: a second successful unlock must not append twice.
         if (target.getAttribute('data-state') === 'open') return;
-        var tpl = doc.querySelector('template[data-vc-slot="' + target.getAttribute('data-vc-slot') + '"]');
+        // The blob holds every language. Take the one being read, and fall
+          // back to English for anything not translated yet.
+          var slot = target.getAttribute('data-vc-slot');
+          var lang = (window.i18n && window.i18n.lang) || 'en';
+          var tpl = doc.querySelector('template[lang="' + lang + '"][data-vc-slot="' + slot + '"]')
+                 || doc.querySelector('template[lang="en"][data-vc-slot="' + slot + '"]')
+                 || doc.querySelector('template[data-vc-slot="' + slot + '"]');
         if (!tpl) return;
         target.appendChild(document.importNode(tpl.content, true));
+        Array.prototype.forEach.call(target.querySelectorAll('img[data-vc-asset]'), function (img) {
+          var src = assets[img.getAttribute('data-vc-asset')];
+          if (src) { img.src = src; img.removeAttribute('data-vc-asset'); }
+        });
         target.setAttribute('data-state', 'open');
       });
 
       panel.classList.add('vc-unlock--done');
-      var where = 'The locked sections in this tab are now filled in.';
       if (opts.local) {
+        // Nobody typed anything here, so there is nothing to confirm. Left in,
+        // the panel is a banner on every tab explaining its own presence.
         panel.classList.add('vc-unlock--local');
-        panel.querySelector('.vc-unlock__copy strong').textContent = 'Local preview: unlocked automatically';
-        panel.querySelector('.vc-unlock__copy p').textContent =
-          where + ' This happens only on localhost. Published, the page asks visitors for the password.';
+        hideSectionAround(panel);
       } else {
-        panel.querySelector('.vc-unlock__copy strong').textContent = 'Unlocked';
-        panel.querySelector('.vc-unlock__copy p').textContent = where;
+        panel.querySelector('.vc-unlock__copy strong').textContent = t('Unlocked');
+        panel.querySelector('.vc-unlock__copy p').textContent =
+          t('The locked sections in this tab are now filled in.');
       }
       observeReveals(document);
+    }
+
+    // The other-work gate has a section to itself. Hiding the panel there would
+    // leave an empty band of paper with its padding intact, so the section goes
+    // with it. The other two gates share their section with the case study's
+    // own content, which is why this asks rather than assumes.
+    function hideSectionAround(el) {
+      var section = el.closest('.vc-section');
+      if (!section) return;
+      var strip = function (n) { return n.textContent.replace(/\s+/g, ''); };
+      if (strip(section) !== strip(el)) return;            // other words in it
+      if (section.querySelector('img, video, svg, canvas, iframe')) return;
+      section.classList.add('vc-section--empty');
     }
 
     function setBusy(busy) {
       if (!gate.button) return;
       gate.button.disabled = busy;
-      gate.button.textContent = busy ? 'Unlocking' : 'Unlock';
+      gate.button.textContent = busy ? t('Unlocking') : t('Unlock');
     }
 
     function attempt(password, opts) {
       opts = opts || {};
-      if (!password) { gate.message.textContent = 'Enter the password to continue.'; return; }
+      if (!password) { gate.message.textContent = t('Enter the password to continue.'); return; }
 
       setBusy(true);
       gate.message.textContent = '';
@@ -256,7 +305,7 @@
 
           var code = (err && err.code) || 'unknown';
           if (code === 'bad-password') {
-            gate.message.textContent = 'That password is not right.';
+            gate.message.textContent = t('That password is not right.');
             if (gate.input) { gate.input.value = ''; gate.input.focus(); }
             return;
           }

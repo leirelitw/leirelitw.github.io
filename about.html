@@ -1,6 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-i18n-root="">
 <head>
+  <script>
+    /* Hold the first paint only for a reader who has already chosen a language
+       other than English; i18n.js applies it from localStorage and lifts this
+       immediately. The timeout is a dead man's handle: if anything goes wrong,
+       the page appears in English rather than not at all. */
+    (function () {
+      try {
+        var l = localStorage.getItem('ll-lang');
+        if (!l || l === 'en') return;
+        var d = document.documentElement;
+        d.className += ' i18n-pending';
+        var s = document.createElement('style');
+        s.textContent = '.i18n-pending body{visibility:hidden}';
+        d.appendChild(s);
+        setTimeout(function () { d.classList.remove('i18n-pending'); }, 1200);
+      } catch (e) {}
+    }());
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Leire Litwin, product designer and maker. I design and build digital products across fashion, fitness, B2B and more, with experience at Vestiaire Collective, Sodexo and Saint-Gobain.">
@@ -42,8 +60,8 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-nav-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Works</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="projects/mycarddeck.html">MyCardDeck</a>
               <a class="dropdown-item" href="projects/vestiaire-collective.html">Vestiaire Collective</a>
+              <a class="dropdown-item" href="projects/mycarddeck.html">MyCardDeck</a>
               <a class="dropdown-item" href="projects/bim-fitness-app.html">Bim - Fitness App</a>
               <a class="dropdown-item" href="projects/saint-gobain.html">St-Gobain AR App</a>
               <a class="dropdown-item" href="projects/sodexo.html">Sodexo</a>
@@ -51,6 +69,7 @@
             </div>
           </li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item dropdown lang-item"><a class="nav-link dropdown-toggle lang-toggle" data-nav-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" aria-label="Language"><span class="lang-code">EN</span></a><div class="dropdown-menu dropdown-menu--lang"><button class="dropdown-item lang-choice" type="button" data-lang="en" lang="en"><span class="lang-flag" aria-hidden="true">🇺🇸</span>English</button><button class="dropdown-item lang-choice" type="button" data-lang="es" lang="es"><span class="lang-flag" aria-hidden="true">🇪🇸</span>Español</button><button class="dropdown-item lang-choice" type="button" data-lang="fr" lang="fr"><span class="lang-flag" aria-hidden="true">🇫🇷</span>Français</button></div></li>
           <li class="nav-item mode-item">
             <div class="mode-toggle" role="group" aria-label="Portfolio mode">
               <span class="mode-opt is-on" aria-current="true">Default</span>
@@ -201,5 +220,6 @@
     }
   </script>
   <script src="js/site-nav.js"></script>
+  <script src="js/i18n.js"></script>
 </body>
 </html>
