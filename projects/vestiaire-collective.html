@@ -163,8 +163,12 @@
           <div class="reveal">
             <p class="vc-eyebrow">Context</p>
             <h2 class="vc-h2">Current experience</h2>
-            <p class="vc-body" data-i18n-rich>Creating a listing required sellers to move through a long, multi-step experience and <strong>manually enter all the information about their item</strong>. The process remains crucial for our marketplace supply quality and item discoverability, but for sellers it remains <strong>repetitive and hard to correct when something is wrong</strong>.</p>
-            <p class="vc-body" data-i18n-rich>At the same time, <strong>sellers had already prepared their photos before entering the listing flow</strong>. This created an opportunity to explore whether photos could become the starting point for a faster, more assisted experience.</p>
+            <p class="vc-body" data-i18n-rich>Creating a listing required sellers to move through a long, multi-step experience and <strong>manually enter all the information about their item</strong>. The process remains crucial for our marketplace supply quality and item discoverability, but for sellers it remains <strong>repetitive and hard to correct when something is wrong</strong>. KPIs:</p>
+            <ol class="vc-goals">
+              <li><strong>Time to list</strong></li>
+              <li><strong>Completion rate</strong></li>
+              <li><strong># of listings</strong></li>
+            </ol>
           </div>
           <div class="vc-pull reveal">
             <p>How might we reduce the effort it takes for sellers to create a listing?</p>
@@ -177,56 +181,74 @@
       <section class="vc-section vc-paper">
         <div class="vc-wrap">
           <h2 class="vc-h2 reveal">Discovery</h2>
-          <p class="vc-lead reveal">The discovery combined existing user research, seller feedback, quantitative listing data, a UX audit of the current flow and a benchmark of competitor listing experiences.</p>
-          <p class="vc-body reveal" style="margin-top:18px" data-i18n-rich>The research highlighted <strong>recurring friction around the length of the listing process</strong>, finding the right category or model, writing descriptions, understanding pricing and correcting information after submission.</p>
+          <p class="vc-lead reveal">We started from what we already knew about listing, then ran a survey to check it with sellers and to see how they would take to AI.</p>
 
+          <!-- 1. What we already knew -->
+          <h3 class="vc-h3 vc-step reveal">What we already knew</h3>
           <ul class="vc-findings reveal">
             <li><p>The process felt long and complex, especially when sellers had to complete many fields manually.</p></li>
-            <li><p>Taxonomy and model selection did not always reflect how sellers described their items.</p></li>
-            <li><p>Sellers needed more flexibility to review and correct their information.</p></li>
-            <li><p>Incomplete descriptions with limited support and missing details could reduce buyer confidence.</p></li>
             <li><p>Rigid flow, with too many clicks and an outdated UX.</p></li>
+            <li><p>Taxonomy and model selection did not always reflect how sellers described their items.</p></li>
+            <li><p>Incomplete descriptions with limited support and missing details could reduce buyer confidence.</p></li>
           </ul>
 
-          <!-- LOCKED: discovery evidence table -->
+          <!-- LOCKED: listing data we started from -->
           <div class="vc-locked reveal" data-vc-slot="evidence">
             <button class="vc-locked__stub" type="button" data-vc-unlock>
               <i class="fas fa-lock" aria-hidden="true"></i>
-              <b>The discovery evidence</b>
-              Survey reach, completion by platform, abandonment by market and the photo behaviour that justified starting from photos.
+              <b>The listing data</b>
+              Overall completion, web completion, US abandonment and photo behaviour.
               <span>Unlock</span>
             </button>
           </div>
 
-          <details class="vc-disclosure reveal">
-            <summary>Out of scope</summary>
-            <div class="vc-disclosure__body">
-              <p class="vc-disclosure__intro">The discovery also surfaced several pain points that were important to sellers but fell outside the scope of this revamp.</p>
+          <!-- 2. What the survey told us -->
+          <h3 class="vc-h3 vc-step reveal">The survey</h3>
+          <p class="vc-body reveal">We then surveyed sellers in four markets. The survey had three objectives:</p>
+          <ol class="vc-goals reveal">
+            <li><strong>Validate the pain points</strong></li>
+            <li><strong>Quantify them to prioritize later</strong></li>
+            <li><strong>Gauge how sellers would react to AI in the listing flow</strong></li>
+          </ol>          <!-- LOCKED: survey numbers -->
+          <div class="vc-locked reveal" data-vc-slot="survey">
+            <button class="vc-locked__stub" type="button" data-vc-unlock>
+              <i class="fas fa-lock" aria-hidden="true"></i>
+              <b>The survey results</b>
+              Survey reach, model selection, photos, price recommendations and attitude to AI.
+              <span>Unlock</span>
+            </button>
+          </div>
+
+          <!-- Out of scope: always visible -->
+          <aside class="vc-scope reveal" aria-labelledby="vc-scope-title">
+            <p class="vc-sub" id="vc-scope-title">Out of scope</p>
+            <p class="vc-scope__intro">The discovery also surfaced pain points that matter to sellers but that we chose to keep out of this first revamp.</p>
+            <div class="vc-scope__body">
               <div>
                 <strong>Editing after submission</strong>
-                <p>Sellers still couldn't edit a listing once submitted. This remained on the roadmap, with the added consideration of the recropping and revalidation costs triggered by changes.</p>
+                <p>We wanted this too. We chose to simplify the current flow first, so the new flow could then become the way to edit existing listings.</p>
               </div>
               <div>
                 <strong>Price recommendations</strong>
-                <p>Some sellers felt recommended prices were too low. This was linked to the existing pricing algorithm, which another team owns, and therefore remained outside the scope of the listing experience.</p>
+                <p>The pricing algorithm needs work, but it is also tied to a business goal of keeping prices competitive, and changing it would not move this project's KPIs. Simplifying the flow came first.</p>
               </div>
               <div>
                 <strong>Curation and rejection</strong>
-                <p>Sellers reported long validation times and limited clarity around rejection reasons. These issues were primarily related to curation operations and were therefore addressed separately by the OPS team.</p>
+                <p>Long validation times and unclear rejection reasons belong to the curation team, a large team already working to reduce them. We passed on what sellers reported.</p>
               </div>
               <div>
                 <strong>Taxonomy revamp</strong>
-                <p>The current taxonomy remains unchanged for now due to its complexity, but it remains an area for future improvement.</p>
+                <p>A better taxonomy matters for listing quality, but ours is old and complex. While our front-end team built the new flow, the back-end team started the migrations that will simplify it.</p>
               </div>
             </div>
-          </details>
+          </aside>
 
           <!-- LOCKED: competitor benchmark -->
           <div class="vc-locked reveal" data-vc-slot="benchmark">
             <button class="vc-locked__stub" type="button" data-vc-unlock>
               <i class="fas fa-lock" aria-hidden="true"></i>
               <b>The competitor benchmark</b>
-              How Depop, Poshmark and Vinted each handle photo-first listing, with screens.
+              How Depop, Poshmark and Vinted each handle photo-first listing, with screens, and what we concluded from the discovery.
               <span>Unlock</span>
             </button>
           </div>
@@ -241,57 +263,47 @@
         </div>
       </section>
 
-      <!-- The flow -->
+      <!-- Design strategy -->
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap">
+          <h2 class="vc-h2 reveal">Design strategy</h2>
+          <p class="vc-lead reveal">Five principles shaped every decision in the new flow.</p>
+          <ul class="vc-track reveal">
+            <li>
+              <strong>Start with photos</strong>
+              <p>Most sellers already have their photos ready before they start, so the listing begins with them.</p>
+            </li>
+            <li>
+              <strong>Let AI do the tedious work</strong>
+              <p>A lot of the item information can be detected from the photos, so sellers no longer have to enter it by hand.</p>
+            </li>
+            <li>
+              <strong>Keep the seller in control</strong>
+              <p>AI can be wrong, and sellers remain responsible for their item information. They can always review, edit and publish it themselves.</p>
+            </li>
+            <li>
+              <strong>Design for inaccuracy</strong>
+              <p>When the AI is unsure, it suggests rather than prefills, and the seller makes the choice.</p>
+            </li>
+            <li>
+              <strong>Keep the MVP focused</strong>
+              <p>Pricing and descriptions still have room to improve, but we started simple: photos, AI and one recap screen to shorten the flow. The manual flow stays for now, as not every seller wants AI, and we wanted to confirm its accuracy at scale with real sellers, beyond our team's own checks.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- The experience -->
       <section class="vc-section">
         <div class="vc-wrap">
           <h2 class="vc-h2 reveal">Defining the experience</h2>
-          <p class="vc-lead reveal">The new experience was structured around a photo-first flow.</p>
+          <p class="vc-lead reveal">With the strategy set, the experience came down to four steps.</p>
           <ol class="vc-flow reveal">
-            <li><b>1</b><strong>Photo selection</strong><span>Photos became the starting point of the experience instead of the final step of a form.</span></li>
+            <li><b>1</b><strong>Photo selection</strong><span>The seller starts from the photos they already have.</span></li>
             <li><b>2</b><strong>AI analysis</strong><span>The system prepares information such as category, brand, model, colour, material and description.</span></li>
             <li><b>3</b><strong>Recap and edit</strong><span>The seller reviews everything in one place and edits anything the AI did not get right.</span></li>
             <li><b>4</b><strong>Publish</strong><span>The listing goes live once the seller confirms the information.</span></li>
           </ol>
-          <p class="vc-body reveal" style="margin-top:46px">The AI could help prepare information such as category, brand, model, colour, material and description. The seller would still review and edit the information before publishing.</p>
-        </div>
-      </section>
-
-      <!-- Principles -->
-      <section class="vc-section vc-paper">
-        <div class="vc-wrap">
-          <h2 class="vc-h2 reveal">Design principles</h2>
-          <ul class="vc-track reveal">
-            <li>
-              <strong>Start with photos</strong>
-              <p>Photos became the starting point of the experience instead of the final step of a form.</p>
-            </li>
-            <li>
-              <strong>Let AI do the tedious work</strong>
-              <p>The system could analyse the photos and prepare information that sellers previously had to enter manually.</p>
-            </li>
-            <li>
-              <strong>Keep the seller in control</strong>
-              <p>Information generated by the AI can be reviewed and edited before publishing.</p>
-            </li>
-            <li>
-              <strong>Design for inaccuracy</strong>
-              <p>When the AI cannot identify something or gets it wrong, the seller can complete it manually.</p>
-            </li>
-            <li>
-              <strong>Keep the MVP focused</strong>
-              <p>The MVP focused on photo analysis, the quality of the prefilled information and seller review, leaving areas like pricing for later iterations.</p>
-            </li>
-          </ul>
-
-          <!-- LOCKED: decision rationale -->
-          <div class="vc-locked reveal" data-vc-slot="rationale">
-            <button class="vc-locked__stub" type="button" data-vc-unlock>
-              <i class="fas fa-lock" aria-hidden="true"></i>
-              <b>Why the flow is shaped this way</b>
-              The reasoning behind starting from photos, the single recap, full editability and the manual fallback.
-              <span>Unlock</span>
-            </button>
-          </div>
         </div>
       </section>
 
@@ -299,16 +311,19 @@
       <section class="vc-section vc-paper">
         <div class="vc-wrap">
           <h2 class="vc-h2 reveal">Prototyping and validation</h2>
-          <p class="vc-lead reveal">I created an interactive Figma Make prototype to test the full flow, allowing sellers to explore different paths and interactions in moderated interview testing.</p>
-          <p class="vc-body reveal" style="margin-top:18px" data-i18n-rich>Testers were recruited from the survey according to their answers: we wanted <strong>heavy sellers who know the platform by heart and were excited to use AI, alongside others who had said they would refuse to use it</strong>.</p>
-          <p class="vc-body reveal" style="margin-top:18px" data-i18n-rich>We explored whether sellers understood what Smart Listing was doing, <strong>whether they would notice and how they would react if the AI got the information wrong</strong>, and whether they knew where they could make changes, as well as their overall perception of using AI here, especially among those reluctant to use it.</p>
-          <p class="vc-body reveal" style="margin-top:18px" data-i18n-rich>Testing helped us understand how users perceived it, and <strong>refine the structure and hierarchy of the recap screen</strong>, which became the central place for reviewing the generated listing.</p>
+          <ul class="vc-findings vc-findings--tight reveal">
+            <li><strong>How we tested</strong><p data-i18n-rich><strong>Moderated interviews</strong> with a Figma Make prototype of the full flow.</p></li>
+            <li><strong>Who we tested with</strong><p data-i18n-rich><strong>Engaged and semi-pro sellers</strong>: some excited about AI, others who said they would refuse it.</p></li>
+            <li><strong>What we tested</strong><p data-i18n-rich>Whether the flow was <strong>easy to understand</strong>, and whether sellers <strong>noticed when the AI got something wrong</strong>.</p></li>
+            <li><strong>Two versions</strong><p data-i18n-rich><strong>Step by step</strong> (closer to Leboncoin) against <strong>a single recap screen</strong> (closer to Vinted).</p></li>
+          </ul>
+
           <!-- LOCKED: prototype learnings and the screens behind them -->
           <div class="vc-locked reveal" data-vc-slot="learnings">
             <button class="vc-locked__stub" type="button" data-vc-unlock>
               <i class="fas fa-lock" aria-hidden="true"></i>
               <b>What changed after the prototype</b>
-              The five things testing sent us back to change, and the screens they came from.
+              Which version sellers preferred, the five changes testing led to, and the screens behind them.
               <span>Unlock</span>
             </button>
           </div>
@@ -411,24 +426,26 @@
             <li>
               <b>Progressive</b>
               <strong>Rollout</strong>
-              <p>The MVP was designed for progressive rollout, first with internal and beta testers group of users, allowing the team to test the experience, gradually expose it to sellers and learn from real usage.</p>
+              <p>First to internal users and beta testers, then gradually to more sellers, so we could learn from real usage.</p>
             </li>
             <li>
               <b>3 months</b>
               <strong>After launch</strong>
-              <p>Launch was the beginning of the next learning cycle. For the following three months, we continued to monitor the experience, collect feedback and identify opportunities for improvement.</p>
+              <p>We monitored the experience, fixed issues from real usage and improved the description, prefill accuracy and edge cases.</p>
             </li>
           </ol>
-          <p class="vc-body reveal" style="margin-top:46px">A short contextual feedback module at the end of the flow helped us gather feedback while the experience was still fresh for sellers. The post-launch work focused on fixing issues found in real usage, improving the generated description, improving accuracy of prefilled information and handling edge cases.</p>
+          <aside class="vc-callout reveal">
+            <p class="vc-sub">Feedback module</p>
+            <p class="vc-callout__text">A short contextual feedback module was added at the end of the flow to gather feedback from sellers.</p>
+          </aside>
         </div>
       </section>
 
       <!-- Impact -->
       <section class="vc-section">
         <div class="vc-wrap">
-          <p class="vc-eyebrow reveal">Impact</p>
           <h2 class="vc-h2 reveal">Impact</h2>
-          <p class="vc-lead reveal" style="margin-bottom:8px">The project was followed through four product metrics. We decreased Time to List and increased Completion Rate and Listings per Seller, which shows the listing form became easier.</p>
+          <p class="vc-lead reveal" style="margin-bottom:8px">We tracked four product metrics against the manual listing flow. Time to List went down, and Completion Rate and Listings per Seller went up: listing became easier.</p>
           <ul class="vc-impact reveal">
             <li>
               <span class="vc-impact__dir"><i class="fas fa-arrow-down" aria-hidden="true"></i>Lower</span>
@@ -446,17 +463,36 @@
               <p>Whether the experience increased our marketplace supply.</p>
             </li>
           </ul>
-          <p class="vc-note reveal">Measured against the manual listing flow as baseline. The exact figures, and the fourth metric, are in the full version.</p>
-
           <!-- LOCKED: exact numbers -->
           <div class="vc-locked reveal" data-vc-slot="metrics">
             <button class="vc-locked__stub" type="button" data-vc-unlock>
               <i class="fas fa-lock" aria-hidden="true"></i>
               <b>The exact results</b>
-              All four KPIs with results, baselines and deltas.
+              All four metrics with results, baselines and deltas, and what we learned from them.
               <span>Unlock</span>
             </button>
           </div>
+        </div>
+      </section>
+
+      <!-- Next steps -->
+      <section class="vc-section vc-paper">
+        <div class="vc-wrap">
+          <h2 class="vc-h2 reveal">Next steps</h2>
+          <ul class="vc-track reveal">
+            <li>
+              <strong>Improve sell-through</strong>
+              <p>Better descriptions and more accurate model selection, so listings sell faster.</p>
+            </li>
+            <li>
+              <strong>Edit listing</strong>
+              <p>In progress: using the new flow to let sellers edit their existing listings.</p>
+            </li>
+            <li>
+              <strong>Sunset the manual flow</strong>
+              <p>Now that Smart Listing has proven it works well, the manual listing flow is being phased out.</p>
+            </li>
+          </ul>
         </div>
       </section>
     </div>
@@ -473,7 +509,7 @@
       <div class="vc-paper">
       <div class="vc-wrap vc-empty">
         <div>
-          <h2 class="vc-h2">The design system write-up is still being put together.</h2>
+          <h2 class="vc-h2">The design system write-up is still being put together</h2>
           <p class="vc-lead">Alongside product work I spend a large part of my time on the system that the rest of the product is built from. I would rather show it properly than post a thin version of it, so this section is going up once the material is ready.</p>
           <ul class="vc-chips">
             <li>Foundations and tokens</li>
@@ -567,7 +603,7 @@
       <section class="vc-section vc-paper">
         <div class="vc-wrap">
           <h2 class="vc-h2 reveal">New visitors</h2>
-          <p class="vc-lead reveal">The new visitor homepage focused on three jobs.</p>
+          <p class="vc-lead reveal">The new visitor homepage focused on three goals.</p>
           <ol class="vc-flow reveal">
             <li><b>1</b><strong>Understand Vestiaire</strong><span>An educational Hero explaining who Vestiaire is, reinforcing the luxury positioning through the brands and the assortment. The Hero was deliberately made smaller to bring more brands and discovery content into view.</span></li>
             <li><b>2</b><strong>Discover the assortment</strong><span>Categories, curated lists and brand merchandising to help new users navigate the platform rather than expecting them to know where to start.</span></li>

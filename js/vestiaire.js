@@ -12,6 +12,15 @@
     return (window.i18n && window.i18n.t(text)) || text;
   }
 
+  // Placeholders are attributes, which the translator does not touch, so the
+  // password fields look theirs up on every language change.
+  document.addEventListener('i18n:applied', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('.vc-unlock input[placeholder]'), function (input) {
+      if (!input.hasAttribute('data-placeholder-en')) input.setAttribute('data-placeholder-en', input.getAttribute('placeholder'));
+      input.setAttribute('placeholder', t(input.getAttribute('data-placeholder-en')));
+    });
+  });
+
   /* ---------------------------------------------------------------- reveals */
   function observeReveals(root) {
     var items = (root || document).querySelectorAll('.reveal:not(.is-visible)');

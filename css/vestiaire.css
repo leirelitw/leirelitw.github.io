@@ -274,6 +274,31 @@ body[data-brand="bim"] .vc-pull {
 .vc-disclosure__body div strong { display: block; margin-bottom: 7px; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -.02em; }
 .vc-disclosure__body div p { margin: 0; color: var(--text-3); font-size: 14.5px; line-height: 1.6; }
 
+/* Discovery steps and the always-visible out-of-scope banner */
+.vc-step { margin-top: 72px; margin-bottom: 14px; }
+.vc-after-list { margin-top: 40px; }
+.vc-scope, .vc-callout { margin-top: 64px; padding: 30px 32px 34px; border: 1px solid var(--accent-line); border-left: 3px solid var(--accent); background: var(--accent-dim); }
+.vc-callout { margin-top: 46px; padding: 24px 28px; }
+.vc-callout .vc-sub { margin-bottom: 8px; }
+.vc-callout__text { max-width: 72ch; margin: 0; color: var(--text-2); font-size: 16px; line-height: 1.6; }
+.vc-goals { display: grid; gap: 14px; margin: 6px 0 0; padding: 0; list-style: none; counter-reset: goal; }
+.vc-goals li { counter-increment: goal; position: relative; max-width: 62ch; padding: 14px 0 0 44px; border-top: 1px solid var(--rule); }
+.vc-goals li::before { content: counter(goal, decimal-leading-zero); position: absolute; top: 15px; left: 0; color: var(--accent); font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; }
+.vc-goals strong { display: block; margin-bottom: 0; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 500; letter-spacing: -.02em; }
+.vc-goals span { display: block; color: var(--text-3); font-size: 15.5px; line-height: 1.6; }
+.vc-findings p strong { display: inline; margin: 0; font-family: inherit; font-size: inherit; font-weight: 600; letter-spacing: 0; }
+.vc-findings--tight { margin-top: 40px; }
+/* Content sits close to its own heading: less space below a title than above it */
+.vc-step + .vc-findings, .vc-step + .vc-body { margin-top: 0; }
+.vc-step + .vc-findings { padding-top: 6px; }
+.vc-h3 + .vc-changes { margin-top: 20px; }
+.vc-h2 + .vc-track, .vc-h2 + .vc-timeline, .vc-h2 + .vc-findings { margin-top: 30px; }
+.vc-scope__intro { max-width: 72ch; margin: 0; color: var(--text-3); font-size: 15px; line-height: 1.65; }
+.vc-scope__intro strong, .vc-table td strong { color: var(--text); font-weight: 600; }
+.vc-scope__body { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 56px; margin-top: 26px; }
+.vc-scope__body strong { display: block; margin-bottom: 7px; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -.02em; }
+.vc-scope__body p { margin: 0; color: var(--text-3); font-size: 14.5px; line-height: 1.6; }
+
 /* ===== Statement ======================================================== */
 .vc-statement { padding: 104px 0; background: linear-gradient(180deg, var(--accent-dim), transparent 78%), var(--ink); color: var(--paper); }
 .vc-statement blockquote { max-width: 22ch; margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4.6vw, 4rem); font-weight: 500; letter-spacing: -.05em; line-height: 1.1; }
@@ -467,6 +492,11 @@ body[data-brand="bim"] .vc-pull {
 .vc-locked__stub b { color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -.02em; }
 .vc-locked__stub span { color: var(--accent); font-size: 14px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
 .vc-locked[data-state="open"] .vc-locked__stub { display: none; }
+/* An opened block starts a new topic: clear space above its title, its content close below */
+.vc-locked[data-state="open"] { margin-top: 72px; }
+.vc-locked .vc-h3 + .vc-scroller { margin-top: 0; }
+.vc-locked[data-vc-slot="survey"][data-state="open"] { margin-top: 36px; }
+.vc-locked[data-vc-slot="benchmark"][data-state="open"], .vc-locked[data-vc-slot="learnings"][data-state="open"] { margin-top: 104px; }
 
 /* ===== Private content blocks =========================================== */
 .vc-locked .vc-h3 { margin-bottom: 14px; }
@@ -586,6 +616,8 @@ body[data-brand="bim"] .vc-pull {
   .vc-facts > div:first-child { border-top: 0; }
   .vc-findings { grid-template-columns: 1fr; gap: 30px; }
   .vc-disclosure__body { grid-template-columns: 1fr; gap: 24px; }
+  .vc-scope, .vc-callout { padding: 24px 20px 26px; }
+  .vc-scope__body { grid-template-columns: 1fr; gap: 22px; }
   .vc-statement { padding: 76px 0; }
   .vc-flow, .vc-timeline, .vc-impact { grid-template-columns: 1fr; gap: 0; }
   .vc-flow li, .vc-timeline li { padding-right: 0; }
