@@ -219,29 +219,16 @@
             </button>
           </div>
 
-          <!-- Out of scope: always visible -->
-          <aside class="vc-scope reveal" aria-labelledby="vc-scope-title">
-            <p class="vc-sub" id="vc-scope-title">Out of scope</p>
-            <p class="vc-scope__intro">The discovery also surfaced pain points that matter to sellers but that we chose to keep out of this first revamp.</p>
-            <div class="vc-scope__body">
-              <div>
-                <strong>Editing after submission</strong>
-                <p>We chose to simplify the current flow first, so the new flow could then become the way to edit existing listings.</p>
-              </div>
-              <div>
-                <strong>Price recommendations</strong>
-                <p>The pricing algorithm needs work, but it is also tied to a business goal of keeping prices competitive, and changing it would not move this project's KPIs.</p>
-              </div>
-              <div>
-                <strong>Curation and rejection</strong>
-                <p>Long validation times and unclear rejection reasons belong to the curation team, a large team already working to reduce them. We passed on what sellers reported.</p>
-              </div>
-              <div>
-                <strong>Taxonomy revamp</strong>
-                <p>A better taxonomy matters for listing quality, but ours is old and complex. While our front-end team built the new flow, the back-end team started the migrations that will simplify it.</p>
-              </div>
-            </div>
-          </aside>
+          <!-- LOCKED: out of scope -->
+          <div class="vc-locked reveal" data-vc-slot="scope">
+            <button class="vc-locked__stub" type="button" data-vc-unlock>
+              <i class="fas fa-lock" aria-hidden="true"></i>
+              <b>Out of scope</b>
+              What we chose to keep out of this first revamp, and why.
+              <span>Unlock</span>
+            </button>
+          </div>
+
 
           <!-- LOCKED: competitor benchmark -->
           <div class="vc-locked reveal" data-vc-slot="benchmark">
