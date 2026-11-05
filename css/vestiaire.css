@@ -495,6 +495,7 @@ body[data-brand="bim"] .vc-pull {
 /* An opened block starts a new topic: clear space above its title, its content close below */
 .vc-locked[data-state="open"] { margin-top: 72px; }
 .vc-locked .vc-h3 + .vc-scroller { margin-top: 0; }
+.vc-locked .vc-h3 + .vc-track { margin-top: 20px; }
 .vc-locked[data-vc-slot="survey"][data-state="open"] { margin-top: 36px; }
 .vc-locked[data-vc-slot="benchmark"][data-state="open"], .vc-locked[data-vc-slot="learnings"][data-state="open"] { margin-top: 104px; }
 
