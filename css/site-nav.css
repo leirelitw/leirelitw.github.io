@@ -137,3 +137,15 @@ nav.navbar .navbar-nav .lang-choice.is-on { color: var(--nav-accent); }
 @media (max-width: 991.98px) {
   .lang-item { margin-left: 0; }
 }
+
+/* Touch screens: the logo is a link home, so it gets a full 44px target */
+@media (pointer: coarse) {
+  nav.navbar .logo { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+/* Reduced motion: every page that loads the nav honours it, not only the
+   case studies. Changes still happen, they just stop moving. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

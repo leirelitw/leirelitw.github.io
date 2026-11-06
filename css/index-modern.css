@@ -103,3 +103,9 @@ body { background: #0b0c10; }
      !important. It is scoped to this one page and this one media query. */
   html, body, body * { cursor: none !important; }
 }
+
+/* Reduced motion: the work cards fade and slide in with WOW/animate.css.
+   Show them in place instead. */
+@media (prefers-reduced-motion: reduce) {
+  .wow { visibility: visible !important; animation: none !important; }
+}

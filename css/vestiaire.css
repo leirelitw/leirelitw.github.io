@@ -597,6 +597,24 @@ body[data-brand="bim"] .vc-pull {
 .vc-footer a:hover { color: var(--accent-strong); }
 
 /* ===== Responsive ======================================================= */
+
+/* ------------------------------------------------------------ More work strip */
+.vc-more { border-top: 1px solid var(--rule-soft); }
+.vc-more__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 36px 0 0; padding: 0; list-style: none; }
+.vc-more__item { display: block; color: var(--text); text-decoration: none; }
+.vc-more__item img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid var(--rule-soft); transition: transform .45s var(--ease), border-color .25s var(--ease); }
+.vc-more__item strong { display: block; margin-top: 14px; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: -.02em; transition: color .2s var(--ease); }
+.vc-more__item span { display: block; margin-top: 4px; color: var(--text-3); font-size: 14.5px; }
+.vc-more__item:hover strong { color: var(--accent-strong); }
+.vc-more__item:hover img { transform: translateY(-4px); border-color: var(--accent-line); }
+.vc-more__item:active img { transform: scale(.98); transition-duration: .1s; }
+.vc-more__item:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+
+/* Touch screens: every control at least 44px tall */
+@media (pointer: coarse) {
+  .vc-switch button { min-height: 44px; }
+}
+
 @media (max-width: 1024px) {
   :root { --content: min(1180px, calc(100% - 44px)); }
   .vc-hero__inner { grid-template-columns: 1fr; gap: 42px; }
@@ -613,6 +631,7 @@ body[data-brand="bim"] .vc-pull {
 }
 
 @media (max-width: 767px) {
+  .vc-more__grid { grid-template-columns: 1fr; gap: 28px; }
   /* Tables become one block per row: label and number on top, explanation below */
   .vc-table--stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .vc-table--stack, .vc-table--stack tbody { display: block; }
@@ -621,9 +640,8 @@ body[data-brand="bim"] .vc-pull {
   .vc-table--stack th, .vc-table--stack td { padding: 0; border: 0 !important; min-width: 0; }
   .vc-table--stack td.vc-num { grid-column: 2; grid-row: 1; text-align: right; }
   .vc-table--stack td { grid-column: 1 / -1; }
-  .vc-table--stack td[data-label] { grid-column: auto; }
-  .vc-table--stack td.vc-delta { text-align: right; }
-  .vc-table--stack td[data-label]::before { content: attr(data-label); margin-right: 8px; color: var(--text-4); font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+  .vc-table--stack td[data-label] { display: flex; justify-content: space-between; gap: 16px; }
+  .vc-table--stack td[data-label]::before { content: attr(data-label); flex: 0 1 auto; color: var(--text-4); font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
   .vc-scroller:has(.vc-table--stack) { overflow: visible; }
   :root { --content: calc(100% - 40px); }
   .vc-section { padding: 68px 0; }

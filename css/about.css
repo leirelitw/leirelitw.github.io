@@ -34,3 +34,9 @@
 @media (max-width: 800px) {
   .ab-roles > li { grid-template-columns: 1fr; gap: 16px; }
 }
+
+/* Press feedback, and full-size touch targets for the project chips */
+.ab-roles ul a:active, .ab-social a:active { transform: scale(.96); }
+@media (pointer: coarse) {
+  .ab-roles ul a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; }
+}
