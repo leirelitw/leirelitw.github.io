@@ -164,7 +164,7 @@ body.vc-page {
 /* Shared type ------------------------------------------------------------ */
 .vc-eyebrow { margin: 0 0 14px; color: var(--accent); font-size: 14px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
 .vc-h2 { max-width: 24ch; margin: 0 0 20px; font-family: 'Space Grotesk', sans-serif; font-size: var(--h2-size); font-weight: 500; letter-spacing: var(--h2-tracking); line-height: var(--h2-leading); }
-.vc-h3 { margin: 0 0 10px; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -.03em; line-height: 1.25; }
+.vc-h3 { margin: 0 0 10px; font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.3rem, 1.1rem + .8vw, 1.65rem); font-weight: 500; letter-spacing: -.03em; line-height: 1.2; }
 .vc-lead { max-width: 62ch; margin: 0; color: var(--text-2); font-size: 18px; line-height: 1.65; }
 .vc-body { max-width: 62ch; margin: 0 0 16px; color: var(--text-3); font-size: 16px; line-height: 1.7; }
 .vc-body:last-child { margin-bottom: 0; }
@@ -277,7 +277,7 @@ body[data-brand="bim"] .vc-pull {
 /* Discovery steps and the always-visible out-of-scope banner */
 .vc-step { margin-top: 72px; margin-bottom: 14px; }
 .vc-after-list { margin-top: 40px; }
-.vc-scope, .vc-callout { margin-top: 64px; padding: 30px 32px 34px; border: 1px solid var(--accent-line); border-left: 3px solid var(--accent); background: var(--accent-dim); }
+.vc-scope, .vc-callout { margin-top: 64px; padding: 30px 32px 34px; border: 0; border-left: 3px solid var(--accent); background: var(--accent-dim); }
 .vc-callout { margin-top: 46px; padding: 24px 28px; }
 .vc-callout .vc-sub { margin-bottom: 8px; }
 .vc-callout__text { max-width: 72ch; margin: 0; color: var(--text-2); font-size: 16px; line-height: 1.6; }
@@ -321,6 +321,7 @@ body[data-brand="bim"] .vc-pull {
 .vc-switch { display: inline-flex; flex: 0 0 auto; gap: 4px; padding: 4px; border: 1px solid var(--rule); border-radius: 999px; background: var(--surface-2); }
 .vc-switch button { padding: 9px 20px; border: 0; border-radius: 999px; background: transparent; color: var(--text-3); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: color .25s var(--ease), background-color .25s var(--ease); }
 .vc-switch button:hover { color: var(--text); }
+.vc-switch button:active { transform: scale(.97); }
 .vc-switch button[aria-pressed="true"] { background: var(--btn-bg); color: var(--btn-text); }
 
 .vc-compare__view[hidden] { display: none; }
@@ -425,6 +426,9 @@ body[data-brand="bim"] .vc-pull {
 .vc-changes li:first-child { border-top: 1px solid var(--rule); }
 .vc-changes strong { color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 500; letter-spacing: -.025em; }
 .vc-changes p { position: relative; margin: 0; padding-left: 26px; color: var(--text-3); font-size: 15px; line-height: 1.6; }
+.vc-changes.vc-changes--plain p { padding-left: 0; }
+.vc-changes.vc-changes--plain p::before { content: none; }
+.vc-lead + .vc-changes { margin-top: 36px; }
 .vc-changes p::before { content: '\2192'; position: absolute; left: 0; color: var(--accent); }
 
 /* Prototype screens behind the learnings. Full width one per row: these are
@@ -495,7 +499,6 @@ body[data-brand="bim"] .vc-pull {
 /* An opened block starts a new topic: clear space above its title, its content close below */
 .vc-locked[data-state="open"] { margin-top: 72px; }
 .vc-locked .vc-h3 + .vc-scroller { margin-top: 0; }
-.vc-locked .vc-h3 + .vc-track { margin-top: 20px; }
 .vc-locked[data-vc-slot="survey"][data-state="open"] { margin-top: 36px; }
 .vc-locked[data-vc-slot="benchmark"][data-state="open"], .vc-locked[data-vc-slot="learnings"][data-state="open"] { margin-top: 104px; }
 
@@ -514,6 +517,11 @@ body[data-brand="bim"] .vc-pull {
 .vc-table .vc-num { color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 500; letter-spacing: -.02em; white-space: nowrap; }
 .vc-table .vc-delta { color: var(--delta-up); font-family: 'Space Grotesk', sans-serif; font-weight: 500; white-space: nowrap; }
 .vc-table .vc-delta--down { color: var(--delta-down); }
+/* Smart Listing tables share one column grid, so their columns line up */
+@media (min-width: 768px) {
+  .vc-table--stack tbody th { width: 24%; }
+  .vc-table--stack td.vc-num { width: 15%; }
+}
 .vc-scroller { overflow-x: auto; }
 
 .vc-bench { display: grid; gap: 22px; margin: 0; padding: 0; list-style: none; }
@@ -605,6 +613,18 @@ body[data-brand="bim"] .vc-pull {
 }
 
 @media (max-width: 767px) {
+  /* Tables become one block per row: label and number on top, explanation below */
+  .vc-table--stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .vc-table--stack, .vc-table--stack tbody { display: block; }
+  .vc-table--stack tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 16px; padding: 16px 0; border-top: 1px solid var(--rule-soft); }
+  .vc-table--stack tbody tr:first-child { border-top: 0; }
+  .vc-table--stack th, .vc-table--stack td { padding: 0; border: 0 !important; min-width: 0; }
+  .vc-table--stack td.vc-num { grid-column: 2; grid-row: 1; text-align: right; }
+  .vc-table--stack td { grid-column: 1 / -1; }
+  .vc-table--stack td[data-label] { grid-column: auto; }
+  .vc-table--stack td.vc-delta { text-align: right; }
+  .vc-table--stack td[data-label]::before { content: attr(data-label); margin-right: 8px; color: var(--text-4); font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+  .vc-scroller:has(.vc-table--stack) { overflow: visible; }
   :root { --content: calc(100% - 40px); }
   .vc-section { padding: 68px 0; }
   .vc-hero { padding: 116px 0 44px; }
