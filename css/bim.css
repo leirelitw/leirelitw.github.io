@@ -49,3 +49,103 @@
 .bim-specs figure { max-width: min(100%, var(--w, 340px)); }
 .bim-specs figcaption { max-width: 34ch; }
 .bim-tile--logo img { width: min(100%, 290px); }
+
+/* ---------------------------------------------------------------------------
+   THE PIVOT, BEFORE AND AFTER, THE LATEST VERSION
+--------------------------------------------------------------------------- */
+
+.bim-origin { max-width: 980px; margin-top: 72px; }
+.bim-origin img { display: block; width: 100%; height: auto; }
+
+/* Two audiences, side by side: what each gets, then one screen as proof. */
+.bim-sides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; margin-top: 64px; }
+.bim-side .vc-sub { margin-bottom: 14px; }
+.bim-list { margin: 0 0 40px; padding: 0; list-style: none; }
+.bim-list li { position: relative; padding: 13px 0 13px 24px; border-top: 1px solid var(--rule-soft); color: var(--text-2); font-size: 16px; line-height: 1.5; }
+.bim-list li:last-child { border-bottom: 1px solid var(--rule-soft); }
+.bim-list li::before { content: ''; position: absolute; top: 21px; left: 2px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.bim-side .vc-phone { width: min(100%, 260px); }
+.bim-side .vc-figure figcaption { max-width: 34ch; }
+.bim-pull { max-width: 760px; margin-top: 88px; }
+
+/* Before and after. One phone holds both screens; the after screen is
+   clipped from the line to the right edge, so dragging the line reveals it
+   1:1 with the pointer. --pos is the line's position across the screen. */
+.bim-ba { margin-top: 52px; }
+.bim-ba__tabs { display: flex; gap: 8px; margin: 0 0 44px; padding: 2px 0 6px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.bim-ba__tabs::-webkit-scrollbar { display: none; }
+.bim-ba__tab { flex: 0 0 auto; min-height: 44px; padding: 10px 18px; border: 1px solid var(--rule); border-radius: 999px; background: transparent; color: var(--text-3); font-family: 'DM Sans', sans-serif; font-size: 14.5px; font-weight: 500; cursor: pointer; transition: color .2s var(--ease), background-color .2s var(--ease), border-color .2s var(--ease), transform .1s ease-out; }
+.bim-ba__tab:hover { color: var(--text); border-color: var(--accent-line); }
+.bim-ba__tab:active { transform: scale(.97); }
+.bim-ba__tab[aria-selected="true"] { border-color: var(--accent); background: var(--accent); color: #fff; }
+
+.bim-ba__stage { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 72px; align-items: center; }
+.bim-ba__device { display: grid; justify-items: center; gap: 18px; }
+.bim-ba__phone { width: 100%; max-width: 320px; }
+.bim-ba__compare { position: relative; aspect-ratio: 600 / 1304; overflow: hidden; border-radius: 34px; background: #111; cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+.bim-ba__compare .bim-ba__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; transition: opacity .18s ease-out; }
+.vc-phone .bim-ba__compare .bim-ba__img { border-radius: 0; background: #111; }
+.bim-ba__img--after { clip-path: inset(0 0 0 var(--pos)); }
+.bim-ba__compare.is-swapping .bim-ba__img { opacity: 0; }
+
+.bim-ba__tag { position: absolute; top: 46px; padding: 5px 10px; border-radius: 999px; background: rgba(11, 12, 16, .72); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; pointer-events: none; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: opacity .2s ease-out; }
+.bim-ba__tag--before { left: 12px; }
+.bim-ba__tag--after { right: 12px; background: var(--brand-ink); }
+.bim-ba__compare.is-near-left .bim-ba__tag--before,
+.bim-ba__compare.is-near-right .bim-ba__tag--after { opacity: 0; }
+
+/* The line, with a knob in the middle. The hit area is wider than the
+   line so it can be grabbed with a thumb. */
+.bim-ba__handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 44px; margin-left: -22px; cursor: ew-resize; outline: none; }
+.bim-ba__handle::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, .15), 0 0 14px rgba(0, 0, 0, .35); }
+.bim-ba__knob { position: absolute; top: 50%; left: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: #fff; box-shadow: 0 6px 18px rgba(0, 0, 0, .35); transition: transform .12s ease-out; }
+.bim-ba__knob::before, .bim-ba__knob::after { content: ''; position: absolute; top: 50%; width: 0; height: 0; margin-top: -6px; border: 6px solid transparent; }
+.bim-ba__knob::before { left: 7px; border-right-color: #0b0c10; }
+.bim-ba__knob::after { right: 7px; border-left-color: #0b0c10; }
+.bim-ba__compare.is-dragging .bim-ba__knob { transform: scale(1.1); }
+.bim-ba__handle:focus-visible .bim-ba__knob { box-shadow: 0 0 0 3px var(--accent), 0 6px 18px rgba(0, 0, 0, .35); }
+.bim-ba__hint { margin: 0; color: var(--text-4); font-size: 14px; }
+
+.bim-ba__panel[hidden] { display: none; }
+.bim-ba__panel .vc-h3 { margin-bottom: 0; }
+.bim-ba__notes { display: grid; gap: 0; max-width: 52ch; margin: 28px 0 0; }
+.bim-ba__notes div { padding: 20px 0; border-top: 1px solid var(--rule-soft); }
+.bim-ba__notes dt { margin-bottom: 6px; color: var(--text-4); font-size: 13px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
+.bim-ba__notes div + div dt { color: var(--accent); }
+.bim-ba__notes dd { margin: 0; color: var(--text-2); font-size: 16.5px; line-height: 1.6; }
+.bim-ba__panel.is-entering { animation: bim-in .28s var(--ease) both; }
+@keyframes bim-in { from { opacity: 0; transform: translateY(8px); } }
+
+/* The latest version: three recordings, three phones. */
+.bim-reels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; margin: 52px 0 0; padding: 0; list-style: none; }
+.bim-reel__phone { width: min(100%, 290px); }
+.bim-reel__phone video { display: block; height: auto; aspect-ratio: 720 / 1558; }
+.bim-reel__play { position: absolute; inset: 11px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border: 0; border-radius: 34px; background: linear-gradient(180deg, rgba(11, 12, 16, 0) 40%, rgba(11, 12, 16, .55)); color: #fff; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: opacity .2s ease-out; }
+.bim-reel__icon { position: relative; width: 68px; height: 68px; border-radius: 50%; background: rgba(255, 255, 255, .9); box-shadow: 0 10px 30px rgba(0, 0, 0, .35); transition: transform .12s ease-out; }
+.bim-reel__icon::after { content: ''; position: absolute; top: 50%; left: 50%; margin: -11px 0 0 -6px; border: 11px solid transparent; border-right: 0; border-left: 17px solid #0b0c10; }
+.bim-reel__play:hover .bim-reel__icon { transform: scale(1.05); }
+.bim-reel__play:active .bim-reel__icon { transform: scale(.94); }
+.bim-reel__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.bim-reel__time { padding: 3px 10px; border-radius: 999px; background: rgba(11, 12, 16, .6); font-size: 13px; font-weight: 500; letter-spacing: .04em; }
+.bim-reel.is-playing .bim-reel__play { opacity: 0; pointer-events: none; }
+.bim-reel__title { margin: 26px 0 8px; color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 500; letter-spacing: -.03em; }
+.bim-reel__text { max-width: 34ch; margin: 0; color: var(--text-3); font-size: 15px; line-height: 1.6; }
+
+@media (max-width: 991px) {
+  .bim-ba__stage { grid-template-columns: 280px minmax(0, 1fr); gap: 44px; }
+}
+@media (max-width: 767px) {
+  .bim-sides { grid-template-columns: 1fr; gap: 72px; }
+  .bim-ba__tabs { margin: 0 -20px 32px; padding: 2px 20px 6px; scroll-padding: 0 20px; }
+  .bim-ba__stage { grid-template-columns: 1fr; gap: 32px; }
+  .bim-ba__phone { max-width: 290px; }
+  /* Three phones become a row to swipe through, the next one peeking in. */
+  .bim-reels { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 74%; gap: 20px; margin-right: -20px; margin-left: -20px; padding: 0 20px 8px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 20px; scrollbar-width: none; }
+  .bim-reels::-webkit-scrollbar { display: none; }
+  .bim-reel { scroll-snap-align: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bim-ba__panel.is-entering { animation: none; }
+  .bim-ba__knob, .bim-reel__icon, .bim-ba__tab { transition: none; }
+}
