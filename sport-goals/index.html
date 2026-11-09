@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#f3f1ed">
+<title>Sport goals — Leire Litwin</title>
+<link rel="shortcut icon" href="../img/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3f1ed; --white:#fff; --ink:#0b0c10; --text-2:#3a3c44; --text-3:#64666f;
+    --rule:rgba(11,12,16,.2); --rule-soft:rgba(11,12,16,.11);
+    --pink:#f2a9c7; --pink-ink:#a83a6c;
+    --display:'Space Grotesk', system-ui, sans-serif; --body:'Poppins', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;padding:0}
+  :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  .nav{border-bottom:1px solid var(--rule-soft)}
+  .nav .container{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .nav img{width:28px;height:28px;display:block}
+  .nav a.back{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+
+  h1{font-family:var(--display);font-weight:500;font-size:clamp(40px,7vw,72px);letter-spacing:-.07em;line-height:.95;margin:64px 0 0}
+  h1 span{color:var(--pink-ink)}
+
+  .tabs{display:flex;flex-wrap:wrap;gap:4px 28px;margin:40px 0 0;border-bottom:1px solid var(--rule-soft)}
+  .tabs button{position:relative;padding:10px 0 14px;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
+  .tabs button:hover,.tabs button[aria-selected="true"]{color:var(--ink)}
+  .tabs button[aria-selected="true"]::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--pink-ink)}
+
+  .rhead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin:44px 0 20px}
+  .rhead h2{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.5vw,44px);letter-spacing:-.06em;margin:0;line-height:1}
+  .rhead .meta{margin-top:10px;font-size:13px;color:var(--text-3)}
+  .rhead .meta a{color:var(--text-3)}
+  .count{font-family:var(--display);font-size:28px;letter-spacing:-.04em;white-space:nowrap}
+  .count small{color:var(--text-3);font-size:16px}
+  .note{font-size:13px;color:var(--text-2);margin:0 0 18px;padding-left:12px;border-left:2px solid var(--pink)}
+
+  ol.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+  .row{display:grid;grid-template-columns:28px 1fr auto 32px;gap:20px;align-items:center;padding:16px 0;border-bottom:1px solid var(--rule-soft)}
+  .num{font-size:12px;font-weight:500;color:var(--pink-ink)}
+  .name{font-family:var(--display);font-size:21px;font-weight:500;letter-spacing:-.04em;line-height:1.15}
+  .sub{display:flex;gap:14px;align-items:center;margin-top:6px;font-size:12px;color:var(--text-3)}
+  .tipbtn{font-size:12px;font-weight:500;text-decoration:underline;text-underline-offset:3px;color:var(--ink)}
+  .imgs{display:flex;gap:6px}
+  .imgs button{position:relative;width:96px;aspect-ratio:3/4;overflow:hidden;background:#ddd}
+  .imgs img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+  .imgs button{cursor:zoom-in;background:var(--white);border:1px solid var(--rule-soft)}
+  .imgs button:hover img{transform:scale(1.04)}
+  
+  .check{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--rule);display:grid;place-items:center;font-size:13px;color:transparent;transition:all .2s}
+  .check:hover{border-color:var(--ink)}
+  .row.done .check{background:var(--ink);border-color:var(--ink);color:var(--white)}
+  .row.done .name{color:var(--text-3)}
+  .row.done .imgs{opacity:.45}
+
+
+  .mode{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--rule);border-radius:999px;padding:6px 12px}
+  .mode[aria-pressed="true"]{background:var(--ink);color:var(--white);border-color:var(--ink)}
+  body.bw .imgs img, body.bw #lbImg{filter:grayscale(1) contrast(1.05)}
+  .tip{position:absolute;z-index:20;width:300px;max-width:calc(100vw - 24px);background:var(--white);color:var(--text-2);padding:14px 16px;border-radius:12px;box-shadow:0 12px 32px -10px rgba(11,12,16,.28),0 0 0 1px rgba(11,12,16,.06);font-size:13px;line-height:1.55}
+  .tip::before{content:'';position:absolute;top:-6px;left:var(--arrow,20px);width:12px;height:12px;background:var(--white);transform:rotate(45deg);box-shadow:-1px -1px 0 rgba(11,12,16,.06)}
+  .tip ul{position:relative;margin:0;padding-left:16px}
+  .tip li+li{margin-top:6px}
+  .lb{position:fixed;inset:0;z-index:50;background:rgba(243,241,237,.97);display:flex;flex-direction:column;padding:20px 24px 28px}
+  .lb[hidden]{display:none}
+  .lb-top{display:flex;justify-content:space-between;align-items:flex-start;max-width:1080px;width:100%;margin:0 auto}
+  .lb-name{font-family:var(--display);font-size:clamp(24px,4vw,36px);font-weight:500;letter-spacing:-.05em}
+  .lb-dose{font-size:13px;color:var(--text-3);margin-top:4px}
+  .lb-x{width:42px;height:42px;border-radius:50%;border:1px solid var(--rule);font-size:16px;background:var(--white)}
+  .lb-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;gap:16px;margin-top:16px}
+  .lb-stage img{max-height:100%;max-width:min(100%,600px);aspect-ratio:3/4;object-fit:contain;background:var(--white);box-shadow:0 20px 50px -24px rgba(11,12,16,.35)}
+  .lb-nav{width:48px;height:48px;flex:none;border-radius:50%;background:var(--white);border:1px solid var(--rule);font-size:26px;line-height:1}
+  .lb-nav:disabled{opacity:.25;cursor:default}
+  .lb-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+  .lb-dots button{width:8px;height:8px;border-radius:50%;background:var(--rule)}
+  .lb-dots button[aria-current="true"]{background:var(--ink)}
+  @media (max-width:720px){ .lb{padding:16px} .lb-nav{position:absolute;top:50%;width:40px;height:40px} #lbPrev{left:10px} #lbNext{right:10px} }
+  footer{padding:56px 0 40px;font-size:12px;color:var(--text-3)}
+
+  @media (max-width:720px){
+    h1{margin-top:40px}
+    .row{grid-template-columns:24px 1fr 30px;gap:6px 12px}
+    .imgs{grid-column:2 / 3;grid-row:2}
+    .imgs button{width:30%;max-width:110px}
+    .check{grid-column:3;grid-row:1}
+    .rhead{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="container">
+  <a href="../index.html" aria-label="Home"><img src="../img/logo.jpg" alt="LL"></a>
+  <div style="display:flex;align-items:center;gap:22px"><button class="mode" id="mode" aria-pressed="false">B&amp;W</button><a class="back" href="../index.html">← Portfolio</a></div>
+</div></nav>
+
+<main class="container">
+  <h1>Sport goals<span>.</span></h1>
+  <div class="tabs" id="tabs" role="tablist"></div>
+  <section id="routine"></section>
+  <footer>Frames and tips from the creators’ Instagram posts, linked on each routine.</footer>
+</main>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lbName">
+  <div class="lb-top"><div><div class="lb-name" id="lbName"></div><div class="lb-dose" id="lbDose"></div></div><button class="lb-x" id="lbX" aria-label="Close">✕</button></div>
+  <div class="lb-stage"><button class="lb-nav" id="lbPrev" aria-label="Previous">‹</button><img id="lbImg" alt=""><button class="lb-nav" id="lbNext" aria-label="Next">›</button></div>
+  <div class="lb-dots" id="lbDots"></div>
+</div>
+<div class="tip" id="tip" role="tooltip" hidden><ul id="tipList"></ul></div>
+
+<script>
+const R=[
+{id:'wake',tab:'Wake up',title:'Morning shake-out',meta:'7 min · every morning',src:[['olympiaanley','DTQHBlGDS-2']],
+ note:'1 minute each, loose and bouncy. Great before coffee.',
+ ex:[
+  {n:'Lymphatic hops',d:'1 min',img:['wk-hops-0','wk-hops-1'],p:'DTQHBlGDS-2',t:['Small, light bounces: heels barely leave the floor.','Let your arms and shoulders hang loose and shake.']},
+  {n:'Arm swings',d:'1 min',img:['wk-arms-0','wk-arms-1','wk-arms-2'],p:'DTQHBlGDS-2',t:['Swing both arms up overhead and let them drop with gravity.','Soft knees, bounce a little as the arms come down.']},
+  {n:'Body waves',d:'1 min',img:['wk-waves-0'],p:'DTQHBlGDS-2',t:['Roll a wave through chest, belly and hips.','Keep it slow and fluid, arms follow the movement.']},
+  {n:'Dead arms',d:'1 min',img:['wk-dead-0','wk-dead-1'],p:'DTQHBlGDS-2',t:['Twist side to side and let your arms flop around you like ropes.','No effort in the arms at all.']},
+  {n:'Trunk twists',d:'1 min',img:['wk-twist-0','wk-twist-1'],p:'DTQHBlGDS-2',t:['Rotate from the waist, let the head and hair follow.','Let the heel lift on the side you turn away from.']},
+  {n:'Golf swings',d:'1 min',img:['wk-golf-0','wk-golf-1','wk-golf-2'],p:'DTQHBlGDS-2',t:['Swing both arms diagonally across the body, high to low.','Pivot on the back foot as you swing.']},
+  {n:'Marches',d:'1 min',img:['wk-march-0','wk-march-1','wk-march-2'],p:'DTQHBlGDS-2',t:['Knees up to hip height, opposite arm swings.','Stay light on your feet and breathe through your nose.']},
+ ]},
+{id:'spine',tab:'Spine flow',title:'Morning spine flow',meta:'5 min · every morning',src:[['evedumon','Dcl-1JoPfWs']],
+ note:'Do this instead of scrolling in bed. Start by waking up the spine.',
+ ex:[
+  {n:'Roll down',d:'3 slow',img:['sp-roll-0','sp-roll-1','sp-roll-2'],p:'Dcl-1JoPfWs',t:['From standing, roll down one vertebra at a time, knees soft.','Let the head hang heavy, then roll back up slowly.']},
+  {n:'Cat–cow',d:'× 3',img:['sp-cat-0'],p:'Dcl-1JoPfWs',t:['Breathe in: belly drops, look forward.','Breathe out: round the back, chin to chest.']},
+  {n:'Three-legged dog + hip opener',d:'3 / side',img:['sp-dog-0','sp-dog-1'],p:'Dcl-1JoPfWs',t:['From down dog, lift one leg, bend the knee and open the hip to the side.','Keep both hands pressing evenly into the mat.']},
+  {n:'Knee to nose',d:'3 / side',img:['sp-knee-0','sp-knee-1','sp-knee-2'],p:'Dcl-1JoPfWs',t:['Bring the knee in to touch the elbow, then the tip of the nose.','Round the upper back and push the floor away.']},
+  {n:'Low lunge twist',d:'3 / side',img:['sp-lunge-0','sp-lunge-1'],p:'Dcl-1JoPfWs',t:['Back knee down, open the arm to the ceiling and twist.','Add a shoulder roll, then repeat on the other side.']},
+  {n:'Child’s pose',d:'30 s',img:['sp-child-0','sp-child-1','sp-child-2'],p:'Dcl-1JoPfWs',t:['Rest the forehead down and massage your trapezius with your hands.']},
+  {n:'Kneeling backbend',d:'3 breaths',img:['sp-back-0','sp-back-1','sp-back-2'],p:'Dcl-1JoPfWs',t:['Hands on lower back, lift the chest up before going back.','Push the hips forward, keep the neck long.']},
+ ]},
+{id:'glutes',tab:'Glutes',title:'Glutes at home',meta:'25 min · 3× a week',src:[['_alexthorogood','DfMymVzhuJh']],
+ note:'Good → better → excellent: when an exercise feels easy, move to the harder version.',
+ ex:[
+  {n:'Glute bridge',d:'3 × 15',img:['gl-bridge-0','gl-bridge-1','gl-bridge-2'],p:'DfMymVzhuJh',t:['Bodyweight is good, holding a dumbbell on your hips is better.','Push through your heels, squeeze at the top, ribs down.']},
+  {n:'Hip thrust',d:'3 × 12',img:['gl-thrust-0','gl-thrust-1','gl-thrust-2'],p:'DfMymVzhuJh',t:['The “excellent” version of the bridge: shoulders on a bench or sofa.','Chin tucked, shins vertical at the top, pause for 1 second.']},
+  {n:'Side-lying leg raise',d:'3 × 15 / side',img:['gl-side-0','gl-side-1'],p:'DfMymVzhuJh',t:['Works the side of your glutes.','Toes point slightly down, don’t roll your hips back.']},
+  {n:'Fire hydrant',d:'3 × 12 / side',img:['gl-hydrant-0','gl-hydrant-1'],p:'DfMymVzhuJh',t:['A step up from the leg raise for the side of your glutes.','Keep your back flat and lift the knee out to the side.']},
+  {n:'Banded lateral walk',d:'3 × 12 steps',img:['gl-walk-0','gl-walk-1','gl-walk-2'],p:'DfMymVzhuJh',t:['The “excellent” side-glute move.','Stay low in a half squat and push your knees out against the band.']},
+  {n:'Reverse lunge',d:'3 × 10 / side',img:['gl-lunge-0','gl-lunge-1','gl-lunge-2'],p:'DfMymVzhuJh',t:['Step back and lean slightly forward to load the glute.','Push through the front heel to come up.']},
+  {n:'Romanian deadlift',d:'3 × 12',img:['gl-rdl-0','gl-rdl-1','gl-rdl-2'],p:'DfMymVzhuJh',t:['Push the hips back, soft knees, flat back.','Weights stay close to your legs.']},
+  {n:'Single-leg RDL',d:'3 × 8 / side',img:['gl-slrdl-0','gl-slrdl-1','gl-slrdl-2'],p:'DfMymVzhuJh',t:['The “excellent” version of the RDL.','Hips stay square to the floor; go slowly.']},
+ ]},
+{id:'gym',tab:'Gym glutes',title:'Glutes at the gym',meta:'45 min · 2× a week',src:[['thesaiyankiwi','DcvoLhDOs-U'],['onamoves_','Dehe4WROmSP']],
+ note:'Technique beats adding exercises: few moves, done well, repeated every week. 3 sets each.',
+ ex:[
+  {n:'Hip abduction machine',d:'3 × 15',img:['gy-abd-0','gy-abd-1','gy-abd-2'],p:'DcvoLhDOs-U',t:['Control the way back in, don’t let the weights slam.','Lean slightly forward to feel it more in the glutes.']},
+  {n:'45° hip extension',d:'3 × 12',img:['gy-ext-0','gy-ext-1','gy-ext-2'],p:'DcvoLhDOs-U',t:['Round your upper back slightly and squeeze your glutes to come up.','Stop when your body is in line, don’t arch past it.']},
+  {n:'Barbell hip thrust',d:'3 × 10',img:['gy-thrust-0','gy-thrust-1','gy-thrust-2'],p:'DcvoLhDOs-U',t:['Chin tucked, look forward, ribs down.','Pause for 1 second at the top.']},
+  {n:'Romanian deadlift',d:'3 × 10',img:['gy-rdl-0','gy-rdl-1','gy-rdl-2'],p:'DcvoLhDOs-U',t:['Bar slides down close to your legs.','Hips back until you feel the hamstrings, then drive them forward.']},
+  {n:'Side plank hip lift',d:'3 × 10 / side',img:['gy-sideplank-0','gy-sideplank-1','gy-sideplank-2'],p:'DcvoLhDOs-U',t:['Elbow under shoulder, lift the hips up and down.','Works the side of the glute.']},
+ ]},
+{id:'split',tab:'Front split',title:'Front split',meta:'15 min · at least 3× a week',src:[['elenahazinah','DbqnMuitilJ'],['elsa.move','DdrH3xeKmAm'],['lidiaagracia_','DeUvoB9OJQo'],['sopolefit','DfZRJPcPrEM']],
+ note:'Hold each stretch 30–45 s, breathe deeply, move slowly. Consistency matters more than forcing it.',
+ ex:[
+  {n:'Low lunge',d:'45 s / side',img:['fs-lunge-0','fs-lunge-1','fs-lunge-2'],p:'DbqnMuitilJ',t:['Back knee down, push the hips forward.','Stretches the front of the back hip (your split’s back leg).']},
+  {n:'Half split',d:'45 s / side',img:['fs-half-0','fs-half-1','fs-half-2'],p:'DbqnMuitilJ',t:['Hips back over the knee, front leg straight, toes up.','Fold with a long back rather than rounding.']},
+  {n:'Side bend stretch',d:'30 s / side',img:['fs-mermaid-0','fs-mermaid-1'],p:'DbqnMuitilJ',t:['Reach the arm over your head towards the straight leg.','Keep both sit bones heavy.']},
+  {n:'Standing forward fold',d:'45 s',img:['fs-pyramid-0','fs-pyramid-1','fs-pyramid-2'],p:'DbqnMuitilJ',t:['Hands to the floor, let your head hang.','Bend the knees a little if your back rounds a lot.']},
+  {n:'Lunge quad stretch',d:'30 s / side',img:['fs-quad-0','fs-quad-1','fs-quad-2'],p:'DbqnMuitilJ',t:['From the low lunge, hold the back foot and pull it towards you.']},
+  {n:'Contract–relax half split',d:'5 / side',img:['fs-pnf-0','fs-pnf-1','fs-pnf-2'],p:'DdrH3xeKmAm',t:['Press the front heel into the floor for a few seconds, then relax and sink deeper.','Keep your back straight; a rounded back doesn’t help.','Start in an easy range and gain a little on each rep. Let the body release, don’t force.']},
+  {n:'Front split hold',d:'30–60 s / side',img:['fs-split-0','fs-split-1','fs-split-2'],p:'DbqnMuitilJ',t:['Use blocks under your hands and go only as low as you control.','Hips square to the front.']},
+ ]},
+{id:'middle',tab:'Middle split',title:'Middle split & hips',meta:'15 min · 3× a week',src:[['palo.yoga','DeFyVNsh1Q8'],['move_withagnes','De-Co4mxrMj'],['mireiafiguerass','DQw_WbyjNpT']],
+ note:'Just start and keep going, it doesn’t need to be perfect. Train the skill, don’t only force the position.',
+ ex:[
+  {n:'Supported wide fold',d:'30 s',img:['ms-table-0','ms-table-1','ms-table-2'],p:'DeFyVNsh1Q8',t:['Legs wide, hands on a table or chair.','Push your hips back and arch your back.']},
+  {n:'Wide-leg forward fold',d:'30 s',img:['ms-fold-0','ms-fold-1','ms-fold-2'],p:'DeFyVNsh1Q8',t:['Walk your hands down towards the floor.','How far you go depends on your hamstring flexibility, that’s fine.']},
+  {n:'Straddle leg lifts',d:'5–10 / leg',img:['ms-lifts-0','ms-lifts-1'],p:'DeFyVNsh1Q8',t:['Sit in a straddle, hands beside you, lift one straight leg off the floor.','Builds strength at the end of your range.']},
+  {n:'Straddle side reach',d:'30 s / side',img:['ms-straddle-0','ms-straddle-1','ms-straddle-2'],p:'DeFyVNsh1Q8',t:['Reach over one leg, breathe in and out slowly.']},
+  {n:'Straddle hold',d:'30–60 s',img:['ms-hold-0','ms-hold-1','ms-hold-2'],p:'DeFyVNsh1Q8',t:['Last one: stay here for 30 to 60 seconds.','Relax a bit more on each exhale.']},
+ ]},
+{id:'pelvic',tab:'Pelvic release',title:'Pelvic & hip release',meta:'15 min · 3–4× a week',src:[['djkim.yoga','DcKYGDOJrru'],['trevorsinstinct','DfNqMJ8Smd7'],['trainwithwright','DcMwfpCR93U']],
+ note:'Don’t force it. Build strength through your range. If pelvic pain keeps coming back, see a pelvic floor physio.',
+ ex:[
+  {n:'Child’s pose breathing',d:'1 min',img:['pv-child-0','pv-child-1','pv-child-2'],p:'Dcl-1JoPfWs',t:['Knees wide, forehead down.','Breathe in slowly into your back and let the pelvic floor soften. Breathe out without pushing.']},
+  {n:'Butterfly',d:'10 reps + 30 s',img:['pv-butterfly-0','pv-butterfly-1','pv-butterfly-2'],p:'DcKYGDOJrru',t:['Active: lift the knees up and let them fall open.','Rest on yoga blocks if your hips are tight; add weight later.']},
+  {n:'90/90 hip switch',d:'10 / side',img:['pv-9090-0','pv-9090-1','pv-9090-2'],p:'DcKYGDOJrru',t:['Both knees at 90°, switch sides by rotating the hips.','Progress with a leg kick or a hip lift.']},
+  {n:'Deep squat hold',d:'30–60 s',img:['pv-squat-0','pv-squat-1','pv-squat-2'],p:'DcKYGDOJrru',t:['Heels down, chest up, elbows gently push the knees out.','Hold a support or a weight in front to balance.']},
+  {n:'Lizard twist',d:'30 s / side',img:['pv-lizard-0','pv-lizard-1','pv-lizard-2'],p:'DfNqMJ8Smd7',t:['From a low lunge, both hands inside the front foot, then open the arm to the ceiling.']},
+  {n:'Alternating pigeon',d:'1 min',img:['pv-pigeon-0','pv-pigeon-1','pv-pigeon-2'],p:'DfNqMJ8Smd7',t:['Move slowly between pigeon on each side.','Square the hips and breathe into the back hip.']},
+  {n:'Cossack squat',d:'8 / side',img:['pv-cossack-0','pv-cossack-1','pv-cossack-2'],p:'DcKYGDOJrru',t:['Shift from side to side into one bent leg, the other straight.','Hold a support at first, add weight later.']},
+ ]},
+{id:'back',tab:'Back care',title:'Back care & bedtime',meta:'10 min · before bed',src:[['michaeldean2.0','DNx2eH1Ymu9'],['paris_stretch','Deb6zffCQ3v']],
+ note:'Try the first four right before bed to relax the back and fall asleep without pain.',
+ ex:[
+  {n:'Prone 90/90 switch',d:'20 reps',img:['bk-9090-0','bk-9090-1','bk-9090-2'],p:'DNx2eH1Ymu9',t:['Lying on your front, open one leg out to 90° and switch sides.','Releases lower back tension.']},
+  {n:'Bent-leg hip rotations',d:'10 / side',img:['bk-rot-0','bk-rot-1','bk-rot-2'],p:'DNx2eH1Ymu9',t:['Bring one knee up and rotate it at the hip.','Opens the hips and eases tightness.']},
+  {n:'Feet-together swing',d:'20 reps',img:['bk-swing-0','bk-swing-1','bk-swing-2'],p:'DNx2eH1Ymu9',t:['Feet together, knees bent, swing the legs side to side.','Improves mobility in the lower spine.']},
+  {n:'Prone cross-body toe touch',d:'10 / side',img:['bk-toe-0','bk-toe-1','bk-toe-2'],p:'DNx2eH1Ymu9',t:['On your front, reach one foot across your body towards the opposite hand.']},
+  {n:'Locust lift',d:'3 × 8',img:['bk-locust-0','bk-locust-1','bk-locust-2'],p:'Deb6zffCQ3v',t:['Lift the chest and legs a few centimetres, neck long.','Hold for 2 seconds, lower slowly.']},
+  {n:'Child’s pose to cobra',d:'8 reps',img:['bk-cobra-0','bk-cobra-1','bk-cobra-2'],p:'Deb6zffCQ3v',t:['Slide forward from child’s pose into cobra, then back.']},
+  {n:'Long back extension',d:'3 × 8',img:['bk-swim-0','bk-swim-1','bk-swim-2'],p:'Deb6zffCQ3v',t:['Arms long in front, lift arms, chest and legs together.','Squeeze the glutes to protect the lower back.']},
+ ]},
+{id:'handstand',tab:'Handstand',title:'Handstand',meta:'20 min · 3× a week · socks + smooth floor',src:[['caracalisthenics','DUJr0uMDile'],['byembla_','DeKKqTRoaEA'],['kathaxcalis','DcCCh-su106'],['shantayarc','Dcd8db_zVC3']],
+ note:'Compression drills work shoulders and core at the same time. No smooth floor? Use socks on a carpet.',
+ ex:[
+  {n:'Reverse tuck slides',d:'3 × 6',img:['hs-rtuck-0','hs-rtuck-1','hs-rtuck-2'],p:'DUJr0uMDile',t:['Socks on, hands on the floor, slide the feet back and in.']},
+  {n:'Tuck slides',d:'3 × 6',img:['hs-tuck-0','hs-tuck-1','hs-tuck-2'],p:'DUJr0uMDile',t:['Slide the knees in to your chest, lift the hips over your shoulders.']},
+  {n:'Pike slides',d:'3 × 6',img:['hs-pike-0','hs-pike-1','hs-pike-2'],p:'DUJr0uMDile',t:['Legs straight, slide the feet towards the hands and pike the hips up high.']},
+  {n:'Pike straddle slides',d:'3 × 6',img:['hs-straddle-0','hs-straddle-1','hs-straddle-2'],p:'DUJr0uMDile',t:['Same with wide legs. Closest drill to the press handstand.']},
+  {n:'Sock pike push-up',d:'3 × 6',img:['hs-pikepush-0'],p:'DeKKqTRoaEA',t:['Start with the beginner version and work up step by step.','Builds the shoulder, triceps and core strength for stronger handstands.']},
+  {n:'Press handstand',d:'Goal',img:['hs-goal-0','hs-goal-1','hs-goal-2'],p:'DcCCh-su106',t:['The goal these drills build towards.','Watch the tutorial and practise against a wall first.']},
+  {n:'Beginner full-body set',d:'Bonus',img:['hs-hero-0'],p:'Dcd8db_zVC3',t:['Beginner calisthenics routine to build overall strength at home.']},
+ ]},
+];
+
+const store={get(k,f){try{const v=localStorage.getItem('sg:'+k);return v?JSON.parse(v):f;}catch(e){return f;}},set(k,v){try{localStorage.setItem('sg:'+k,JSON.stringify(v));}catch(e){}}};
+const TODAY=(()=>{const d=new Date();return new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);})();
+const $=s=>document.querySelector(s);
+let cur=store.get('last','wake'); if(!R.some(r=>r.id===cur)) cur='wake';
+
+function tabs(){
+  $('#tabs').innerHTML=R.map(r=>`<button role="tab" aria-selected="${r.id===cur}" data-id="${r.id}">${r.tab}</button>`).join('');
+  $('#tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{hideTip();cur=b.dataset.id;store.set('last',cur);tabs();render();});
+}
+const done=()=>(store.get('done:'+TODAY,{})[cur])||[];
+function setDone(a){const all=store.get('done:'+TODAY,{});all[cur]=a;store.set('done:'+TODAY,all);}
+
+function render(){
+  const r=R.find(x=>x.id===cur);
+  const by=r.src.map(([u,id])=>`<a href="https://www.instagram.com/p/${id}/" target="_blank" rel="noopener">@${u}</a>`).join(', ');
+  $('#routine').innerHTML=`
+    <div class="rhead"><div><h2>${r.title}</h2><div class="meta">${r.meta} · from ${by}</div></div><div class="count" id="count"></div></div>
+    <p class="note">${r.note}</p>
+    <ol class="list">${r.ex.map((e,i)=>`
+      <li class="row" data-i="${i}">
+        <span class="num">${String(i+1).padStart(2,'0')}</span>
+        <div><div class="name">${e.n}</div><div class="sub"><span>${e.d}</span><button class="tipbtn" aria-expanded="false" aria-controls="tip">Tips</button></div></div>
+        <div class="imgs">${e.img.map(k=>`<button aria-label="View ${e.n} large"><img src="img/thumb/${k}.jpg" alt="" loading="lazy"></button>`).join('')}</div>
+        <button class="check" aria-label="Mark ${e.n} done">✓</button>
+      </li>`).join('')}</ol>`;
+  document.querySelectorAll('.row').forEach(row=>{
+    const i=+row.dataset.i, e=r.ex[i];
+    row.querySelector('.check').onclick=()=>{let d=done();d=d.includes(i)?d.filter(x=>x!==i):[...d,i];setDone(d);sync();};
+    const tb=row.querySelector('.tipbtn');
+    tb.onclick=ev=>{ev.stopPropagation(); showTip(tb,e);};
+    row.querySelectorAll('.imgs button').forEach((b,j)=>b.onclick=()=>openLB(e,j));
+  });
+  sync();
+}
+function sync(){
+  const r=R.find(x=>x.id===cur), d=done();
+  document.querySelectorAll('.row[data-i]').forEach(row=>row.classList.toggle('done',d.includes(+row.dataset.i)));
+  $('#count').innerHTML=`${d.length}<small>/${r.ex.length}</small>`;
+}
+
+
+let tipOwner=null;
+function hideTip(){const t=$('#tip'); t.hidden=true; if(tipOwner){tipOwner.setAttribute('aria-expanded','false');tipOwner=null;}}
+function showTip(btn,e){
+  if(tipOwner===btn) return hideTip();
+  hideTip();
+  const t=$('#tip'); $('#tipList').innerHTML=e.t.map(x=>`<li>${x}</li>`).join('');
+  t.hidden=false; tipOwner=btn; btn.setAttribute('aria-expanded','true');
+  const r=btn.getBoundingClientRect(), w=t.offsetWidth, pad=12;
+  let left=r.left+window.scrollX-16; left=Math.max(pad,Math.min(left,document.documentElement.clientWidth-w-pad));
+  t.style.left=left+'px'; t.style.top=(r.bottom+window.scrollY+12)+'px';
+  t.style.setProperty('--arrow',(r.left+window.scrollX+r.width/2-left-6)+'px');
+}
+document.addEventListener('click',ev=>{if(!ev.target.closest('#tip'))hideTip();});
+document.addEventListener('keydown',ev=>{if(ev.key==='Escape')hideTip();});
+window.addEventListener('resize',hideTip);
+
+let lbE=null, lbI=0, lastFocus=null;
+function lbShow(){
+  const n=lbE.img.length; $('#lbImg').src=`img/full/${lbE.img[lbI]}.jpg`; $('#lbImg').alt=`${lbE.n}, step ${lbI+1} of ${n}`;
+  $('#lbPrev').disabled=lbI===0; $('#lbNext').disabled=lbI===n-1;
+  $('#lbPrev').style.visibility=$('#lbNext').style.visibility=n>1?'visible':'hidden';
+  $('#lbDots').innerHTML=n>1?lbE.img.map((_,j)=>`<button aria-label="Step ${j+1}" aria-current="${j===lbI}" data-j="${j}"></button>`).join(''):'';
+  $('#lbDots').querySelectorAll('button').forEach(b=>b.onclick=()=>{lbI=+b.dataset.j;lbShow();});
+}
+function openLB(e,j){hideTip(); lastFocus=document.activeElement; lbE=e; lbI=j; $('#lbName').textContent=e.n; $('#lbDose').textContent=e.d; lbShow(); $('#lb').hidden=false; document.body.style.overflow='hidden'; $('#lbX').focus();}
+function closeLB(){$('#lb').hidden=true; document.body.style.overflow=''; lastFocus&&lastFocus.focus();}
+$('#lbX').onclick=closeLB;
+$('#lbPrev').onclick=()=>{if(lbI>0){lbI--;lbShow();}};
+$('#lbNext').onclick=()=>{if(lbI<lbE.img.length-1){lbI++;lbShow();}};
+$('#lb').addEventListener('click',ev=>{if(ev.target.id==='lb'||ev.target.classList.contains('lb-stage'))closeLB();});
+document.addEventListener('keydown',ev=>{if($('#lb').hidden)return; if(ev.key==='Escape')closeLB(); if(ev.key==='ArrowLeft')$('#lbPrev').click(); if(ev.key==='ArrowRight')$('#lbNext').click();});
+let tx=null; $('#lb').addEventListener('touchstart',ev=>{tx=ev.touches[0].clientX;},{passive:true});
+$('#lb').addEventListener('touchend',ev=>{if(tx==null)return; const dx=ev.changedTouches[0].clientX-tx; if(Math.abs(dx)>40)(dx<0?$('#lbNext'):$('#lbPrev')).click(); tx=null;});
+const setMode=bw=>{document.body.classList.toggle('bw',bw);$('#mode').setAttribute('aria-pressed',bw);store.set('bw',bw);};
+$('#mode').onclick=()=>setMode(!document.body.classList.contains('bw'));
+setMode(store.get('bw',false));
+tabs(); render();
+</script>
+</body>
+</html>
