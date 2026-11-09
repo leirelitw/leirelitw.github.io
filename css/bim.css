@@ -54,8 +54,7 @@
    THE PIVOT, BEFORE AND AFTER, THE LATEST VERSION
 --------------------------------------------------------------------------- */
 
-.bim-origin { max-width: 980px; margin-top: 72px; }
-.bim-origin img { display: block; width: 100%; height: auto; }
+.bim-ba-intro { margin-top: 80px; }
 
 /* Two audiences, side by side: what each gets, then one screen as proof. */
 .bim-sides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; margin-top: 64px; }
@@ -71,13 +70,13 @@
 /* Before and after. One phone holds both screens; the after screen is
    clipped from the line to the right edge, so dragging the line reveals it
    1:1 with the pointer. --pos is the line's position across the screen. */
-.bim-ba { margin-top: 52px; }
+.bim-ba { margin-top: 36px; }
 .bim-ba__tabs { display: flex; gap: 8px; margin: 0 0 44px; padding: 2px 0 6px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .bim-ba__tabs::-webkit-scrollbar { display: none; }
 .bim-ba__tab { flex: 0 0 auto; min-height: 44px; padding: 10px 18px; border: 1px solid var(--rule); border-radius: 999px; background: transparent; color: var(--text-3); font-family: 'DM Sans', sans-serif; font-size: 14.5px; font-weight: 500; cursor: pointer; transition: color .2s var(--ease), background-color .2s var(--ease), border-color .2s var(--ease), transform .1s ease-out; }
 .bim-ba__tab:hover { color: var(--text); border-color: var(--accent-line); }
 .bim-ba__tab:active { transform: scale(.97); }
-.bim-ba__tab[aria-selected="true"] { border-color: var(--accent); background: var(--accent); color: #fff; }
+.bim-ba__tab[aria-selected="true"] { border-color: var(--brand-ink); background: var(--brand-ink); color: #fff; }
 
 .bim-ba__stage { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 72px; align-items: center; }
 .bim-ba__device { display: grid; justify-items: center; gap: 18px; }

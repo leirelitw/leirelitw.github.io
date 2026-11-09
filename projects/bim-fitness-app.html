@@ -133,13 +133,91 @@
           <li><b>3</b><strong>Coaches still had the problem</strong><span>They taught one to one, ran sessions on Zoom and sent exercises as PDFs. They needed one place to coach and follow their students.</span></li>
         </ol>
 
-        <figure class="vc-figure bim-origin reveal">
-          <img src="../img/bim/mockup-training.png" alt="A phone and a tablet running the same bim session: the exercise video, a plank timer, and the other participants on video call" width="2048" height="1483" loading="lazy" decoding="async">
-          <figcaption>
-            <b>Where it started</b>
-            <span>A session with friends: the exercise, the timer and everyone on the call, on a phone and a tablet at the same time.</span>
-          </figcaption>
-        </figure>
+        <p class="vc-sub bim-ba-intro reveal">How it pivoted</p>
+        <p class="vc-body reveal">The first version was built for friends on a call, the last one around coaches and their communities. Pick a screen, then drag the line to compare.</p>
+
+        <div class="bim-ba reveal" data-ba>
+          <div class="bim-ba__tabs" role="tablist" aria-label="Screens to compare">
+            <button class="bim-ba__tab" type="button" role="tab" id="ba-tab-1" aria-controls="ba-panel-1" aria-selected="true">Training live</button>
+            <button class="bim-ba__tab" type="button" role="tab" id="ba-tab-2" aria-controls="ba-panel-2" aria-selected="false" tabindex="-1">Choosing a workout</button>
+            <button class="bim-ba__tab" type="button" role="tab" id="ba-tab-3" aria-controls="ba-panel-3" aria-selected="false" tabindex="-1">Planning a session</button>
+            <button class="bim-ba__tab" type="button" role="tab" id="ba-tab-4" aria-controls="ba-panel-4" aria-selected="false" tabindex="-1">Your community</button>
+            <button class="bim-ba__tab" type="button" role="tab" id="ba-tab-5" aria-controls="ba-panel-5" aria-selected="false" tabindex="-1">After a workout</button>
+            <button class="bim-ba__tab" type="button" role="tab" id="ba-tab-6" aria-controls="ba-panel-6" aria-selected="false" tabindex="-1">Your profile</button>
+          </div>
+
+          <div class="bim-ba__stage">
+            <div class="bim-ba__device">
+              <div class="vc-phone bim-ba__phone">
+                <div class="bim-ba__compare" style="--pos:50%">
+                  <img class="bim-ba__img bim-ba__img--before" src="../img/bim/screens/before-during-workout.jpg" alt="Before: a ring timer over the camera feed, with the next exercise as a line of text" width="600" height="1304" loading="lazy" decoding="async" draggable="false">
+                  <img class="bim-ba__img bim-ba__img--after" src="../img/bim/screens/after-during-workout.jpg" alt="After: the exercise video at the top, two participants underneath, and the timer with the exercise name" width="600" height="1304" loading="lazy" decoding="async" draggable="false">
+                  <span class="bim-ba__tag bim-ba__tag--before" aria-hidden="true">Before</span>
+                  <span class="bim-ba__tag bim-ba__tag--after" aria-hidden="true">After</span>
+                  <div class="bim-ba__handle" role="slider" tabindex="0" aria-labelledby="ba-hint" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50%"><span class="bim-ba__knob" aria-hidden="true"></span></div>
+                </div>
+              </div>
+              <p class="bim-ba__hint" id="ba-hint">Drag to compare before and after</p>
+            </div>
+
+            <div class="bim-ba__panels">
+              <div class="bim-ba__panel" role="tabpanel" id="ba-panel-1" aria-labelledby="ba-tab-1"
+                   data-before="../img/bim/screens/before-during-workout.jpg" data-before-alt="Before: a ring timer over the camera feed, with the next exercise as a line of text"
+                   data-after="../img/bim/screens/after-during-workout.jpg" data-after-alt="After: the exercise video at the top, two participants underneath, and the timer with the exercise name">
+                <h3 class="vc-h3">Training live</h3>
+                <dl class="bim-ba__notes">
+                  <div><dt>Before</dt><dd>A ring timer over the camera feed. The exercise itself was a line of text in the corner.</dd></div>
+                  <div><dt>After</dt><dd>The exercise video leads, the people training with you sit underneath, and the timer and progress are always in view.</dd></div>
+                </dl>
+              </div>
+              <div class="bim-ba__panel" role="tabpanel" id="ba-panel-2" aria-labelledby="ba-tab-2" hidden
+                   data-before="../img/bim/screens/before-explore-programs.jpg" data-before-alt="Before: a text list of programs, each with its body part, length and level"
+                   data-after="../img/bim/screens/after-homepage.jpg" data-after-alt="After: today's workout as a large photo, recommended workouts, and suggested tasks to get started">
+                <h3 class="vc-h3">Choosing a workout</h3>
+                <dl class="bim-ba__notes">
+                  <div><dt>Before</dt><dd>A text list of programs that all looked the same, so people picked the first one.</dd></div>
+                  <div><dt>After</dt><dd>A home built around photography: today's workout, recommendations for you, and tasks to get started.</dd></div>
+                </dl>
+              </div>
+              <div class="bim-ba__panel" role="tabpanel" id="ba-panel-3" aria-labelledby="ba-tab-3" hidden
+                   data-before="../img/bim/screens/before-videocall.jpg" data-before-alt="Before: everyone on the video call, with a card asking them to agree on a program to start the training"
+                   data-after="../img/bim/screens/after-planned-sessions.jpg" data-after-alt="After: a sessions list grouped into today, tomorrow and this week, with a start button on today's session">
+                <h3 class="vc-h3">Planning a session</h3>
+                <dl class="bim-ba__notes">
+                  <div><dt>Before</dt><dd>Everyone joined the call first, then had to agree on a program before anyone could start.</dd></div>
+                  <div><dt>After</dt><dd>Sessions are planned ahead, for today, tomorrow and this week. The coach schedules them and students just join.</dd></div>
+                </dl>
+              </div>
+              <div class="bim-ba__panel" role="tabpanel" id="ba-panel-4" aria-labelledby="ba-tab-4" hidden
+                   data-before="../img/bim/screens/before-chat.jpg" data-before-alt="Before: a group chat between friends about a training that did not start"
+                   data-after="../img/bim/screens/after-community.jpg" data-after-alt="After: a coach's gym page with a chat button, upcoming live sessions to join and sessions in video">
+                <h3 class="vc-h3">Your community</h3>
+                <dl class="bim-ba__notes">
+                  <div><dt>Before</dt><dd>A group chat between friends, which also had to work as the place to say a training did not start.</dd></div>
+                  <div><dt>After</dt><dd>Each coach's community has its own page: upcoming live sessions to join, sessions on video, and a chat with everyone in it.</dd></div>
+                </dl>
+              </div>
+              <div class="bim-ba__panel" role="tabpanel" id="ba-panel-5" aria-labelledby="ba-tab-5" hidden
+                   data-before="../img/bim/screens/before-results.jpg" data-before-alt="Before: an awesome training card with each person's time and the exercises done"
+                   data-after="../img/bim/screens/after-results.jpg" data-after-alt="After: a workout summary with exercises, duration and calories, the participants, and a picture to share">
+                <h3 class="vc-h3">After a workout</h3>
+                <dl class="bim-ba__notes">
+                  <div><dt>Before</dt><dd>A results card with times and reactions, gone as soon as you closed it.</dd></div>
+                  <div><dt>After</dt><dd>A summary of the session: exercises, duration and calories, who trained with you, and a picture to share.</dd></div>
+                </dl>
+              </div>
+              <div class="bim-ba__panel" role="tabpanel" id="ba-panel-6" aria-labelledby="ba-tab-6" hidden
+                   data-before="../img/bim/screens/before-profile.jpg" data-before-alt="Before: a profile with a friend count, a training count and a list of programs"
+                   data-after="../img/bim/screens/after-profile-coach.jpg" data-after-alt="After: a profile with chat, video and Instagram buttons, an about section with goals, and videos">
+                <h3 class="vc-h3">Your profile</h3>
+                <dl class="bim-ba__notes">
+                  <div><dt>Before</dt><dd>A friend count, a training count and a list of programs.</dd></div>
+                  <div><dt>After</dt><dd>A profile that says who you are and what you train for, with your videos, and chat, video call or Instagram one tap away.</dd></div>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -255,125 +333,17 @@
           </table>
         </div>
 
-        <p class="vc-body reveal" style="margin-top:44px">Wireframing started from the flows rather than the screens, and every flow went through the same three questions.</p>
-        <ul class="vc-findings reveal">
-          <li>
-            <strong>Are there any missing paths?</strong>
-            <p>The ones nobody drew because nobody had hit them yet.</p>
-          </li>
-          <li>
-            <strong>Are there constraints in this flow?</strong>
-            <p>Technical or business, asked while the flow was still cheap to change.</p>
-          </li>
-          <li>
-            <strong>Can the path be improved?</strong>
-            <p>Fewer steps, fewer decisions, less waiting.</p>
-          </li>
-        </ul>
       </div>
     </section>
 
-    <!-- The design solution, as before and after: one phone, two versions, a line to drag between them -->
     <section class="vc-section">
       <div class="vc-wrap">
-        <p class="vc-eyebrow reveal">Before and after</p>
-        <h2 class="vc-h2 reveal">The design solution</h2>
-        <p class="vc-lead reveal">The priorities became five pieces of work, built sprint by sprint: onboarding, communities, video recording, free sessions and subscriptions. The first version was built for friends on a call, the last one around coaches and their communities. Pick a screen, then drag the line to compare.</p>
-
-        <div class="bim-ba reveal" data-ba>
-          <div class="bim-ba__tabs" role="tablist" aria-label="Screens to compare">
-            <button class="bim-ba__tab" type="button" role="tab" id="ba-tab-1" aria-controls="ba-panel-1" aria-selected="true">Training live</button>
-            <button class="bim-ba__tab" type="button" role="tab" id="ba-tab-2" aria-controls="ba-panel-2" aria-selected="false" tabindex="-1">Choosing a workout</button>
-            <button class="bim-ba__tab" type="button" role="tab" id="ba-tab-3" aria-controls="ba-panel-3" aria-selected="false" tabindex="-1">Planning a session</button>
-            <button class="bim-ba__tab" type="button" role="tab" id="ba-tab-4" aria-controls="ba-panel-4" aria-selected="false" tabindex="-1">Your community</button>
-            <button class="bim-ba__tab" type="button" role="tab" id="ba-tab-5" aria-controls="ba-panel-5" aria-selected="false" tabindex="-1">After a workout</button>
-            <button class="bim-ba__tab" type="button" role="tab" id="ba-tab-6" aria-controls="ba-panel-6" aria-selected="false" tabindex="-1">Your profile</button>
-          </div>
-
-          <div class="bim-ba__stage">
-            <div class="bim-ba__device">
-              <div class="vc-phone bim-ba__phone">
-                <div class="bim-ba__compare" style="--pos:50%">
-                  <img class="bim-ba__img bim-ba__img--before" src="../img/bim/screens/before-during-workout.jpg" alt="Before: a ring timer over the camera feed, with the next exercise as a line of text" width="600" height="1304" loading="lazy" decoding="async" draggable="false">
-                  <img class="bim-ba__img bim-ba__img--after" src="../img/bim/screens/after-during-workout.jpg" alt="After: the exercise video at the top, two participants underneath, and the timer with the exercise name" width="600" height="1304" loading="lazy" decoding="async" draggable="false">
-                  <span class="bim-ba__tag bim-ba__tag--before" aria-hidden="true">Before</span>
-                  <span class="bim-ba__tag bim-ba__tag--after" aria-hidden="true">After</span>
-                  <div class="bim-ba__handle" role="slider" tabindex="0" aria-labelledby="ba-hint" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50%"><span class="bim-ba__knob" aria-hidden="true"></span></div>
-                </div>
-              </div>
-              <p class="bim-ba__hint" id="ba-hint">Drag to compare before and after</p>
-            </div>
-
-            <div class="bim-ba__panels">
-              <div class="bim-ba__panel" role="tabpanel" id="ba-panel-1" aria-labelledby="ba-tab-1"
-                   data-before="../img/bim/screens/before-during-workout.jpg" data-before-alt="Before: a ring timer over the camera feed, with the next exercise as a line of text"
-                   data-after="../img/bim/screens/after-during-workout.jpg" data-after-alt="After: the exercise video at the top, two participants underneath, and the timer with the exercise name">
-                <h3 class="vc-h3">Training live</h3>
-                <dl class="bim-ba__notes">
-                  <div><dt>Before</dt><dd>A ring timer over the camera feed. The exercise itself was a line of text in the corner.</dd></div>
-                  <div><dt>After</dt><dd>The exercise video leads, the people training with you sit underneath, and the timer and progress are always in view.</dd></div>
-                </dl>
-              </div>
-              <div class="bim-ba__panel" role="tabpanel" id="ba-panel-2" aria-labelledby="ba-tab-2" hidden
-                   data-before="../img/bim/screens/before-explore-programs.jpg" data-before-alt="Before: a text list of programs, each with its body part, length and level"
-                   data-after="../img/bim/screens/after-homepage.jpg" data-after-alt="After: today's workout as a large photo, recommended workouts, and suggested tasks to get started">
-                <h3 class="vc-h3">Choosing a workout</h3>
-                <dl class="bim-ba__notes">
-                  <div><dt>Before</dt><dd>A text list of programs that all looked the same, so people picked the first one.</dd></div>
-                  <div><dt>After</dt><dd>A home built around photography: today's workout, recommendations for you, and tasks to get started.</dd></div>
-                </dl>
-              </div>
-              <div class="bim-ba__panel" role="tabpanel" id="ba-panel-3" aria-labelledby="ba-tab-3" hidden
-                   data-before="../img/bim/screens/before-videocall.jpg" data-before-alt="Before: everyone on the video call, with a card asking them to agree on a program to start the training"
-                   data-after="../img/bim/screens/after-planned-sessions.jpg" data-after-alt="After: a sessions list grouped into today, tomorrow and this week, with a start button on today's session">
-                <h3 class="vc-h3">Planning a session</h3>
-                <dl class="bim-ba__notes">
-                  <div><dt>Before</dt><dd>Everyone joined the call first, then had to agree on a program before anyone could start.</dd></div>
-                  <div><dt>After</dt><dd>Sessions are planned ahead, for today, tomorrow and this week. The coach schedules them and students just join.</dd></div>
-                </dl>
-              </div>
-              <div class="bim-ba__panel" role="tabpanel" id="ba-panel-4" aria-labelledby="ba-tab-4" hidden
-                   data-before="../img/bim/screens/before-chat.jpg" data-before-alt="Before: a group chat between friends about a training that did not start"
-                   data-after="../img/bim/screens/after-community.jpg" data-after-alt="After: a coach's gym page with a chat button, upcoming live sessions to join and sessions in video">
-                <h3 class="vc-h3">Your community</h3>
-                <dl class="bim-ba__notes">
-                  <div><dt>Before</dt><dd>A group chat between friends, which also had to work as the place to say a training did not start.</dd></div>
-                  <div><dt>After</dt><dd>Each coach's community has its own page: upcoming live sessions to join, sessions on video, and a chat with everyone in it.</dd></div>
-                </dl>
-              </div>
-              <div class="bim-ba__panel" role="tabpanel" id="ba-panel-5" aria-labelledby="ba-tab-5" hidden
-                   data-before="../img/bim/screens/before-results.jpg" data-before-alt="Before: an awesome training card with each person's time and the exercises done"
-                   data-after="../img/bim/screens/after-results.jpg" data-after-alt="After: a workout summary with exercises, duration and calories, the participants, and a picture to share">
-                <h3 class="vc-h3">After a workout</h3>
-                <dl class="bim-ba__notes">
-                  <div><dt>Before</dt><dd>A results card with times and reactions, gone as soon as you closed it.</dd></div>
-                  <div><dt>After</dt><dd>A summary of the session: exercises, duration and calories, who trained with you, and a picture to share.</dd></div>
-                </dl>
-              </div>
-              <div class="bim-ba__panel" role="tabpanel" id="ba-panel-6" aria-labelledby="ba-tab-6" hidden
-                   data-before="../img/bim/screens/before-profile.jpg" data-before-alt="Before: a profile with a friend count, a training count and a list of programs"
-                   data-after="../img/bim/screens/after-profile-coach.jpg" data-after-alt="After: a profile with chat, video and Instagram buttons, an about section with goals, and videos">
-                <h3 class="vc-h3">Your profile</h3>
-                <dl class="bim-ba__notes">
-                  <div><dt>Before</dt><dd>A friend count, a training count and a list of programs.</dd></div>
-                  <div><dt>After</dt><dd>A profile that says who you are and what you train for, with your videos, and chat, video call or Instagram one tap away.</dd></div>
-                </dl>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="vc-section vc-paper">
-      <div class="vc-wrap">
-        <h2 class="vc-h2 reveal">User testing</h2>
-        <p class="vc-lead reveal">Twice, on either side of the build. Task analysis before it existed, and numbers once it did.</p>
+        <h2 class="vc-h2 reveal">How did we test the new features?</h2>
         <ol class="vc-flow reveal">
           <li><b>1</b><strong>Before development</strong><span>Task analysis with friends, family and the partner coaches.</span></li>
           <li><b>2</b><strong>After development</strong><span>Google Analytics, Amplitude and satisfaction surveys.</span></li>
         </ol>
-        <p class="vc-sub reveal" style="margin-top:56px">What came back</p>
+        <p class="vc-sub reveal" style="margin-top:56px">Some of the pain points</p>
         <ul class="vc-changes reveal">
           <li>
             <strong>Onboarding was too long</strong>
@@ -392,7 +362,7 @@
     </section>
 
     <!-- The latest version, as three screen recordings -->
-    <section class="vc-section">
+    <section class="vc-section vc-paper">
       <div class="vc-wrap">
         <h2 class="vc-h2 reveal">Where it ended up</h2>
         <p class="vc-lead reveal">The latest version of the app, recorded when I left the company. Tap a phone to play it.</p>
