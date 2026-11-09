@@ -148,3 +148,10 @@
   .bim-ba__panel.is-entering { animation: none; }
   .bim-ba__knob, .bim-reel__icon, .bim-ba__tab { transition: none; }
 }
+
+/* The first logo, white on the blue it shipped with. */
+.bim-tile--old { background: #0080FF; }
+.bim-group .bim-logos { margin-top: 24px; }
+/* The old files are cropped tight to the mark; the current ones carry their
+   own padding. This evens out the visual size between the two rows. */
+.bim-tile--logo img.bim-logo-old { width: min(76%, 225px); }

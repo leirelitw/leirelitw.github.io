@@ -412,7 +412,6 @@
     "In most live classes people turn their own camera off, which is worth knowing before designing a screen built around faces.": "In most live classes people turn their own camera off, which is worth knowing before designing a screen built around faces.",
     "One designer, six developers and a product with two audiences. The system had to hold the visual identity together and be specific enough to hand over, in light mode and in dark mode, without being rewritten every sprint.": "One designer, six developers and a product with two audiences. The system had to hold the visual identity together and be specific enough to hand over, in light mode and in dark mode, without being rewritten every sprint.",
     "Written as a living document. The parts that were still being decided are marked as such here, the same way they were marked in it.": "Written as a living document. The parts that were still being decided are marked as such here, the same way they were marked in it.",
-    "The mark is meant to express energy, movement and power. Three rules cover everywhere it lands.": "The mark is meant to express energy, movement and power. Three rules cover everywhere it lands.",
     "On a light background.": "On a light background.",
     "On a dark background.": "On a dark background.",
     "Light or dark ground": "Light or dark ground",
@@ -832,6 +831,12 @@
     "How it pivoted": "How it pivoted",
     "The first version was built for friends on a call, the last one around coaches and their communities. Pick a screen, then drag the line to compare.": "The first version was built for friends on a call, the last one around coaches and their communities. Pick a screen, then drag the line to compare.",
     "How did we test the new features?": "How did we test the new features?",
-    "Some of the pain points": "Some of the pain points"
+    "Some of the pain points": "Some of the pain points",
+    "The mark changed with the product, from a speech bubble to a lightning bolt. Three rules cover everywhere the new one lands.": "The mark changed with the product, from a speech bubble to a lightning bolt. Three rules cover everywhere the new one lands.",
+    "Now": "Now",
+    "The b as a speech bubble, for an app about chatting and training with friends.": "The b as a speech bubble, for an app about chatting and training with friends.",
+    "Blue, on a light background.": "Blue, on a light background.",
+    "White, on the brand blue.": "White, on the brand blue.",
+    "The b as a lightning bolt, meant to express energy, movement and power.": "The b as a lightning bolt, meant to express energy, movement and power."
   }
 }

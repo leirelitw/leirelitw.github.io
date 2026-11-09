@@ -391,7 +391,6 @@
     "In most live classes people turn their own camera off, which is worth knowing before designing a screen built around faces.": "Dans la plupart des cours en direct, les gens coupent leur caméra, ce qu'il vaut mieux savoir avant de concevoir un écran bâti autour des visages.",
     "One designer, six developers and a product with two audiences. The system had to hold the visual identity together and be specific enough to hand over, in light mode and in dark mode, without being rewritten every sprint.": "Une designer, six développeurs et un produit à deux publics. Le système devait tenir l'identité visuelle et être assez précis pour être transmis, en mode clair comme en mode sombre, sans être réécrit à chaque sprint.",
     "Written as a living document. The parts that were still being decided are marked as such here, the same way they were marked in it.": "Écrit comme un document vivant. Les parties encore en discussion sont signalées comme telles ici, exactement comme elles l'étaient dedans.",
-    "The mark is meant to express energy, movement and power. Three rules cover everywhere it lands.": "Le signe cherche à exprimer l'énergie, le mouvement et la puissance. Trois règles couvrent tous les endroits où il se pose.",
     "On a light background.": "Sur fond clair.",
     "On a dark background.": "Sur fond sombre.",
     "Light or dark ground": "Fond clair ou sombre",
@@ -811,6 +810,12 @@
     "How it pivoted": "Comment il a pivoté",
     "The first version was built for friends on a call, the last one around coaches and their communities. Pick a screen, then drag the line to compare.": "La première version était pensée pour des amis en appel, la dernière pour les coachs et leurs communautés. Choisis un écran, puis fais glisser la ligne pour comparer.",
     "How did we test the new features?": "Comment avons-nous testé les nouvelles fonctionnalités ?",
-    "Some of the pain points": "Quelques points de friction"
+    "Some of the pain points": "Quelques points de friction",
+    "The mark changed with the product, from a speech bubble to a lightning bolt. Three rules cover everywhere the new one lands.": "Le logo a évolué avec le produit, d'une bulle de dialogue à un éclair. Trois règles couvrent tous les endroits où le nouveau apparaît.",
+    "Now": "Aujourd'hui",
+    "The b as a speech bubble, for an app about chatting and training with friends.": "Le b en forme de bulle de dialogue, pour une app où l'on discute et s'entraîne entre amis.",
+    "Blue, on a light background.": "En bleu, sur fond clair.",
+    "White, on the brand blue.": "En blanc, sur le bleu de la marque.",
+    "The b as a lightning bolt, meant to express energy, movement and power.": "Le b en forme d'éclair, pour exprimer l'énergie, le mouvement et la puissance."
   }
 }
